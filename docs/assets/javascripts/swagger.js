@@ -2,7 +2,7 @@ const swaggerUrls = {
     "onboarding-interface": {
         name: "BankAxept Onboarding API",
         // replace the url with the raw one when the API is public
-        url: "https://raw.githubusercontent.com/BankAxept/bankaxept-des-external-documentation/refs/heads/main/openapi/des-web-service-interface/Messages-from-the-issuer.yaml"
+        url: "https://raw.githubusercontent.com/BankAxept/bankaxept-onboarding-external-documentation/refs/heads/main/openapi/onboarding-interface/onboarding-interface.yaml"
     },
 }
 

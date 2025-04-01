@@ -15,3 +15,22 @@ There are multiple points of configuration that need to be aligned before you ca
 [Onboarding Guide](./onboarding.md).
 
 ## Integration Guidelines
+
+```mermaid
+sequenceDiagram
+participant Integrator
+participant ONBOARDING_API
+
+Integrator -> ONBOARDING_API: PUT Register agreemeent
+ONBOARDING_API --> Integrator: 200 OK with OrderId
+Integrator -> ONBOARDING_API : GET agreement/OrderId
+
+note right of ONBOARDING_API: This will return the agreement details after <br/> a few seconds it should result in NOT_SIGNED state <br/> with a BAX Number
+ONBOARDING_API --> Integrator: 200 OK with Agreement
+Integrator -> ONBOARDING_API: GET /awaiting signatures
+ONBOARDING_API --> Integrator: 200 OK with all Agreements
+Integrator -> ONBOARDING_API : GET agreement/OrderId
+note right of ONBOARDING_API: This will return the agreement details <br/> after signing has been completed by the merchants  it should result in <br/> BAX_ACTIVE state with a BAX Number assuming <br/> the agreement was signed with valid signees
+ONBOARDING_API --> Integrator: 200 OK with Agreement
+
+```
