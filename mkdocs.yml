@@ -15,7 +15,7 @@ nav:
       - Introduction: getting_started.md
       - Resources:
           - API Policy: api_policy.md
-          - Onboarding: onboarding.md
+          - Configuration: configuration.md
   - API Specs:
       - BankAxept Onboarding API: swagger/onboarding-interface.md
 extra_javascript:

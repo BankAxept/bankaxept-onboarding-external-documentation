@@ -12,7 +12,7 @@ Onboarding lets you onboard Merchants.
 ## Setting up your Onboarding integration
 
 There are multiple points of configuration that need to be aligned before you can fully utilize the Onboarding API. The necessary steps may be found in our
-[Getting Started Guide](./onboarding.md).
+[Configuration Guide](./configuration.md).
 
 ## Integration Guidelines
 
