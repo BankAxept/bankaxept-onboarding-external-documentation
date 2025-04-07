@@ -82,7 +82,7 @@ Integrator -> ONBOARDING_API: POST /simulate/signing
 note right of ONBOARDING_API: You must send signee(s) that have signature rights <br/> based on the information in BRREG for the flow to <br/> continue following this diagram
 ONBOARDING_API --> Integrator: 202 Accepted
 Integrator -> ONBOARDING_API : GET agreement/{orderId}
-note right of OnBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> BAX_ACTIVE state
+note right of ONBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> BAX_ACTIVE state
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 ```
 
@@ -113,7 +113,7 @@ Integrator -> ONBOARDING_API: POST /simulate/bank/approves/signatures
 
 ONBOARDING_API --> Integrator: 202 Accepted
 Integrator -> ONBOARDING_API : GET agreement/{orderId}
-note right of OnBOARDING_API: This will simulate the bank approving the signature(s) <br/> and should result in a BAX_ACTIVE state
+note right of ONBOARDING_API: This will simulate the bank approving the signature(s) <br/> and should result in a BAX_ACTIVE state
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 ```
 
@@ -144,6 +144,6 @@ Integrator -> ONBOARDING_API: POST /simulate/bank/rejects/signatures
 
 ONBOARDING_API --> Integrator: 202 Accepted
 Integrator -> ONBOARDING_API : GET agreement/{orderId}
-note right of OnBOARDING_API: This will simulate the bank approving the signature(s) <br/> and should result in a REJECTED state
+note right of ONBOARDING_API: This will simulate the bank approving the signature(s) <br/> and should result in a REJECTED state
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 ```
