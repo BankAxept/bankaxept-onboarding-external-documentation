@@ -71,11 +71,11 @@ participant Integrator
 participant ONBOARDING_API
 
 Integrator -> ONBOARDING_API: PUT Register agreement
-note right of ONBARDING_API: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
+note right of ONBOARDING_API: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
 ONBOARDING_API --> Integrator: 200 OK with OrderId
 
 Integrator -> ONBOARDING_API : GET agreement/OrderId
-note right of OnBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
+note right of ONBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 note over Integrator, ONBOARDING_API: Simulate signing of agreement
 Integrator -> ONBOARDING_API: POST /simulate/signing
@@ -93,11 +93,11 @@ participant Integrator
 participant ONBOARDING_API
 
 Integrator -> ONBOARDING_API: PUT Register agreement
-note right of ONBARDING_API: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
+note right of ONBOARDING_API: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
 ONBOARDING_API --> Integrator: 200 OK with OrderId
 
 Integrator -> ONBOARDING_API : GET agreement/OrderId
-note right of OnBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
+note right of ONBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 note over Integrator, ONBOARDING_API: Simulate signing of agreement
 Integrator -> ONBOARDING_API: POST /simulate/signing
@@ -117,18 +117,18 @@ note right of OnBOARDING_API: This will simulate the bank approving the signatur
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 ```
 
-### Valid flow for Test - Unhappy Path bank approves
+### Valid flow for Test - Unhappy Path bank rejects
 ```mermaid
 sequenceDiagram
 participant Integrator
 participant ONBOARDING_API
 
 Integrator -> ONBOARDING_API: PUT Register agreement
-note right of ONBARDING_API: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
+note right of ONBOARDING_API: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
 ONBOARDING_API --> Integrator: 200 OK with OrderId
 
 Integrator -> ONBOARDING_API : GET agreement/OrderId
-note right of OnBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
+note right of ONBOARDING_API: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
 ONBOARDING_API --> Integrator: 200 OK with Agreement
 note over Integrator, ONBOARDING_API: Simulate signing of agreement
 Integrator -> ONBOARDING_API: POST /simulate/signing
