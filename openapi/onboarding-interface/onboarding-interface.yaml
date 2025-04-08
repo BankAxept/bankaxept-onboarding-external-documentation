@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: PSP API
+  title: Onboarding API
   description: API
   version: 1.0.0
 
@@ -360,14 +360,10 @@ components:
       type: object
       required:
         - accountOwnership
-        - accountNumber
       properties:
         accountOwnership:
           type: boolean
           description: Turn on or off the ability to bypass account ownership validation
-        accountNumber:
-          type: boolean
-          description: Turn on or off the ability to bypass account number validation
     OrgNumber:
       type: string
       example: 123456789
