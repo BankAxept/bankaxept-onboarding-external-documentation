@@ -71,7 +71,7 @@ participant I as Integrator
 participant O as ONBOARDING_API
 
 I ->> O: PUT Register agreement
-note right of O: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
+note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
 O -->> I: 200 OK with orderId
 
 I ->> O: GET agreement/{orderId}
@@ -93,7 +93,7 @@ participant I as Integrator
 participant O as ONBOARDING_API
 
 I ->> O: PUT Register agreement
-note right of O: We validate: <br/> - Account Ownership <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
+note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
 O -->> I: 200 OK with orderId
 
 I ->> O: GET agreement/{orderId}
@@ -124,7 +124,7 @@ participant I as Integrator
 participant O as ONBOARDING_API
 
 I ->> O: PUT Register agreement
-note right of O: We validate: <br/> - Account Ownership                   <br/> - Account Number <br/> We provide the ability to bypass account ownership validation <br/> and provide more information on valid account numbers in our documentation
+note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
 O -->> I: 200 OK with orderId
 
 I ->> O: GET agreement/{orderId}
