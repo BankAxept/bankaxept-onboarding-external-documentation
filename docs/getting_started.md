@@ -27,13 +27,13 @@ I ->> O: PUT Register agreement
 O -->> I: 200 OK with orderId
 I ->> O : GET agreement/{orderId}
 
-note right of O: This will return the agreement details <br/> after a few seconds it should result in NOT_SIGNED state <br/> with a BAX Number
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in NOT_SIGNED state <br/> with a BAX Number
 O -->> I: 200 OK with Agreement
 note over I, O: Verify signing of agreement
 I ->> O: GET /awaiting-signatures
 O -->> I: 200 OK with all Agreements
 I ->> O : GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after signing has been completed by the merchants  it should result in <br/> BAX_ACTIVE state with a BAX Number assuming <br/> the agreement was signed with valid signees
+note right of O: This will return the agreement details <br/> after signing has been completed by the merchants it should result in <br/> BAX_ACTIVE state with a BAX Number assuming <br/> the agreement was signed with valid signees
 O -->> I: 200 OK with Agreement
 ```
 
@@ -47,13 +47,13 @@ I ->> O: PUT Register agreement
 O -->> I: 200 OK with orderId
 
 I ->> O : GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in NOT_SIGNED state <br/> with a BAX Number
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in NOT_SIGNED state <br/> with a BAX Number
 O -->> I: 200 OK with Agreement
 note over I, O: Verify signing of agreement
 I ->> O: GET /awaiting-signatures
 O -->> I: 200 OK with all Agreements
 I ->> O : GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> REJECTED state with a BAX Number assuming <br/> the agreement was signed with invalid signees
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> REJECTED state with a BAX Number assuming <br/> the agreement was signed with invalid signees
 O -->> I: 200 OK with Agreement
 
 note over I, O: Resend signing request on Agreement
@@ -75,14 +75,14 @@ note right of O: We validate: Account Ownership and Account Number. <br/> We pro
 O -->> I: 200 OK with orderId
 
 I ->> O: GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
 O -->> I: 200 OK with Agreement
 note over I, O: Simulate signing of agreement
 I ->> O: POST /simulate/signing
 note right of O: You must send signee(s) that have signature rights <br/> based on the information in BRREG for the flow to <br/> continue following this diagram
 O -->> I: 202 Accepted
 I ->> O : GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> BAX_ACTIVE state
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> BAX_ACTIVE state
 O -->> I: 200 OK with Agreement
 ```
 
@@ -97,14 +97,14 @@ note right of O: We validate: Account Ownership and Account Number. <br/> We pro
 O -->> I: 200 OK with orderId
 
 I ->> O: GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
 O -->> I: 200 OK with Agreement
 note over I, O: Simulate signing of agreement
 I ->> O: POST /simulate/signing
 note right of O: You must send signee(s) that have signature rights <br/> based on the information in BRREG for the flow to <br/> continue following this diagram
 O -->> I: 202 Accepted
 I ->> O: GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> SIGNED_AWAITING_BANK state
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> SIGNED_AWAITING_BANK state
 O -->> I: 200 OK with Agreement
 
 note over I, O: Simulate Bank Response on Agreement
@@ -128,14 +128,14 @@ note right of O: We validate: Account Ownership and Account Number. <br/> We pro
 O -->> I: 200 OK with orderId
 
 I ->> O: GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> NOT_SIGNED state with a BAX Number
 O -->> I: 200 OK with Agreement
 note over I, O: Simulate signing of agreement
 I ->> O: POST /simulate/signing
 note right of O: You must send signee(s) that have signature rights <br/> based on the information in BRREG for the flow to <br/> continue following this diagram
 O -->> I: 202 Accepted
 I ->> O: GET agreement/{orderId}
-note right of O: This will return the agreement details <br/> after a few seconds it should result in <br/> SIGNED_AWAITING_BANK state
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> SIGNED_AWAITING_BANK state
 O -->> I: 200 OK with Agreement
 
 note over I, O: Simulate Bank Response on Agreement
@@ -144,6 +144,13 @@ I ->> O: POST /simulate/bank/rejects/signatures
 
 O -->> I: 202 Accepted
 I ->> O: GET agreement/{orderId}
-note right of O: This will simulate the bank approving the signature(s) <br/> and should result in a REJECTED state
+note right of O: This will simulate the bank rejecting the signature(s) <br/> and should result in a REJECTED state
 O -->> I: 200 OK with Agreement
+
+note over I, O: Resend signing request on Agreement
+I ->> O: POST /resend-signing-email
+note right of O: This is intended to be utilized if signing <br/> requirements change and need to be updated <br/> or if previous signature was rejected.
+
+O -->> I: 202 Accepted
+O ->> O: Send email to customer
 ```
