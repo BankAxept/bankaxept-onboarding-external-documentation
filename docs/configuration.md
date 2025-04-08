@@ -98,7 +98,7 @@ echo "${header}.${payload}.${signature}"
 An example creating a JWT for a POST/PUT request with a private key in a file called testKey.der.
 Using [jose4j](https://mvnrepository.com/artifact/org.bitbucket.b_c/jose4j) and the ObjectMapper from Jackson:
 
-```java
+``` java
 
   public String createJWTForPost(String userId, Object request) throws Exception {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -126,7 +126,7 @@ Using [jose4j](https://mvnrepository.com/artifact/org.bitbucket.b_c/jose4j) and 
     return jws.getCompactSerialization();
   }
   
-  ```
+```
 
 Omitting 'claims.setClaim("request", request);' will result in a JWT valid for a GET request instead.
 
