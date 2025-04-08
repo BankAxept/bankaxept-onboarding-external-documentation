@@ -18,12 +18,6 @@ Diverging from the above versioning scheme requires approval from all integrator
 We strive to keep our API backwards compatible in order to minimize the impact on our integrators.
 The following changes are considered backwards compatible.
 
-### Expanding a request with an optional field.
-
-As long as a field is optional it is considered backwards compatible to add it to a request. This means that the integrator can choose to ignore the field if it
-is not needed.
-This should be unproblematic, but bear this constraint in mind regarding any automation and validation tied to our Swagger files.
-
 ### Expanding a response with an optional field.
 
 As long as a field is optional it is considered backwards compatible to add it to a response. This means that the integrator can choose to ignore the field if
