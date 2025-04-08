@@ -7,7 +7,16 @@
 
 # Introduction
 
-Onboarding lets you onboard Merchants.
+This is an API for Norwegian PSPs to register new Bax numbers which are automatically assigned BankAxept products.
+Following a merchant agreement registration request BankAxept will:
+- Create a Bax number in Baxbis
+- Create a financial agreement document between the issuing bank and the customer, if needed.
+- Create an agreement between BankAxept and the customer, if needed.
+- Collect any necessary signature(s) using the signee and contact information provided in the request.
+
+Bax numbers are loaded onto payment terminals in order to connect them to the payment network.
+Baxbis is the system operated by Nets which issues bax numbers and
+maintains the network necessary for payment terminals to work.
 
 ## Setting up your Onboarding integration
 
