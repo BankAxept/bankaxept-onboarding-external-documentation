@@ -9,6 +9,6 @@ This is intended to be a general lightweight reference to reduce confusion and i
 | PSP              | Payment Service Provider                                                                                                  |
 | Bax number       | A six or seven digit number associated with a payment terminal                                                            |
 | Baxbis           | The system operated by Nets which issues bax numbers and maintains the network necessary for payment terminals to work    |
-| Bank reg number  | Someone please help me with a good definition here                                                                        |
+| Bank reg number  | Identifying number for a bank. A bank can have several bank reg numbers, but 2 banks can never share the same number.     |
 | BRREG            | Brønnøysundregistrene is the national register of Norwegian businesses their site can be found here https://www.brreg.no/ |
 | JWT              | JSON Web Token                                                                                                            |
