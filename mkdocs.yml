@@ -16,6 +16,7 @@ nav:
       - Resources:
           - API Policy: api_policy.md
           - Configuration: configuration.md
+          - Dictionary: dictionary.md
   - API Specs:
       - BankAxept Onboarding API: swagger/onboarding-interface.md
 extra_javascript:
