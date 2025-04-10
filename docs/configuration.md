@@ -132,6 +132,7 @@ Omitting 'claims.setClaim("request", request);' will result in a JWT valid for a
 ## Validation
 
 We validate all tokens. An invalid token will result in a 401 Unauthorized response. We validate the following:
+
 * The token has not expired, and the expiry time is not too far in the future.
 * The issuer exists in our system.
 * We retrieve the issuers public key and verify the signature.
