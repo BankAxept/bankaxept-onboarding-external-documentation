@@ -293,6 +293,11 @@ components:
           default: [ ]
         registerServiceInfo:
           $ref: "#/components/schemas/RegisterServiceInfo"
+        webhookUrl:
+          type: string
+          description: The (optional) webhook URL where you want us to call whenever there has been an update to the agreement order.
+            The call made by us will be a POST call, and have the `orderId` in the request body.
+          example: "https://example.org/bax_webhook"
     RegisterBaxResponse:
       type: object
       required:

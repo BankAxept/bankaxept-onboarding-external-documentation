@@ -164,3 +164,46 @@ note right of O: This is intended to be utilized if signing <br/> requirements c
 O -->> I: 202 Accepted
 O ->> O: Send email to customer
 ```
+
+
+## Webhooks
+
+Description of how we envision the webhooks flow to look like.
+
+1. Registering an agreement
+    - Add a webhook URL parameter to the register agreement endpoint ( `PUT /psp/v2/register/merchantAgreement` )
+    - Optionally we could also get an authentication token which will be put in the header when calling the webhook to ensure the call came from us and not an attacker.
+    - This URL can be an open endpoint, or other security measures must be discussed.
+2. When the PSP calls the `PUT /psp/v2/register/merchantAgreement` endpoint to register an agreement order, you will get an `orderId` in the response (as per the existing API spec).
+   Whenever there is a change to the agreement order in our systems, we will call the webhook URL with the `orderId` in the request body, looking like this:
+```
+{
+  "orderId": "af5505ad-4346-4c7e-8729-700bd0b92168"
+}
+```
+3. The PSP should then call our existing endpoint to fetch the updated status ( `GET /psp/v2/register/{orderId}` )
+    - The `registerMerchantOrderStatus` field in this response should give you the necessary information about the agreement registration order.
+
+
+### Webhook example sequence diagram
+
+```mermaid
+sequenceDiagram
+    participant Integrator
+    participant ONBOARDING_API
+    participant Signees
+    participant Bank
+    Integrator->>ONBOARDING_API: registerAgreement (with webhook url)
+    ONBOARDING_API->>Integrator: webhook call (status change)
+    Integrator->>ONBOARDING_API: call agreement endpoint to get details
+    ONBOARDING_API->>Signees: email with signing link
+    Signees->>ONBOARDING_API: sign agreement
+    ONBOARDING_API->>Integrator: webhook call (status change)
+    Integrator->>ONBOARDING_API: call agreement endpoint to get details
+    ONBOARDING_API->>Bank: send agreement
+    Bank->>ONBOARDING_API: accepted
+    ONBOARDING_API->>Integrator: webhook call (status change)
+    Integrator->>ONBOARDING_API: call agreement endpoint to get details
+```
+
+
