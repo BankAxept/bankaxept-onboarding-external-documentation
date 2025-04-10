@@ -9,6 +9,7 @@
 
 This is an API for Norwegian PSPs to register new Bax numbers which are automatically assigned BankAxept products.
 Following a merchant agreement registration request BankAxept will:
+
 * Create a Bax number in Baxbis
 * Create a financial agreement document between the issuing bank and the customer, if needed.
 * Create an agreement between BankAxept and the customer, if needed.
