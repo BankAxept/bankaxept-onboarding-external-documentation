@@ -21,11 +21,11 @@ nav:
       - BankAxept Onboarding API: swagger/onboarding-interface.md
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
-  - https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js
+  - https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js
   - assets/javascripts/swagger.js
   - assets/javascripts/mermaid-init.js
 extra_css:
-  - https://unpkg.com/swagger-ui-dist@3/swagger-ui.css
+  - https://unpkg.com/swagger-ui-dist@5/swagger-ui.css
   - assets/stylesheets/custom-swagger.css
 theme:
   name: material
