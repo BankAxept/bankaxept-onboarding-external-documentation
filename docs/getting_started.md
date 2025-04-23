@@ -7,7 +7,7 @@
 
 # Introduction
 
-This is an API for Norwegian PSPs to register new Bax numbers which are automatically assigned BankAxept products.
+This is an API for Norwegian [PSPs] to register new Bax numbers which are automatically assigned BankAxept products.
 Following a merchant agreement registration request BankAxept will:
 
 * Create a Bax number in Baxbis
@@ -29,7 +29,7 @@ There are multiple points of configuration that need to be aligned before you ca
 We validate the following information when registering an agreement:
 * **Account Ownership**: We validate that the account number belongs to the customer.
 * **Account Number**: We validate that the account number is valid and belongs to the customer.
-* **MCC**: We validate that the MCC is valid and exists in our database (we have fetched these from Baxbis).
+* **MCC**: We validate that the MCC is valid and supported.
 
 ### Production
 
