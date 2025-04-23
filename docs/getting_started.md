@@ -7,7 +7,7 @@
 
 # Introduction
 
-This is an API for Norwegian [PSPs] to register new Bax numbers which are automatically assigned BankAxept products.
+This is an API for Norwegian [PSPs](dictionary.md) to register new Bax numbers which are automatically assigned BankAxept products.
 Following a merchant agreement registration request BankAxept will:
 
 * Create a Bax number in Baxbis
