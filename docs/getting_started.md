@@ -7,7 +7,7 @@
 
 # Introduction
 
-This is an API for Norwegian PSPs to register new Bax numbers which are automatically assigned BankAxept products.
+This is an API for Norwegian [PSPs](dictionary.md) to register new Bax numbers which are automatically assigned BankAxept products.
 Following a merchant agreement registration request BankAxept will:
 
 * Create a Bax number in Baxbis
@@ -26,8 +26,14 @@ There are multiple points of configuration that need to be aligned before you ca
 
 ## Integration Guidelines
 
+We validate the following information when registering an agreement:
+* **Account Ownership**: We validate that the account number belongs to the customer.
+* **Account Number**: We validate that the account number is valid and belongs to the customer.
+* **MCC**: We validate that the MCC is valid and supported.
 
-### Valid flow for Production - Happy Path 
+### Production
+
+#### Valid flow for Production - Happy Path 
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -47,7 +53,7 @@ note right of O: This will return the agreement details <br/> after signing has 
 O -->> I: 200 OK with Agreement
 ```
 
-### Valid flow for Production - Unhappy Path
+#### Valid flow for Production - Unhappy Path
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -63,7 +69,7 @@ note over I, O: Verify signing of agreement
 I ->> O: GET /awaiting-signatures
 O -->> I: 200 OK with all Agreements
 I ->> O : GET agreement/{orderId}
-note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> REJECTED state with a BAX Number assuming <br/> the agreement was signed with invalid signees
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> REJECTED state with a reason for rejection and <br/> a BAX Number assuming the agreement was signed with invalid signees
 O -->> I: 200 OK with Agreement
 
 note over I, O: Resend signing request on Agreement
@@ -73,8 +79,12 @@ note right of O: This is intended to be utilized if signing <br/> requirements c
 O -->> I: 202 Accepted
 O ->> O: Send email to customer
 ```
+### Test 
 
-### Valid flow for Test - Happy Path
+Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the bank reg number. <br/>
+We validate that the bank reg number is in our list of valid settlement banks. <br/> For the test environment you can use **7001** and **9710** as valid bank reg numbers. <br/>
+
+#### Valid flow for Test - Happy Path
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -96,7 +106,7 @@ note right of O: This will return the agreement details. <br/> After a few secon
 O -->> I: 200 OK with Agreement
 ```
 
-### Valid flow for Test - Unhappy Path bank approves
+#### Valid flow for Test - Unhappy Path bank approves
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -127,7 +137,7 @@ note right of O: This will simulate the bank approving the signature(s) <br/> an
 O -->> I: 200 OK with Agreement
 ```
 
-### Valid flow for Test - Unhappy Path bank rejects
+#### Valid flow for Test - Unhappy Path bank rejects
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -154,7 +164,7 @@ I ->> O: POST /simulate/bank/rejects/signatures
 
 O -->> I: 202 Accepted
 I ->> O: GET agreement/{orderId}
-note right of O: This will simulate the bank rejecting the signature(s) <br/> and should result in a REJECTED state
+note right of O: This will simulate the bank rejecting the signature(s) <br/> and should result in a REJECTED state with a reason for rejection
 O -->> I: 200 OK with Agreement
 
 note over I, O: Resend signing request on Agreement
@@ -164,7 +174,6 @@ note right of O: This is intended to be utilized if signing <br/> requirements c
 O -->> I: 202 Accepted
 O ->> O: Send email to customer
 ```
-
 
 ## Webhooks
 
