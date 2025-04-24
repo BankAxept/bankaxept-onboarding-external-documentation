@@ -29,7 +29,7 @@ There are multiple points of configuration that need to be aligned before you ca
 We validate the following information when registering an agreement:
 * **Account Ownership**: We validate that the account number belongs to the customer.
 * **Account Number**: We validate that the account number is valid and belongs to the customer.
-* **MCC**: We validate that the MCC is valid and supported.
+* **MCC**: We validate that the MCC is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc.md).
 
 ### Production
 
