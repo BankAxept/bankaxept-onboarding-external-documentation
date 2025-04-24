@@ -181,8 +181,12 @@ Description of how we envision the webhooks flow to look like.
 
 1. Registering an agreement
     - Add a webhook URL parameter to the register agreement endpoint ( `PUT /psp/v2/register/merchantAgreement` )
-    - Optionally we could also get an authentication token which will be put in the header when calling the webhook to ensure the call came from us and not an attacker.
-    - This URL can be an open endpoint, or other security measures must be discussed.
+    - Security measures
+      - We expect the webhook callback URL to be an open endpoint
+      - In case the integrator needs to whitelist our callback, the following IP addresses are used from our end:
+        - Test environment: `51.13.44.137`
+        - Prod environment: `51.13.52.185`
+      - (Optionally; something we dont explicitly support at this point) we could also get an authentication token which will be put in the header when calling the webhook to ensure the call came from us and not an attacker.
 2. When the PSP calls the `PUT /psp/v2/register/merchantAgreement` endpoint to register an agreement order, you will get an `orderId` in the response (as per the existing API spec).
    Whenever there is a change to the agreement order in our systems, we will call the webhook URL with the `orderId` in the request body, looking like this:
 ```
