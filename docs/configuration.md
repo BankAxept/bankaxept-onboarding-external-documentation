@@ -1,8 +1,8 @@
 # Onboarding
 
 ## Getting credentials
-In order to create a JWT you need a private key and an issuer id. The private key is a 2048-bit RSA key. _The private
-key must be kept secret within the PSP organization._
+In order to create a JWT you need a private key and an issuer id. The private key is a 2048-bit RSA key. **_The private
+key must be kept secret within the PSP organization._**
 
 ### Production/Test credentials
 
@@ -46,11 +46,17 @@ piLl4_9-UzkJHXS5xkee5Wr7p5CeTh58nIhdboBLgdKIJ1a1chc8TQw
 ```
 The above example has the following payload:
 ```
-{ "orderId": "6a9ff0fb-3341-4e71-bbca-0c1dfa279aab" }
+{
+  "iss": "133766",
+  "exp": 1742830937,
+  "request": {
+    "orderId": "6a9ff0fb-3341-4e71-bbca-0c1dfa279aab"
+  }
+}
 ```
 The request has content-type application/json. If you go to
 [jwt.io](https://jwt.io) and paste the JWT you will see that the "request" part of the JWT is a JSON object.
-*The examples provided below will not work unless they are encapsulated in a JWT.*
+**_The examples provided below will not work unless they are encapsulated in a JWT._**
 
 
 For GET requests the JWT should be included in the Authorization header. There is no "request".
