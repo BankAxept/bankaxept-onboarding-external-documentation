@@ -238,20 +238,20 @@ Description of how we envision the webhooks flow to look like.
 ```mermaid
 sequenceDiagram
     participant Integrator
-    participant ONBOARDING_API
+    participant Onboarding API
     participant Signees
     participant Bank
-    Integrator->>ONBOARDING_API: registerAgreement (with webhook url)
-    ONBOARDING_API->>Integrator: webhook call (status change)
-    Integrator->>ONBOARDING_API: call agreement endpoint to get details
-    ONBOARDING_API->>Signees: email with signing link
-    Signees->>ONBOARDING_API: sign agreement
-    ONBOARDING_API->>Integrator: webhook call (status change)
-    Integrator->>ONBOARDING_API: call agreement endpoint to get details
-    ONBOARDING_API->>Bank: send agreement
-    Bank->>ONBOARDING_API: accepted
-    ONBOARDING_API->>Integrator: webhook call (status change)
-    Integrator->>ONBOARDING_API: call agreement endpoint to get details
+    Integrator->>Onboarding API: registerAgreement (with webhook url)
+    Onboarding API->>Integrator: webhook call (status change)
+    Integrator->>Onboarding API: call agreement endpoint to get details
+    Onboarding API->>Signees: email with signing link
+    Signees->>Onboarding API: sign agreement
+    Onboarding API->>Integrator: webhook call (status change)
+    Integrator->>Onboarding API: call agreement endpoint to get details
+    Onboarding API->>Bank: send agreement
+    Bank->>Onboarding API: accepted
+    Onboarding API->>Integrator: webhook call (status change)
+    Integrator->>Onboarding API: call agreement endpoint to get details
 ```
 
 
