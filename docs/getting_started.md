@@ -31,15 +31,32 @@ We validate the following information when registering an agreement: <br/>
 **Account Number**: We validate that the account number is valid and belongs to the customer. <br/>
 **MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
 
-### Possible Order Statuses:
+### Possible Order Statuses
 
 | Status               | Description                                                                                                   |
 |----------------------|---------------------------------------------------------------------------------------------------------------|
 | BAX_NOT_CREATED      | The agreement has been created in our system but does not yet have an associated [Bax number.](dictionary.md) |
 | NOT_SIGNED           | The agreement has not been signed yet.                                                                        |
 | SIGNED_AWAITING_BANK | The agreement has been signed by the customer and is waiting for the bank to approve the signatures.          |
-| BAX_ACTIVE           | The agreement has been activated after the signatures have been approved.                                     |
+| BAX_ACTIVE           | The agreement has been activated but the bank has not given final approval.                                   |
 | REJECTED             | The agreement has been rejected by the bank.                                                                  |
+| ACCEPTED             | The agreement has received final approval from the bank.                                                      |
+
+### Order Statuses Flowchart
+
+```mermaid
+graph TD
+    A[Register new agreement] --> B[BAX_NOT_CREATED]
+    B -->|Bax created| C[NOT_SIGNED]
+    C -->|Signatures not automatically validated| D[SIGNED_AWAITING_BANK]
+    C -->|Signatures automatically validated| E[BAX_ACTIVE]
+    D -->|Bank rejects| F[REJECTED]
+    D -->|Bank approves| G[ACCEPTED]
+    E -->|Bank rejects| F[REJECTED]
+    E -->|Bank approves| G[ACCEPTED]
+    F -->|Resend signing request| C[NOT_SIGNED]
+```
+
 
 ### Test 
 
