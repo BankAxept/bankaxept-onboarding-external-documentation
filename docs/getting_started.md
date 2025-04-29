@@ -50,10 +50,10 @@ graph TD
     B -->|Bax created| C((NOT_SIGNED))
     C -->|Signatures not automatically validated| D((SIGNED_AWAITING_BANK))
     C -->|Signatures automatically validated| E((BAX_ACTIVE))
+    E -->|Bank rejects| F((REJECTED))
     D -->|Bank rejects| F((REJECTED))
     D -->|Bank approves| G((ACCEPTED))
     D -->|Automatic timeout| E((BAX_ACTIVE))
-    E -->|Bank rejects| F((REJECTED))
     E -->|Bank approves| G((ACCEPTED))
     F -->|Resend signing request| C((NOT_SIGNED))
 ```
