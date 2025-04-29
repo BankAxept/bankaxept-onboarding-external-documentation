@@ -46,15 +46,15 @@ We validate the following information when registering an agreement: <br/>
 
 ```mermaid
 graph TD
-    A[Register new agreement] --> B[BAX_NOT_CREATED]
-    B -->|Bax created| C[NOT_SIGNED]
-    C -->|Signatures not automatically validated| D[SIGNED_AWAITING_BANK]
-    C -->|Signatures automatically validated| E[BAX_ACTIVE]
-    D -->|Bank rejects| F[REJECTED]
-    D -->|Bank approves| G[ACCEPTED]
-    E -->|Bank rejects| F[REJECTED]
-    E -->|Bank approves| G[ACCEPTED]
-    F -->|Resend signing request| C[NOT_SIGNED]
+    A((Register new agreement)) --> B((BAX_NOT_CREATED))
+    B -->|Bax created| C((NOT_SIGNED))
+    C -->|Signatures not automatically validated| D((SIGNED_AWAITING_BANK))
+    C -->|Signatures automatically validated| E((BAX_ACTIVE))
+    D -->|Bank rejects| F((REJECTED))
+    D -->|Bank approves| G((ACCEPTED))
+    E -->|Bank rejects| F((REJECTED))
+    E -->|Bank approves| G((ACCEPTED))
+    F -->|Resend signing request| C((NOT_SIGNED))
 ```
 
 
