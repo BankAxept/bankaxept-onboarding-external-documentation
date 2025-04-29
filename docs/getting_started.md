@@ -24,14 +24,7 @@ maintains the network necessary for payment terminals to work.
 There are multiple points of configuration that need to be aligned before you can fully utilize the Onboarding API. The necessary steps may be found in our
 [Configuration Guide](./configuration.md).
 
-## Integration Guidelines
-
-We validate the following information when registering an agreement: <br/>
-**Account Ownership**: We validate that the account number belongs to the customer. <br/>
-**Account Number**: We validate that the account number is valid and belongs to the customer. <br/>
-**MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
-
-### Possible Order Statuses
+## Possible Order Statuses
 
 | Status               | Description                                                                                                                                   |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -58,6 +51,12 @@ graph TD
     F -->|Resend signing request| C((NOT_SIGNED))
 ```
 
+## Integration Guidelines
+
+We validate the following information when registering an agreement: <br/>
+**Account Ownership**: We validate that the account number belongs to the customer. <br/>
+**Account Number**: We validate that the account number is valid and belongs to the customer. <br/>
+**MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
 
 ### Test 
 Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the [bank reg number.](dictionary.md) <br/>

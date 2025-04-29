@@ -1,4 +1,4 @@
-## Webhooks
+# Webhooks
 Description of how we envision the webhooks flow to look like.
 
 1. Registering an agreement
@@ -19,7 +19,7 @@ Description of how we envision the webhooks flow to look like.
     - The `registerMerchantOrderStatus` field in this response should give you the necessary information about the agreement registration order.
 
 
-### Webhook example sequence diagram
+## Webhook example sequence diagram
 
 ```mermaid
 sequenceDiagram
