@@ -33,20 +33,20 @@ We validate the following information when registering an agreement: <br/>
 
 ### Possible Order Statuses
 
-| Status               | Description                                                                                                   |
-|----------------------|---------------------------------------------------------------------------------------------------------------|
-| BAX_NOT_CREATED      | The agreement has been created in our system but does not yet have an associated [Bax number.](dictionary.md) |
-| NOT_SIGNED           | The agreement has not been signed yet.                                                                        |
-| SIGNED_AWAITING_BANK | The agreement has been signed by the customer and is waiting for the bank to approve the signatures.          |
-| BAX_ACTIVE           | The agreement has been activated but the bank has not given final approval.                                   |
-| REJECTED             | The agreement has been rejected by the bank.                                                                  |
-| ACCEPTED             | The agreement has received final approval from the bank.                                                      |
+| Status               | Description                                                                                                                                   |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| BAX_NOT_CREATED      | The agreement has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                 |
+| NOT_SIGNED           | The agreement has not been signed yet.                                                                                                        |
+| SIGNED_AWAITING_BANK | The agreement has been signed by the customer and is waiting for the bank to approve the signatures.                                          |
+| BAX_ACTIVE           | The agreement has been activated but the bank has not given final approval.                                                                   |
+| REJECTED             | The agreement has been rejected by the bank. This is not a terminal state and can be moved by calling the `/recreate-signing-order` endpoint. |
+| ACCEPTED             | The agreement has received final approval from the bank. This is a terminal state.                                                            |
 
 ### Order Statuses Flowchart
 
 ```mermaid
 graph TD
-    A((Register new agreement)) --> B((BAX_NOT_CREATED))
+    A[Register new agreement] --> B((BAX_NOT_CREATED))
     B -->|Bax created| C((NOT_SIGNED))
     C -->|Signatures not automatically validated| D((SIGNED_AWAITING_BANK))
     C -->|Signatures automatically validated| E((BAX_ACTIVE))

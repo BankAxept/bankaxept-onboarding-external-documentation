@@ -1,5 +1,8 @@
 
-#### Valid flow for Test: An order is created with and signed by the correct signee(s) and the signatures are automatically approved
+# Valid flows for Test
+
+## Automatically Approved Signatures
+An order is created with and signed by the correct signee(s) and the signatures are automatically approved
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -26,7 +29,8 @@ note right of O: This will return the agreement details. <br/> After a few secon
 O -->> I: 200 OK with Agreement
 ```
 
-#### Valid flow for Test: An order is created with and signed by signee(s) that can not be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank
+## Signatures Approved by Bank
+An order is created with and signed by signee(s) that can not be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -62,7 +66,8 @@ note right of O: This will simulate the bank approving the signature(s) <br/> an
 O -->> I: 200 OK with Agreement
 ```
 
-#### Valid flow for Test: An order is created with and signed by signee(s) that can not be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank
+## Signatures Rejected by Bank
+An order is created with and signed by signee(s) that can not be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank
 ```mermaid
 sequenceDiagram
 participant I as Integrator

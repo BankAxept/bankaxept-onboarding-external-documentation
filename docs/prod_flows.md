@@ -1,4 +1,7 @@
-#### Valid flow for Production: An order is created with and signed by the correct signee(s) and the signatures are approved
+# Valid flows for Production
+
+## Automatically Approved Signatures
+An order is created with and signed by the correct signee(s) and the signatures are approved
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -23,7 +26,8 @@ note right of O: This will return the agreement details <br/> after signing has 
 O -->> I: 200 OK with Agreement
 ```
 
-#### Valid flow for Production: An order is created with and signed by the incorrect signee(s) and the signatures are rejected by the bank.
+## Signatures Rejected by Bank
+An order is created with and signed by the incorrect signee(s) and the signatures are rejected by the bank.
 ```mermaid
 sequenceDiagram
 participant I as Integrator
