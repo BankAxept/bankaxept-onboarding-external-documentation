@@ -52,6 +52,7 @@ graph TD
     C -->|Signatures automatically validated| E((BAX_ACTIVE))
     D -->|Bank rejects| F((REJECTED))
     D -->|Bank approves| G((ACCEPTED))
+    D -->|Automatic timeout| E((BAX_ACTIVE))
     E -->|Bank rejects| F((REJECTED))
     E -->|Bank approves| G((ACCEPTED))
     F -->|Resend signing request| C((NOT_SIGNED))
