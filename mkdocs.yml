@@ -18,6 +18,9 @@ nav:
           - Configuration: configuration.md
           - Dictionary: dictionary.md
           - MCC Codes: mcc_codes.md
+          - Prod flows: prod_flows.md
+          - Test flows: test_flows.md
+          - Webhooks: webhooks.md
   - API Specs:
       - BankAxept Onboarding API: swagger/onboarding-interface.md
 extra_javascript:
