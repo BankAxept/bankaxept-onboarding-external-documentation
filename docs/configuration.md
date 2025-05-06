@@ -1,7 +1,7 @@
 # Onboarding
 
 ## Getting credentials
-In order to create a JWT you need a private key and an issuer id. The private key is a 2048-bit RSA key. **_The private
+In order to create a [JWT](dictionary.md), you need a private key and an issuer id. The private key is a 2048-bit RSA key. **_The private
 key must be kept secret within the PSP organization._**
 
 ### Production/Test credentials
@@ -11,7 +11,7 @@ that you will need 2 key pairs. One for production and one for test.
 
 ### Creating a private key
 
-Using openssl these commands create a 2048-bit RSA key and a public key in the correct format to send to
+Using openssl, these commands create a 2048-bit RSA key and a public key in the correct format to send to
 your partner contact in BankAxept:
 
 ```bash
@@ -30,8 +30,8 @@ to an issuer id. This issuer id is then returned to you connecting your private 
 
 ## Sending requests
 
-In order to send requests you need a valid signed JWT. A valid JWT consists of an issuer,
-an expiry time and, if it is a POST/PUT request it must have a request body.
+In order to send requests, you need a valid signed JWT. A valid JWT consists of an issuer,
+an expiry time and, if it is a POST/PUT request, it must have a request body.
 They are signed with your private key and we verify the signature with your public key.
 This is what an example PUT request looks like:
 ```
@@ -59,7 +59,7 @@ The request has content-type application/json. If you go to
 **_The examples provided below will not work unless they are encapsulated in a JWT._**
 
 
-For GET requests the JWT should be included in the Authorization header. There is no "request".
+For GET requests, the JWT should be included in the Authorization header. There is no "request."
 ```
 GET https://onboarding-test.baxlab.no/psp/v2/register/4089d5b9-acdb-4469-9543-0bfda06c9d21
 Accept: application/json
@@ -68,17 +68,17 @@ _vtBwrHLQQjoENb56HDueoXVJMdoOKfiODhO_0wDbCc5IbTny8N1Bsr-htCHNAdo5v3lv8a1AzmvaPkt
 wAdGLK3l8GDBhrpX76MN0O3QuGQPs0-1gbobrd-b5WOg-UJn7zXUGjDa9GTgaDhzNk59GA76rO67cNsrWZzlLIouRGS4_RzapQ6-W28-pj5p_WKukD6Ap
 CAHMms9hVJkzbXF1vej_h9dzKxMcBelT5Xmeh0uFV9x8KNeuSw5o3Zse-tXxbcbPiN3owwUGSp5UpDmNYpV_3g
 ```
-If you look at this JWT in [jwt.io](https://jwt.io) you will see that the "request" part is now missing,
+If you look at this JWT in [jwt.io](https://jwt.io), you will see that the "request" part is now missing,
 leaving the expiry time, issuer and signature.
 
 ### Expiry time
 
-In production we allow a maximum of 1 minute. In test we allow a maximum of 60 minutes.
+In production, we allow a maximum of 1 minute. In test, we allow a maximum of 60 minutes.
 
 ### Creating a JWT
 
 When you have a private key and a issuer id you can create a JWT. The JWT should be signed with the private key and
-contain the issuer id and an expiry time. If it is a POST/PUT request it should also contain the request body.
+contain the issuer id and an expiry time. If it is a POST/PUT request, it should also contain the request body.
 
 #### Bash example
 Example of how to create a JWT with [jq](https://jqlang.github.io/jq/):
@@ -132,7 +132,7 @@ Using [jose4j](https://mvnrepository.com/artifact/org.bitbucket.b_c/jose4j) and 
   }
 ```
 
-Omitting 'claims.setClaim("request", request);' will result in a JWT valid for a GET request instead.
+Omitting 'claims.setClaim("request", request);' will result in a valid JWT for a GET request instead.
 
 
 ## Validation
