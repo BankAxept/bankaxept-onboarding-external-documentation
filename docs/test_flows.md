@@ -56,12 +56,12 @@ note right of O: This will return the agreement details. <br/> After a few secon
 O -->> I: 200 OK with Agreement
 
 note over I, O: Simulate Bank Response on Agreement
-I ->> O: POST /simulate/bank/approves/signatures
+I ->> O: POST /simulate/bank/approve/signatures
 O -->> I: 202 Accepted
 
 note over I, O: Check status of agreement
 I ->> O: GET /agreement/{orderId}
-note right of O: This will simulate the bank approving the signature(s) <br/> and should result in a BAX_ACTIVE status
+note right of O: This will simulate the bank approving the signature(s) <br/> and should result in ACCEPTED status
 O -->> I: 200 OK with Agreement
 ```
 
@@ -93,7 +93,7 @@ note right of O: This will return the agreement details. <br/> After a few secon
 O -->> I: 200 OK with Agreement
 
 note over I, O: Simulate Bank Response on Agreement
-I ->> O: POST /simulate/bank/rejects/signatures
+I ->> O: POST /simulate/bank/reject/signatures
 O -->> I: 202 Accepted
 
 note over I, O: Check status of agreement
