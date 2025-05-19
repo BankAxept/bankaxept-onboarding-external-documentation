@@ -26,14 +26,15 @@ There are multiple points of configuration that need to be aligned before you ca
 
 ## Possible Order Statuses
 
-| Status                | Description                                                                                                                                   |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| BAX_NOT_CREATED       | The agreement has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                 |
-| NOT_SIGNED            | The agreement has not been signed yet.                                                                                                        |
-| PENDING_BANK_RESPONSE | The agreement has been signed by the customer and is waiting for the bank to approve the signatures.                                          |
-| BAX_ACTIVE            | The agreement has been activated but the bank has not given final approval.                                                                   |
-| REJECTED              | The agreement has been rejected by the bank. This is not a terminal state and can be moved by calling the `/recreate-signing-order` endpoint. |
-| ACCEPTED              | The agreement has received final approval from the bank. This is a terminal state.                                                            |
+| Status                     | Description                                                                                                                                   |
+|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| BAX_NOT_CREATED            | The agreement has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                 |
+| NOT_SIGNED                 | The agreement has not been signed yet.                                                                                                        |
+| PENDING_BANK_RESPONSE      | The agreement has been signed by the customer and is waiting for the bank to approve the signatures.                                          |
+| BAX_ACTIVE                 | The agreement has been activated but the bank has not given final approval.                                                                   |
+| REJECTED_RECREATE_SIGNING  | The agreement has been rejected by the bank. This is not a terminal state and can be moved by calling the `/recreate-signing-order` endpoint. |
+| ACCEPTED                   | The agreement has received final approval from the bank. This is a terminal state.                                                            |
+| REJECTED_CREATE_NEW_ORDER  | The agreement has received final rejection This is a terminal state. A new order needs to be created.                                         |
 
 ### Order Statuses Flowchart
 
