@@ -9,7 +9,7 @@ Description of how we envision the webhooks flow to look like.
             - Test environment: `51.13.44.137`
             - Prod environment: `51.13.52.185`
 2. When the PSP calls the `PUT /psp/v2/register/merchantAgreement` endpoint to register an agreement order, you will get an `orderId` in the response (as per the existing API spec).
-   Whenever there is a change to the agreement order in our systems, we will call the webhook URL with the `orderId` in the request body, looking like this:
+   Whenever there is a change to the agreement order in our systems, we will do a POST call to the webhook URL with the `orderId` in the request body, looking like this:
 ```
 {
   "orderId": "af5505ad-4346-4c7e-8729-700bd0b92168"
@@ -28,14 +28,14 @@ sequenceDiagram
     participant Signees
     participant Bank
     Integrator->>Onboarding API: registerAgreement (with webhook url)
-    Onboarding API->>Integrator: webhook call (status change)
+    Onboarding API->>Integrator: POST webhook call (status change)
     Integrator->>Onboarding API: call agreement endpoint to get details
     Onboarding API->>Signees: email with signing link
     Signees->>Onboarding API: sign agreement
-    Onboarding API->>Integrator: webhook call (status change)
+    Onboarding API->>Integrator: POST webhook call (status change)
     Integrator->>Onboarding API: call agreement endpoint to get details
     Onboarding API->>Bank: send agreement
     Bank->>Onboarding API: accepted
-    Onboarding API->>Integrator: webhook call (status change)
+    Onboarding API->>Integrator: POST webhook call (status change)
     Integrator->>Onboarding API: call agreement endpoint to get details
 ```
