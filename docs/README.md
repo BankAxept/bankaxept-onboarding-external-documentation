@@ -1,4 +1,4 @@
 Welcome to BankAxept's documentation.
 
 * [Getting Started with BankAxept Onboarding](./getting_started.md)
-* [Onboarding API](./swagger/onboarding-interface.md)
+* You can view our Swagger documentation for [test](https://onboarding-test.baxlab.no/swagger-ui/index.html) and [production](https://onboarding.bankaxept.no/swagger-ui/index.html#/) environments.
