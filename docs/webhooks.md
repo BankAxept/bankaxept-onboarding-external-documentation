@@ -1,7 +1,7 @@
 # Webhooks
-Description of how we envision the webhooks flow to look like.
+This is how the webhook flow works:
 
-1. Registering an agreement
+1. When registering an agreement
     - Add a webhookUrl property to the register merchantAgreement payload ( `PUT /psp/v2/register/merchantAgreement` )
     - Security measures
         - We expect the webhook callback URL to be an open endpoint
