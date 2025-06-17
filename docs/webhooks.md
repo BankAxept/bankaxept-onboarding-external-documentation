@@ -2,7 +2,7 @@
 Description of how we envision the webhooks flow to look like.
 
 1. Registering an agreement
-    - Add a webhook URL parameter to the register agreement endpoint ( `PUT /psp/v2/register/merchantAgreement` )
+    - Add a webhookUrl property to the register merchantAgreement payload ( `PUT /psp/v2/register/merchantAgreement` )
     - Security measures
         - We expect the webhook callback URL to be an open endpoint
         - In case the integrator needs to whitelist our callback, the following IP addresses are used from our end:
