@@ -12,9 +12,12 @@ This is how the webhook flow works:
    Whenever there is a change to the agreement order in our systems, we will do a POST call to the webhookUrl with the `orderId` in the request body, looking like this:
 ```
 {
-  "orderId": "af5505ad-4346-4c7e-8729-700bd0b92168"
+  "orderId": "af5505ad-4346-4c7e-8729-700bd0b92168",
+  "orderStatus": "PENDING_BANK_RESPONSE"
 }
 ```
+where the `orderStatus` refers to the statuses defined in the [Possible Order Statuses](getting_started.md#possible-order-statuses)
+
 3. The PSP should then call our existing endpoint to fetch the updated status ( `GET /psp/v2/register/{orderId}` )
     - The `registerMerchantOrderStatus` field in this response should give you the necessary information about the agreement registration order.
 
