@@ -19,9 +19,9 @@ Bax numbers are loaded onto payment terminals in order to connect them to the pa
 Baxbis is the system operated by Nets which issues bax numbers and
 maintains the network necessary for payment terminals to work.
 
-# Important Information
-This API does not support accounts that are not owned by the organization entering into the agreement. 
-For example, an Enkeltpersonforetak (sole proprietorship) using a personal account will not work.
+# Limitations
+This API does not support bank accounts that are not owned by the organization entering into the agreement. <br/>
+This can be in instances for an Enkeltpersonforetak (sole proprietorship). The [KAR](dictionary.md) check will fail if the account number of the holder is linked to their personal identification number. In these cases the order must go through Nets Ordrekontor.
 
 ## Setting up your Onboarding integration
 
@@ -66,8 +66,12 @@ We validate the following information when registering an agreement: <br/>
 
 ### Test 
 Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the [bank reg number.](dictionary.md) <br/>
-We validate that the bank reg number is in our list of valid settlement banks. <br/> For the test environment you **must** use a valid DNB bank reg number. You can refer to [BITS documentation](https://www.bits.no/document/iban/) for a list of reg numbers. <br/> 
-The final digit of the account number is a control digit and must be valid in order for a bax number to be created. You can read more about [valid account numbers](./valid_account_numbers.md) in our documentation. <br/>
+We validate that the bank reg number is in our list of valid settlement banks. <br/> 
+In the test environment, you **must** use a valid DNB bank registration number. <br/> 
+This applies whether you are bypassing validation or actively testing the [KAR](./dictionary.md) implementation. <br/> 
+If you are testing the KAR implementation without bypassing validation, you must also use an organization number that is linked to a valid DNB account. You can read more about [valid account numbers](./valid_account_numbers.md) in our documentation. <br/>
+
+For a list of valid registration numbers, refer to [BITS documentation](https://www.bits.no/document/iban/).
 You can view our flow diagrams for the test environment [here](./test_flows.md).
 
 ### Production
