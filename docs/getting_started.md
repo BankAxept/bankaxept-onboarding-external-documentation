@@ -21,7 +21,7 @@ maintains the network necessary for payment terminals to work.
 
 # Important Information
 This API does not support accounts that are not owned by the organization entering into the agreement. 
-
+For example, an Enkeltpersonforetak (sole proprietorship) using a personal account will not work.
 
 ## Setting up your Onboarding integration
 
@@ -66,7 +66,7 @@ We validate the following information when registering an agreement: <br/>
 
 ### Test 
 Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the [bank reg number.](dictionary.md) <br/>
-We validate that the bank reg number is in our list of valid settlement banks. <br/> For the test environment you **must** use a valid DNB bank reg number. <br/> 
+We validate that the bank reg number is in our list of valid settlement banks. <br/> For the test environment you **must** use a valid DNB bank reg number. You can refer to [BITS documentation](https://www.bits.no/document/iban/) for a list of reg numbers. <br/> 
 The final digit of the account number is a control digit and must be valid in order for a bax number to be created. You can read more about [valid account numbers](./valid_account_numbers.md) in our documentation. <br/>
 You can view our flow diagrams for the test environment [here](./test_flows.md).
 

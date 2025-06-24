@@ -48,7 +48,7 @@ O -->> I: 200 OK with all Agreements
 
 note over I, O: Check status of agreement
 I ->> O : GET /agreement/{orderId}
-note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> REJECTED status with a reason for rejection and <br/> a BAX Number assuming the agreement was rejected by the bank
+note right of O: This will return the agreement details. <br/> After a few seconds it should result in <br/> REJECTED_RECREATE_SIGNING status with a reason for rejection and <br/> a BAX Number assuming the agreement was rejected by the bank
 O -->> I: 200 OK with Agreement
 
 note over I, O: Resend signing request on Agreement
