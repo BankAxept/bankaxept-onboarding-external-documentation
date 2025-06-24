@@ -21,7 +21,8 @@ maintains the network necessary for payment terminals to work.
 
 # Limitations
 This API does not support bank accounts that are not owned by the organization entering into the agreement. <br/>
-This can, for example, be the case for an Enkeltpersonforetak (sole proprietorship). The [KAR](dictionary.md) check will fail if the account number is linked to a fødselsnummer (Norwegian national identity number). In these cases the order must go through Nets Ordrekontor.
+For example, Enkeltpersonforetak accounts might be registered on the owners Norwegian national identity number instead of their organization number. This will cause the [KAR](dictionary.md) check to fail since the account is not connected to the organization.  <br/>
+In these cases the order must go through Nets Ordrekontor.
 
 ## Setting up your Onboarding integration
 
