@@ -21,7 +21,7 @@ maintains the network necessary for payment terminals to work.
 
 # Limitations
 This API does not support bank accounts that are not owned by the organization entering into the agreement. <br/>
-This can be in instances for an Enkeltpersonforetak (sole proprietorship). The [KAR](dictionary.md) check will fail if the account number of the holder is linked to their personal identification number. In these cases the order must go through Nets Ordrekontor.
+This can, for example, be the case for an Enkeltpersonforetak (sole proprietorship). The [KAR](dictionary.md) check will fail if the account number is linked to a fødselsnummer (Norwegian national identity number). In these cases the order must go through Nets Ordrekontor.
 
 ## Setting up your Onboarding integration
 
@@ -67,7 +67,7 @@ We validate the following information when registering an agreement: <br/>
 ### Test 
 Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the [bank reg number.](dictionary.md) <br/>
 We validate that the bank reg number is in our list of valid settlement banks. <br/> 
-In the test environment, you **must** use a valid DNB bank registration number. <br/> 
+In the test environment, you **must** use a valid DNB bank registration number. For example 7001. <br/> 
 This applies whether you are bypassing validation or actively testing the [KAR](./dictionary.md) implementation. <br/> 
 If you are testing the KAR implementation without bypassing validation, you must also use an organization number that is linked to a valid DNB account. You can read more about [valid account numbers](./valid_account_numbers.md) in our documentation. <br/>
 
