@@ -19,6 +19,10 @@ Bax numbers are loaded onto payment terminals in order to connect them to the pa
 Baxbis is the system operated by Nets which issues bax numbers and
 maintains the network necessary for payment terminals to work.
 
+# Important Information
+This API does not support accounts that are not owned by the organization entering into the agreement. 
+
+
 ## Setting up your Onboarding integration
 
 There are multiple points of configuration that need to be aligned before you can fully utilize the Onboarding API. The necessary steps may be found in our
@@ -62,7 +66,7 @@ We validate the following information when registering an agreement: <br/>
 
 ### Test 
 Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the [bank reg number.](dictionary.md) <br/>
-We validate that the bank reg number is in our list of valid settlement banks. <br/> For the test environment you can use **7001** and **9710** as valid bank reg numbers. <br/> 
+We validate that the bank reg number is in our list of valid settlement banks. <br/> For the test environment you **must** use a valid DNB bank reg number. <br/> 
 The final digit of the account number is a control digit and must be valid in order for a bax number to be created. You can read more about [valid account numbers](./valid_account_numbers.md) in our documentation. <br/>
 You can view our flow diagrams for the test environment [here](./test_flows.md).
 
