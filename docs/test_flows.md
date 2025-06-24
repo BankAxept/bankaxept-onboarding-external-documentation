@@ -98,7 +98,7 @@ O -->> I: 202 Accepted
 
 note over I, O: Check status of agreement
 I ->> O: GET /agreement/{orderId}
-note right of O: This will simulate the bank rejecting the signature(s) <br/> and should result in a REJECTED status with a reason for rejection
+note right of O: This will simulate the bank rejecting the signature(s) <br/> and should result in a REJECTED_RECREATE_SIGNING status with a reason for rejection
 O -->> I: 200 OK with Agreement
 
 note over I, O: Resend signing request on Agreement

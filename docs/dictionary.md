@@ -13,3 +13,4 @@ This is intended to be a general lightweight reference to reduce confusion and i
 | BRREG           | Brønnøysundregistrene is the national register of Norwegian businesses their site can be found here https://www.brreg.no/                                           |
 | JWT             | JSON Web Token                                                                                                                                                      |
 | MCC             | The Merchant Category Code (MCC) is a four-digit number assigned to describe a Merchant’s primary business based on annual sales volume measured in local currency. |
+| KAR             | Account and Addressing Register (KAR)                                                                                                                               |
