@@ -22,8 +22,6 @@ nav:
           - Test flows: test_flows.md
           - Valid account numbers: valid_account_numbers.md
           - Webhooks: webhooks.md
-  - API Specs:
-      - BankAxept Onboarding API: docs/README.md
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
   - https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js
