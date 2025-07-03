@@ -24,6 +24,9 @@ This API does not support bank accounts that are not owned by the organization e
 For example, Enkeltpersonforetak accounts might be registered on the owners Norwegian national identity number instead of their organization number. This will cause the [KAR](dictionary.md) check to fail since the account is not connected to the organization.  <br/>
 In these cases the order must go through Nets Ordrekontor.
 
+This API allows for ordering of return of goods as a BankAxept product. <br/> The number of days in which a good can be returned after sale (the return window) will be set to the default value of 30 days. <br/>
+If the customer needs more than 30 days, contact BankAxept support on email bankaxept@stoe.no.
+
 ## Setting up your Onboarding integration
 
 There are multiple points of configuration that need to be aligned before you can fully utilize the Onboarding API. The necessary steps may be found in our
