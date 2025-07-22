@@ -1,8 +1,8 @@
 # Onboarding
 
 ## Getting credentials
-In order to use the Onboarding API, you will need to obtain client credentials from BankAxept. 
-Please get in touch with your partner contact to obtain the necessary credentials.
+In order to use the Onboarding API, you will need to obtain client credentials from BankAxept.
+Please get in touch with your BankAxept partner manager to obtain the necessary credentials
 You will need separate credentials for the test and production environments.
 
 
