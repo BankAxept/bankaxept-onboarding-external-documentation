@@ -5,13 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://test.com/onboarding/" rel="canonical"/>
-<link href="../api_policy/" rel="prev"/>
-<link href="../dictionary/" rel="next"/>
+<link href="https://test.com/valid_account_numbers/" rel="canonical"/>
+<link href="../test_flows/" rel="prev"/>
+<link href="../webhooks/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.5.34" name="generator"/>
-<title>Onboarding - BankAxept DES issuer documentation</title>
-<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.23" name="generator"/>
+<title>Valid account numbers - BankAxept Onboarding documentation</title>
+<link href="../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#onboarding">
+<a class="md-skip" href="#valid-account-numbers">
           Skip to content
         </a>
 </div>
@@ -33,7 +33,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="BankAxept DES issuer documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="BankAxept DES issuer documentation">
+<a aria-label="BankAxept Onboarding documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="BankAxept Onboarding documentation">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -43,13 +43,13 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            BankAxept DES issuer documentation
+            BankAxept Onboarding documentation
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Onboarding
+              Valid account numbers
             
           </span>
 </div>
@@ -98,12 +98,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-des-external-documentation" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-onboarding-external-documentation" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    BankAxept/bankaxept-des-external-documentation
+    BankAxept/bankaxept-onboarding-external-documentation
   </div>
 </a>
 </div>
@@ -117,6 +117,7 @@
 <a class="md-tabs__link" href="..">
         
   
+  
     
   
   Welcome
@@ -127,15 +128,8 @@
 <a class="md-tabs__link" href="../getting_started/">
           
   
-  Documentation
-
-        </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../swagger/messages-from-issuer-api/">
-          
   
-  API Specs
+  Documentation
 
         </a>
 </li>
@@ -149,18 +143,18 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="BankAxept DES issuer documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BankAxept DES issuer documentation">
+<a aria-label="BankAxept Onboarding documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BankAxept Onboarding documentation">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
-    BankAxept DES issuer documentation
+    BankAxept Onboarding documentation
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-des-external-documentation" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-onboarding-external-documentation" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    BankAxept/bankaxept-des-external-documentation
+    BankAxept/bankaxept-onboarding-external-documentation
   </div>
 </a>
 </div>
@@ -169,6 +163,7 @@
 <a class="md-nav__link" href="..">
 <span class="md-ellipsis">
     Welcome
+    
   </span>
 </a>
 </li>
@@ -177,6 +172,7 @@
 <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
 <span class="md-ellipsis">
     Documentation
+    
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -190,64 +186,21 @@
 <a class="md-nav__link" href="../getting_started/">
 <span class="md-ellipsis">
     Introduction
+    
   </span>
 </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../tokenization/">
-<span class="md-ellipsis">
-    Tokenization
-  </span>
-</a>
-</li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
-<span class="md-ellipsis">
-    Enrolment flows
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
-<span class="md-nav__icon md-icon"></span>
-            Enrolment flows
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../enrolment_epayment/">
-<span class="md-ellipsis">
-    Epayment
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../enrolment_xpays/">
-<span class="md-ellipsis">
-    xPays
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../enrolment_common_components/">
-<span class="md-ellipsis">
-    Common components
-  </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
 <span class="md-ellipsis">
     Resources
+    
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_4">
+<nav aria-expanded="true" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
 <span class="md-nav__icon md-icon"></span>
             Resources
           </label>
@@ -256,6 +209,47 @@
 <a class="md-nav__link" href="../api_policy/">
 <span class="md-ellipsis">
     API Policy
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../configuration/">
+<span class="md-ellipsis">
+    Configuration
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dictionary/">
+<span class="md-ellipsis">
+    Dictionary
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mcc_codes/">
+<span class="md-ellipsis">
+    MCC Codes
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prod_flows/">
+<span class="md-ellipsis">
+    Prod flows
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../test_flows/">
+<span class="md-ellipsis">
+    Test flows
+    
   </span>
 </a>
 </li>
@@ -263,13 +257,15 @@
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Onboarding
+    Valid account numbers
+    
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
-    Onboarding
+    Valid account numbers
+    
   </span>
 </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
@@ -279,31 +275,45 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#xpays">
+<a class="md-nav__link" href="#structure">
 <span class="md-ellipsis">
-      xPays
+      Structure
     </span>
 </a>
-<nav aria-label="xPays" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#calculation">
+<span class="md-ellipsis">
+      Calculation
+    </span>
+</a>
+<nav aria-label="Calculation" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#steps-to-activate">
+<a class="md-nav__link" href="#weights">
 <span class="md-ellipsis">
-      Steps to activate
+      Weights
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#setting-up-mutual-tls">
+<a class="md-nav__link" href="#multiply-and-sum">
 <span class="md-ellipsis">
-      Setting up Mutual TLS
+      Multiply and Sum
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#checklist">
+<a class="md-nav__link" href="#modulo-operation">
 <span class="md-ellipsis">
-      Checklist
+      Modulo Operation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#check-digit">
+<span class="md-ellipsis">
+      Check Digit
     </span>
 </a>
 </li>
@@ -314,45 +324,15 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../dictionary/">
+<a class="md-nav__link" href="../webhooks/">
 <span class="md-ellipsis">
-    Dictionary
+    Webhooks
+    
   </span>
 </a>
 </li>
 </ul>
 </nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-<span class="md-ellipsis">
-    API Specs
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
-<span class="md-nav__icon md-icon"></span>
-            API Specs
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../swagger/messages-from-issuer-api/">
-<span class="md-ellipsis">
-    BankAxept DES Issuer API - DES Side
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../swagger/messages-to-issuer-api/">
-<span class="md-ellipsis">
-    BankAxept DES Issuer API - Issuer Service Side
-  </span>
-</a>
 </li>
 </ul>
 </nav>
@@ -364,134 +344,53 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="onboarding">Onboarding</h1>
-<p>BankAxept offers a range of services to Issuers and Merchants. This document outlines the onboarding process for these services.</p>
-<h2 id="xpays">xPays</h2>
-<p>In order to support xPays with BankAxept a technical configuration is required.
-This includes setting up your Issuing Bank values in BankAxept, and configuring your system in our TSH OEM broker (Thales).</p>
-<h3 id="steps-to-activate">Steps to activate</h3>
-<p>A series of steps and tests needs to be completed by multiple participants in order ensure high quality and compliance.</p>
-<table>
-<thead>
-<tr>
-<th>Step</th>
-<th>Explanation</th>
-<th>Participants</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Onboarding registration</td>
-<td>Configure profile values as defined in our <a href="#checklist">Checklist section</a></td>
-<td>Issuing Bank (Responsible), BankAxept, Issuing Processor</td>
-</tr>
-<tr>
-<td>Onboarding Thales</td>
-<td>Setup bank in Thales Portal. Ordered by BankAxept Command Center.</td>
-<td>BankAxept (Responsible), Thales</td>
-</tr>
-<tr>
-<td>Testing</td>
-<td>Agree upon Whitelisted Pilot cards. <strong>Remember</strong> to consider PCI compliance during discussion.</td>
-<td>Bank(Responsible), BankAxept, TietoEvry</td>
-</tr>
-<tr>
-<td>Key Management</td>
-<td>Exchange keys.</td>
-<td>BankAxept(Responsible), Thales</td>
-</tr>
-<tr>
-<td>Visa Environment</td>
-<td>Configure VISA values in Prod environment.</td>
-<td>Bank(Responsible), VISA</td>
-</tr>
-<tr>
-<td>Transaction Verification</td>
-<td>Agreement with VISA - change to right PCR.</td>
-<td>Bank (Responsible), VISA, TietoEvry/Nexi</td>
-</tr>
-<tr>
-<td>Transaction Verification</td>
-<td>Replace URL in VTS.</td>
-<td>Bank(Responsible), VISA</td>
-</tr>
-<tr>
-<td>Transaction Verification</td>
-<td>Dev for Select BankAxept transactions  and Visa.</td>
-<td>Issuer Processor (Responsible), Bank</td>
-</tr>
-<tr>
-<td>Transaction Verification</td>
-<td>Establish connectivity to Thales.</td>
-<td>BankAxept (Responsible), Thales, Issuer Processor, Bank</td>
-</tr>
-<tr>
-<td>Transaction Verification</td>
-<td>Testing TranId API.</td>
-<td>BankAxept (Responsible), Thales, Issuer Processor, Bank, Apple</td>
-</tr>
-<tr>
-<td>Migrating Cards</td>
-<td>Not Applicable for all scenarios. If you wish to migrate cards you must create a list of cards and send them to Thales.</td>
-<td>Bank(Responsible), Thales, Issuer Processor, BankAxept, Apple</td>
-</tr>
-<tr>
-<td>Certification</td>
-<td>Certification setup, including payment.</td>
-<td>Bank(Responsible), Apple, Fime(?), BankAxept</td>
-</tr>
-<tr>
-<td>Non functional Requirements from Apple</td>
-<td>Not applicable for all scenarios. Only if it affects BankAxept.</td>
-<td>Bank(Responsible), BankAxept, Apple</td>
-</tr>
-<tr>
-<td>Call Center</td>
-<td>Onboard call centre.</td>
-<td>Bank(Responsible)</td>
-</tr>
-<tr>
-<td>BITS-Certification</td>
-<td></td>
-<td>BankAxept(Responsible), Nets, Bits</td>
-</tr>
-<tr>
-<td>VISA Environment</td>
-<td>VISA VTS Setup.</td>
-<td>Bank(Responsible), VISA</td>
-</tr>
-<tr>
-<td>Launch Day</td>
-<td>Availability and testing on launch day.</td>
-<td>Bank(Responsible), Apple</td>
-</tr>
-</tbody>
-</table>
-<h3 id="setting-up-mutual-tls">Setting up Mutual TLS</h3>
-<p>Mutual TLS must secure all communication.
-Only TLS1.2 or higher is supported.
-A secure exchange of certificates must be performed before any
-communication can be done.</p>
-<h3 id="checklist">Checklist</h3>
-<p>The following data points and checks are required to be set up in the onboarding process in order to support Apple Pay.</p>
-<table>
-<thead>
-<tr>
-<th>Step</th>
-<th>Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Registration data points</td>
-<td>Regnumber, Issuer ID and applicable VISA BIN ranges must be sent for registration</td>
-</tr>
-<tr>
-<td>Pilot cards</td>
-<td>Bank needs to coordinate which cards should be whitelisted for testing</td>
-</tr>
-</tbody>
-</table>
+<h1 id="valid-account-numbers">Valid Account Numbers</h1>
+<p>The modulus 11 algorithm for Norwegian bank account numbers is used to validate the check digit at the end of the account number.</p>
+<h2 id="structure">Structure</h2>
+<p>A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the <a href="../dictionary/">bank reg number</a> and the last digit is a check digit. </p>
+<h2 id="calculation">Calculation</h2>
+<p>To display the calculation of the check digit, we will use the following example account number: </p>
+<pre><code>15067328555
+</code></pre>
+<h3 id="weights">Weights</h3>
+<p>Assign weights to the first 10 digits of the account number. The weights are: 2, 3, 4, 5, 6, 7, 2, 3, 4, 5 (repeating after 7).</p>
+<pre><code>5 (weight 3)
+5 (weight 4)
+8 (weight 5)
+2 (weight 6)
+3 (weight 7)
+7 (weight 2)
+6 (weight 3)
+0 (weight 4)
+5 (weight 5)
+1 (weight 6)
+</code></pre>
+<h3 id="multiply-and-sum">Multiply and Sum</h3>
+<p>Multiply each digit by its corresponding weight and sum the results:</p>
+<pre><code>5 * 3 = 15
+5 * 4 = 20
+8 * 5 = 40
+2 * 6 = 12
+3 * 7 = 21
+7 * 2 = 14
+6 * 3 = 18
+0 * 4 = 0
+5 * 5 = 25
+1 * 6 = 6
+</code></pre>
+<p>The sum is </p>
+<pre><code>15 + 20 + 40 + 12 + 21 + 14 + 18 + 0 + 25 + 6 = 171
+</code></pre>
+<h3 id="modulo-operation">Modulo Operation</h3>
+<p>Now, take the sum and divide it by 11 and find the remainder:</p>
+<pre><code>171 % 11 = 6
+</code></pre>
+<h3 id="check-digit">Check Digit</h3>
+<p>Subtract the remainder from 11 to get the check digit:</p>
+<pre><code>11 - 6 = 5
+</code></pre>
+<p>It is important to note that if the result is 11, the check digit is 0. If the result is 10, the account number is invalid.</p>
+<p>In this case, the check digit is 5, which matches the last digit of the account number. Therefore, the account number <strong>15067328555</strong> is valid.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -519,8 +418,8 @@ communication can be done.</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.links", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.links", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
 <script src="../assets/javascripts/swagger.js"></script>

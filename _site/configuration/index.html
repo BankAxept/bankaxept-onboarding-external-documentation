@@ -5,13 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://test.com/enrolment_xpays/" rel="canonical"/>
-<link href="../enrolment_epayment/" rel="prev"/>
-<link href="../enrolment_common_components/" rel="next"/>
+<link href="https://test.com/configuration/" rel="canonical"/>
+<link href="../api_policy/" rel="prev"/>
+<link href="../dictionary/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.5.34" name="generator"/>
-<title>xPays - BankAxept DES issuer documentation</title>
-<link href="../assets/stylesheets/main.35f28582.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.23" name="generator"/>
+<title>Configuration - BankAxept Onboarding documentation</title>
+<link href="../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#introduction-xpays-enrolment">
+<a class="md-skip" href="#onboarding">
           Skip to content
         </a>
 </div>
@@ -33,7 +33,7 @@
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="BankAxept DES issuer documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="BankAxept DES issuer documentation">
+<a aria-label="BankAxept Onboarding documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="BankAxept Onboarding documentation">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -43,13 +43,13 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            BankAxept DES issuer documentation
+            BankAxept Onboarding documentation
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              xPays
+              Configuration
             
           </span>
 </div>
@@ -98,12 +98,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-des-external-documentation" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-onboarding-external-documentation" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    BankAxept/bankaxept-des-external-documentation
+    BankAxept/bankaxept-onboarding-external-documentation
   </div>
 </a>
 </div>
@@ -117,6 +117,7 @@
 <a class="md-tabs__link" href="..">
         
   
+  
     
   
   Welcome
@@ -127,15 +128,8 @@
 <a class="md-tabs__link" href="../getting_started/">
           
   
-  Documentation
-
-        </a>
-</li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../swagger/messages-from-issuer-api/">
-          
   
-  API Specs
+  Documentation
 
         </a>
 </li>
@@ -149,18 +143,18 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="BankAxept DES issuer documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BankAxept DES issuer documentation">
+<a aria-label="BankAxept Onboarding documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="BankAxept Onboarding documentation">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 </a>
-    BankAxept DES issuer documentation
+    BankAxept Onboarding documentation
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-des-external-documentation" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/BankAxept/bankaxept-onboarding-external-documentation" title="Go to repository">
 <div class="md-source__icon md-icon">
-<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    BankAxept/bankaxept-des-external-documentation
+    BankAxept/bankaxept-onboarding-external-documentation
   </div>
 </a>
 </div>
@@ -169,6 +163,7 @@
 <a class="md-nav__link" href="..">
 <span class="md-ellipsis">
     Welcome
+    
   </span>
 </a>
 </li>
@@ -177,6 +172,7 @@
 <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
 <span class="md-ellipsis">
     Documentation
+    
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -190,65 +186,21 @@
 <a class="md-nav__link" href="../getting_started/">
 <span class="md-ellipsis">
     Introduction
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../tokenization/">
-<span class="md-ellipsis">
-    Tokenization
+    
   </span>
 </a>
 </li>
 <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
-<span class="md-ellipsis">
-    Enrolment flows
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_3">
-<span class="md-nav__icon md-icon"></span>
-            Enrolment flows
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../enrolment_epayment/">
-<span class="md-ellipsis">
-    Epayment
-  </span>
-</a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
-<span class="md-ellipsis">
-    xPays
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../enrolment_common_components/">
-<span class="md-ellipsis">
-    Common components
-  </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--section md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
 <span class="md-ellipsis">
     Resources
+    
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_2_4">
+<nav aria-expanded="true" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
 <span class="md-nav__icon md-icon"></span>
             Resources
           </label>
@@ -257,56 +209,105 @@
 <a class="md-nav__link" href="../api_policy/">
 <span class="md-ellipsis">
     API Policy
+    
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../onboarding/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Onboarding
+    Configuration
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Configuration
+    
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getting-credentials">
+<span class="md-ellipsis">
+      Getting credentials
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#getting-an-access-token">
+<span class="md-ellipsis">
+      Getting an access token
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-requests">
+<span class="md-ellipsis">
+      Sending requests
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../dictionary/">
 <span class="md-ellipsis">
     Dictionary
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mcc_codes/">
+<span class="md-ellipsis">
+    MCC Codes
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prod_flows/">
+<span class="md-ellipsis">
+    Prod flows
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../test_flows/">
+<span class="md-ellipsis">
+    Test flows
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../valid_account_numbers/">
+<span class="md-ellipsis">
+    Valid account numbers
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../webhooks/">
+<span class="md-ellipsis">
+    Webhooks
+    
   </span>
 </a>
 </li>
 </ul>
 </nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-<span class="md-ellipsis">
-    API Specs
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
-<span class="md-nav__icon md-icon"></span>
-            API Specs
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../swagger/messages-from-issuer-api/">
-<span class="md-ellipsis">
-    BankAxept DES Issuer API - DES Side
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../swagger/messages-to-issuer-api/">
-<span class="md-ellipsis">
-    BankAxept DES Issuer API - Issuer Service Side
-  </span>
-</a>
 </li>
 </ul>
 </nav>
@@ -318,44 +319,40 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="introduction-xpays-enrolment">Introduction - xPays enrolment</h1>
-<p>To enrol a card in xPays, the card is sent to DES for digitization by the wallet (Apple Pay etc.).
-The card details are gathered by the wallet and sent to the DES for processing.
-The DES will then send the card to the Issuer Processor for digitization.</p>
-<h1 id="enrolment-flow">Enrolment flow</h1>
-<p>The full specification of the requests and responses might be found in our <a href="../swagger/messages-from-issuer-api/">OpenAPI page</a></p>
-<p>Step 1: <code>RequestCardDigitization</code></p>
-<p>Once a card is gathered by the wallet for enrolment a <code>RequestCardDigitization</code> request is sent from the DES to the Issuer Processor.
-This request is used to digitize the card. The request contains information concerning:</p>
-<ul>
-<li>The card and the card capture method. (Photo, manual entry, issuer app...)</li>
-<li>User accepts or declines the terms and conditions.</li>
-<li>Risk scoring and recommendation by Wallet Provider.</li>
-<li>Device and wallet information.</li>
-</ul>
-<p>The issuer may then approve or decline.</p>
-<div class="mermaid">
-sequenceDiagram
-    participant DES
-    participant IssuerService
-    DES -&gt;&gt; IssuerService: RequestCardDigitization
-    IssuerService --&gt;&gt; DES: CardDigitizationResponse
-</div>
-<p>The response must contain a <code>decision</code>, indicating whether the card may be digitized or not. Assuming there is a <code>green</code> decision then DES will start its'
-tokenization process. The card will be encrypted as described in the <a href="../enrolment_common_components/#card-info">Card Info</a>.</p>
-<p>Step 2: <code>DigitizationCompleteNotification</code></p>
-<p>Once the tokenization process is complete, the DES will send a <code>DigitizationCompleteNotification</code> to the Issuer Processor.
-This is to notify the Issuer Processor that the Token is generated.
-Inside the notification is the token and the token expiry date, as well as the result of the process.</p>
-<div class="mermaid">
-sequenceDiagram
-    participant DES
-    participant IssuerService
-    DES -&gt;&gt; IssuerService: RequestCardDigitization
-    IssuerService --&gt;&gt; DES: CardDigitizationResponse
-    DES -&gt;&gt; IssuerService: DigitizationCompleteNotification
-    IssuerService --&gt;&gt; DES: DigitizationCompleteNotificationResponse
-</div>
+<h1 id="onboarding">Onboarding</h1>
+<h2 id="getting-credentials">Getting credentials</h2>
+<p>In order to use the Onboarding API, you will need to obtain client credentials from BankAxept.
+Please get in touch with your BankAxept partner manager to obtain the necessary credentials
+You will need separate credentials for the test and production environments.</p>
+<h2 id="getting-an-access-token">Getting an access token</h2>
+<p>All requests to the Onboarding API must include an access token in the Authorization header. To get an access token
+you must make a request to the <code>/token</code> endpoint with your client credentials as specified in the <a href="https://datatracker.ietf.org/doc/html/rfc6749#section-4.4.2">OAuth 2.0 specification</a>.
+The request should contain an authorization header using the Basic authentication scheme, i.e. base64 encode the string <code>client_id:client_secret</code> and include it in the header.
+The following is an example request using a client ID of <code>client-id</code> and a client secret of <code>client-secret</code>:</p>
+<pre><code class="language-http">POST https://sso.test.stoe.no/auth/realms/external/protocol/openid-connect/token
+     Authorization: Basic Y2xpZW50LWlkOmNsaWVudC1zZWNyZXQ=
+     Content-Type: application/x-www-form-urlencoded
+
+     grant_type=client_credentials
+</code></pre>
+<p>The response will contain an access token that you can use to authenticate your requests to the Onboarding API. The access token is a JSON Web Token (JWT) and will look something like this:</p>
+<pre><code class="language-json">{
+  "access_token": "access-token-example",
+  "expires_in": 300,
+  "refresh_expires_in": 0,
+  "token_type": "Bearer",
+  "not-before-policy": 0,
+  "scope": ""
+}
+</code></pre>
+<p>The URL for the token endpoint is different for the test and production environments:
+- <strong>Test environment</strong>: <code>https://sso.test.stoe.no/auth/realms/external/protocol/openid-connect/token</code>
+- <strong>Production environment</strong>: <code>https://sso.stoe.no/auth/realms/external/protocol/openid-connect/token</code></p>
+<h2 id="sending-requests">Sending requests</h2>
+<p>All requests to the Onboarding API must include the access token in the Authorization header. We recommend requesting a
+new token for each request as they have an expiry time of <strong>five minutes</strong>. The header should look like this:</p>
+<pre><code>Authorization: Bearer access-token-example
+</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -383,13 +380,11 @@ sequenceDiagram
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.links", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.links", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
 <script src="../assets/javascripts/swagger.js"></script>
 <script src="../assets/javascripts/mermaid-init.js"></script>
-<script>mermaid.initialize({
-    theme: "forest"
-});</script></body>
+</body>
 </html>
