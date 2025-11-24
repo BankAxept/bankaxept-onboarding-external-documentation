@@ -18,6 +18,7 @@ nav:
           - Configuration: configuration.md
           - Dictionary: dictionary.md
           - MCC Codes: mcc_codes.md
+          - Problems: problems.md
           - Prod flows: prod_flows.md
           - Test flows: test_flows.md
           - Valid account numbers: valid_account_numbers.md
