@@ -1,4 +1,4 @@
-[# Known error patterns 
+# Known error patterns 
 
 The onboarding API implements RFC 9457 with three optional extension fields.
 
@@ -28,7 +28,8 @@ This is the catch-all something went wrong type. This is provided when a more sp
 
 ## bad-request
 
-A generic 400 bad request type.
+A generic 400 bad request type. Typically provided when the request satisfies the API contract, but the content is invalid for some other reason.
+Such as an inability to verify that the organization owns the provided account. 
 
 ## constraint-violation
 
@@ -43,8 +44,9 @@ The same message id has been used with a different message body. Message ids mus
 A generic 500 internal server error type. 
 
 ## kar-service-failed
-
-Catch all for something going wrong with the KAR-service on our end. Might be a transient issue. This does not mean that the validation has failed.  
+KAR (Konto og adresseringsregister https://www.mastercardpaymentservices.com/norway/andre-tjenester/konto-og-adresseringsregister-kar/) is a service which we use to verify the ownership of the account.
+This type is used when something going wrong with the KAR-service on our end. Might be a transient issue. This does not mean that the account
+ownership is wrong only that we did not receive a proper response.  
 
 ## merchant-not-found
 
@@ -52,11 +54,11 @@ The provided organisation number is not a BankAxept customer.
 
 ## not-found
 
-A generic 404 not found type slightly more specific than about:blank. This could also mean that the resource exists, but you are unauthorized to access it. 
+A generic 404 not found type. This could also mean that the resource exists, but you are unauthorized to access it. 
 
 ## order-not-found
 
-Similar to not-found, but specific to orders
+Similar to not-found, but specific to orders.
 
 ## unprocessable-entity
 
