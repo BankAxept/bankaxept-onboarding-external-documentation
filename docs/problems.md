@@ -18,12 +18,12 @@ These optional extension fields are commonly provided:
 - **instance** - The path portion of the request URI
 - **correlationId** - A UUID generated at the beginning of each request to uniquely identify a single request in our systems
 
-## Known Exceptions
+## Known Limitations
 
-Known exceptions where we do not provide RFC 9457 compliant error responses:
+We do not provide RFC 9457 compliant error responses in the following circumstances:
 
 - The request fails in the network stack before reaching the API
-- The authorization layer does not support RFC 9457, so all 401/403 responses will be limited to standard HTTP responses. This will hopefully be fixed at some point
+- The authorization layer does not support RFC 9457, so all 401/403 responses will be limited to standard HTTP responses.
 
 ## Example Response Payload
 
