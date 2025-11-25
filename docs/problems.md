@@ -1,85 +1,91 @@
-# Known error patterns 
+# Known Error Patterns
 
-The onboarding API implements RFC 9457 with three optional extension fields.
+The onboarding API implements [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html) with three optional extension fields.
 
-These standard fields are provided in most 4xx and 5xx /v2/ error response bodies.
+## Standard Response Fields
 
-- type - URI which points an exception message to this page and more information.
-- title - The name of the problem.
-- status - A copy of the HTTP status.
+These standard fields are provided in most 4xx and 5xx `/v2/` error response bodies:
 
-These optional extension fields are commonly provided.
+- **type** - URI which points an exception message to this page and more information
+- **title** - The name of the problem
+- **status** - A copy of the HTTP status
 
-- detail - More dynamic content related to the exception. F.ex this could be individual validation errors.
-- instance - The path portion of the request URI. 
-- correlationId - A UUID generated at the beginning of each request to uniquely identify a single request in our systems. 
+## Optional Extension Fields
+
+These optional extension fields are commonly provided:
+
+- **detail** - More dynamic content related to the exception. For example, this could be individual validation errors
+- **instance** - The path portion of the request URI
+- **correlationId** - A UUID generated at the beginning of each request to uniquely identify a single request in our systems
+
+## Known Exceptions
 
 Known exceptions where we do not provide RFC 9457 compliant error responses:
 
-- The request fails in the network stack before reaching the API. 
-- The authorization layer does not support RFC 9457 so all 401/403 responses will be limited to standard HTTP responses. This will hopefully be fixed at some point.
+- The request fails in the network stack before reaching the API
+- The authorization layer does not support RFC 9457, so all 401/403 responses will be limited to standard HTTP responses. This will hopefully be fixed at some point
 
-An example response payload
+## Example Response Payload
 
+```json
 {
-"type": "https://bankaxept.github.io/bankaxept-onboarding-external-documentation/problems/#bad-request",
-"title": "Bad Request",
-"status": 400,
-"detail": "The account number is invalid",
-"instance": "/psp/v2/orders/new",
-"correlationId": "5a75597e-3daf-4909-a123-d8a1d769d487"
+  "type": "https://bankaxept.github.io/bankaxept-onboarding-external-documentation/problems/#bad-request",
+  "title": "Bad Request",
+  "status": 400,
+  "detail": "The account number is invalid",
+  "instance": "/psp/v2/orders/new",
+  "correlationId": "5a75597e-3daf-4909-a123-d8a1d769d487"
 }
+```
 
-The following are valid problem types the application can return in the ErrorResponse type.
-When a specific problem type is reported it will link back here. Changes to existing problem types is a breaking change. 
+---
 
-## about:blank
+## Problem Types
 
-This is the catch-all something went wrong type. This is provided when a more specific error type does not exist.
+The following are valid problem types the application can return in the `ErrorResponse` type. When a specific problem type is reported, it will link back here. 
 
-## bad-request
+> **Note:** Changes to existing problem types is a breaking change.
 
-A generic 400 bad request type. Typically provided when the request satisfies the API contract, but the content is invalid for some other reason.
-Such as an inability to verify that the organization owns the provided account. 
+The special type `about:blank` is the RFC 9457 standard catch-all "something went wrong" type. It does not link to this documentation and is provided when a more specific error type does not exist.
 
-## constraint-violation
+### bad-request
 
-The request does not comply with the API-contract. The detail field contains the specific constraints that fails validation.  
+A generic 400 bad request type. Typically provided when the request satisfies the API contract, but the content is invalid for some other reason, such as an inability to verify that the organization owns the provided account.
 
-## duplicate-message-id
+### constraint-violation
 
-The same message id has been used with a different message body. Message ids must be unique for each order. 
+The request does not comply with the API contract. The `detail` field contains the specific constraints that fail validation.
 
-## internal-server-error
+### duplicate-message-id
 
-A generic 500 internal server error type. 
+The same message ID has been used with a different message body. Message IDs must be unique for each order.
 
-## kar-service-failed
-KAR (Konto og adresseringsregister https://www.mastercardpaymentservices.com/norway/andre-tjenester/konto-og-adresseringsregister-kar/) is a service which we use to verify the ownership of the account.
-This type is used when something going wrong with the KAR-service on our end. Might be a transient issue. This does not mean that the account
-ownership is wrong only that we did not receive a proper response.  
+### internal-server-error
 
-## merchant-not-found
+A generic 500 internal server error type.
+
+### kar-service-failed
+
+[KAR (Konto og adresseringsregister)](https://www.mastercardpaymentservices.com/norway/andre-tjenester/konto-og-adresseringsregister-kar/) is a service which we use to verify the ownership of the account.
+
+This type is used when something goes wrong with the KAR service on our end. This might be a transient issue. This does not mean that the account ownership is wrong, only that we did not receive a proper response.
+
+### merchant-not-found
 
 The provided organisation number is not a BankAxept customer.
 
-## not-found
+### not-found
 
-A generic 404 not found type. This could also mean that the resource exists, but you are unauthorized to access it. 
+A generic 404 not found type. This could also mean that the resource exists, but you are unauthorized to access it.
 
-## order-not-found
+### unprocessable-entity
 
-Similar to not-found, but specific to orders.
+A generic 422 HTTP response type. We are unable to process the request. There could be more information in the `detail` field.
 
-## unprocessable-entity
+### unsupported-acquiring-bank
 
-A generic 422 http response type, we are unable to process the request. There could be more information in the details.
+The settlement account in the order belongs to a bank which does not permit BankAxept to enter into an acquiring agreement on their behalf, and the customer does not already have an existing BankAxept acquiring agreement for the account number. You can use this type to route orders away from the Onboarding API.
 
-## unsupported-acquiring-bank
+**To be clear:** If the customer already has an acquiring agreement for BankAxept on the account number, we permit ordering even though the bank is unsupported.
 
-The settlement account in the order belongs to a bank which does not permit BankAxept to enter into an acquiring agreement on their behalf.
-And the customer does not already have an existing BankAxept acquiring agreement for the account number. You can use this type to route orders away from the Onboarding API.
-
-To be clear: If the customer has an acquiring agreement for BankAxept on the account number we permit ordering even though the bank is unsupported.
-
-We may add support for more banks at any time.
+> **Note:** We may add support for more banks at any time.
