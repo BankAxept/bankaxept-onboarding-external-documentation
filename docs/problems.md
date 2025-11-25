@@ -19,6 +19,17 @@ Known exceptions where we do not provide RFC 9457 compliant error responses:
 - The request fails in the network stack before reaching the API. 
 - The authorization layer does not support RFC 9457 so all 401/403 responses will be limited to standard HTTP responses. This will hopefully be fixed at some point.
 
+An example response payload
+
+{
+"type": "https://bankaxept.github.io/bankaxept-onboarding-external-documentation/problems/#bad-request",
+"title": "Bad Request",
+"status": 400,
+"detail": "The account number is invalid",
+"instance": "/psp/v2/orders/new",
+"correlationId": "5a75597e-3daf-4909-a123-d8a1d769d487"
+}
+
 The following are valid problem types the application can return in the ErrorResponse type.
 When a specific problem type is reported it will link back here. Changes to existing problem types is a breaking change. 
 
