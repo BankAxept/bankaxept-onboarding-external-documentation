@@ -1,6 +1,6 @@
 # Known Error Patterns
 
-The onboarding API implements [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html) with three optional extension fields.
+The onboarding API implements [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html).
 
 ## Standard Response Fields
 
@@ -10,13 +10,13 @@ These standard fields are provided in most 4xx and 5xx `/v2/` error response bod
 - **title** - The name of the problem
 - **status** - A copy of the HTTP status
 
-## Optional Extension Fields
+## Optional Fields
 
-These optional extension fields are commonly provided:
+These fields are provided whenever possible. They are explicitly optional in the contract:
 
-- **detail** - More dynamic content related to the exception. For example, this could be individual validation errors
+- **detail** -  Dynamic content related to the exception. For example, this could be individual validation errors. This is human readable and should not be parsed. 
 - **instance** - The path portion of the request URI
-- **correlationId** - A UUID generated at the beginning of each request to uniquely identify a single request in our systems
+- **correlationId** - A UUID generated and attached to each request at the start of our processing. Used to uniquely identify a single request in our systems
 
 ## Known Limitations
 
