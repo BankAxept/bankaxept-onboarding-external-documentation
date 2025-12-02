@@ -46,11 +46,11 @@ The following are valid problem types the application can return in the `ErrorRe
 
 > **Note:** Changes to existing problem types is a breaking change.
 
-The special type `about:blank` is the RFC 9457 standard catch-all "something went wrong" type. It does not link to this documentation and is provided when a more specific error type does not exist.
+The special type `about:blank` is the RFC 9457 standard catch-all "something went wrong" type. It does not link to this documentation and is used in rare cases.
 
 ### bad-request
 
-A generic 400 bad request type. Typically provided when the request satisfies the API contract, but the content is invalid for some other reason, such as an inability to verify that the organization owns the provided account.
+A generic 400 bad request type. Most commonly returned when the request body fails validation. For example, a required field might be missing. Account numbers might adhere to the format specified in the contract, but fail additional validation rules inherent to the account number format itself that are difficult to express in an API contract.   
 
 ### constraint-violation
 
@@ -58,29 +58,25 @@ The request does not comply with the API contract. The `detail` field contains t
 
 ### duplicate-message-id
 
-The same message ID has been used with a different message body. Message IDs must be unique for each order.
+The same message ID has been used with a different message body. Message IDs must be unique for each order. Returns HTTP 409 Conflict.
 
 ### internal-server-error
 
 A generic 500 internal server error type.
 
-### kar-service-failed
+### kar-failed
 
 [KAR (Konto og adresseringsregister)](https://www.mastercardpaymentservices.com/norway/andre-tjenester/konto-og-adresseringsregister-kar/) is a service which we use to verify the ownership of the account.
 
 This type is used when something goes wrong with the KAR service on our end. This might be a transient issue. This does not mean that the account ownership is wrong, only that we did not receive a proper response.
 
-### merchant-not-found
-
-The provided organisation number is not a BankAxept customer.
-
 ### not-found
 
 A generic 404 not found type. This could also mean that the resource exists, but you are unauthorized to access it.
 
-### unprocessable-entity
+### unprocessable-content
 
-A generic 422 HTTP response type. We are unable to process the request. There could be more information in the `detail` field.
+A generic 422 HTTP response type. We are unable to process the request's content. Usually provided when the request body is valid according to the contract, but does not make sense in the real world. For example, the organization number is valid, does not belong to a real company. There could be more information in the `detail` field.
 
 ### unsupported-acquiring-bank
 
