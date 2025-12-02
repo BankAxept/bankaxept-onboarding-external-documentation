@@ -14,7 +14,7 @@ These standard fields are provided in most 4xx and 5xx `/v2/` error response bod
 
 These fields are provided whenever possible. They are explicitly optional in the contract:
 
-- **detail** -  Dynamic content related to the exception. For example, this could be individual validation errors. This is human readable and should not be parsed. 
+- **detail** - Dynamic content related to the exception. For example, this could be individual validation errors. This is human readable and should not be parsed. 
 - **instance** - The path portion of the request URI
 - **correlationId** - A UUID generated and attached to each request at the start of our processing. Used to uniquely identify a single request in our systems
 
@@ -76,7 +76,7 @@ A generic 404 not found type. This could also mean that the resource exists, but
 
 ### unprocessable-content
 
-A generic 422 HTTP response type. We are unable to process the request's content. Usually provided when the request body is valid according to the contract, but does not make sense in the real world. For example, the organization number is valid, does not belong to a real company. There could be more information in the `detail` field.
+A generic 422 HTTP response type. We are unable to process the request's content. Usually provided when the request body is valid according to the contract, but does not make sense in the real world. For example, the organization number is valid, but does not belong to a real company. There could be more information in the `detail` field.
 
 ### unsupported-acquiring-bank
 
