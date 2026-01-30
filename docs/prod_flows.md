@@ -17,7 +17,7 @@ note right of O: This will return the order details. <br/> After a few seconds i
 O -->> I: 200 OK with Order
 
 note over I, O: Verify signing of an order
-I ->> O: GET /orders?awaiting_signatures
+I ->> O: GET /orders?status=awaiting_signatures
 O -->> I: 200 OK with all Orders awaiting signature
 
 note over I, O: Check status of an order

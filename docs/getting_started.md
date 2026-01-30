@@ -41,9 +41,9 @@ There are multiple points of configuration that need to be aligned before you ca
 | NOT_SIGNED                 | The order has not been signed yet.                                                                                                           |
 | PENDING_BANK_RESPONSE      | The order has been signed by the customer and is waiting for the bank to approve the signatures.                                             |
 | BAX_ACTIVE                 | The order has been activated but the bank has not given final approval.                                                                      |
-| REJECTED_RECREATE_SIGNING  | The order has been rejected by the bank. This is not a terminal state and can be moved by calling the `/recreate-signing-order` endpoint.    |
+| REJECTED_RECREATE_SIGNING  | The order has been rejected by the bank. This is not a terminal state and can be moved by calling the ` /orders/{orderId}/signees` endpoint. |
 | ACCEPTED                   | The order has received final approval from the bank. This is a terminal state.                                                               |
-| REJECTED_CREATE_NEW_ORDER  | The order has received final rejection This is a terminal state. A new order needs to be created.                                            |
+| REJECTED_CREATE_NEW_ORDER  | The order has received final rejection. This is a terminal state. A new order needs to be created.                                           |
 
 ### Order Statuses Flowchart
 
