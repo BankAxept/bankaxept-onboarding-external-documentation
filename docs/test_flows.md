@@ -10,7 +10,7 @@ participant O as Onboarding API
 note over I, O: Register new order
 I ->> O: PUT /orders/new
 note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
-O -->> I: 202 OK with orderId
+O -->> I: 202 Accepted with orderId
 
 note over I, O: Check status of an order
 I ->> O : GET /orders/{orderId}
@@ -38,7 +38,7 @@ participant O as Onboarding API
 note over I, O: Register new order
 I ->> O: PUT /orders/new
 note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
-O -->> I: 202 OK with orderId
+O -->> I: 202 Accepted with orderId
 
 note over I, O: Check status of an order
 I ->> O : GET /orders/{orderId}
@@ -75,7 +75,7 @@ participant O as Onboarding API
 note over I, O: Register new order
 I ->> O: PUT /orders/new
 note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
-O -->> I: 202 OK with orderId
+O -->> I: 202 Accepted with orderId
 
 note over I, O: Check status of an order
 I ->> O : GET /orders/{orderId}

@@ -9,7 +9,7 @@ participant O as Onboarding API
 
 note over I, O: Register new order
 I ->> O: PUT /orders/new
-O -->> I: 202 OK with orderId
+O -->> I: 202 Accepted with orderId
 
 note over I, O: Check status of an order
 I ->> O : GET /orders/{orderId}
@@ -35,7 +35,7 @@ participant O as Onboarding API
 
 note over I, O: Register new order
 I ->> O: PUT /orders/new
-O -->> I: 202 OK with orderId
+O -->> I: 202 Accepted with orderId
 
 note over I, O: Check status of an order
 I ->> O : GET /orders/{orderId}
