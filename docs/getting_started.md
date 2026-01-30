@@ -35,21 +35,21 @@ There are multiple points of configuration that need to be aligned before you ca
 
 ## Possible Order Statuses
 
-| Status                     | Description                                                                                                                                   |
-|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| BAX_NOT_CREATED            | The agreement has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                 |
-| NOT_SIGNED                 | The agreement has not been signed yet.                                                                                                        |
-| PENDING_BANK_RESPONSE      | The agreement has been signed by the customer and is waiting for the bank to approve the signatures.                                          |
-| BAX_ACTIVE                 | The agreement has been activated but the bank has not given final approval.                                                                   |
-| REJECTED_RECREATE_SIGNING  | The agreement has been rejected by the bank. This is not a terminal state and can be moved by calling the `/recreate-signing-order` endpoint. |
-| ACCEPTED                   | The agreement has received final approval from the bank. This is a terminal state.                                                            |
-| REJECTED_CREATE_NEW_ORDER  | The agreement has received final rejection This is a terminal state. A new order needs to be created.                                         |
+| Status                     | Description                                                                                                                               |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| BAX_NOT_CREATED            | The order has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                 |
+| NOT_SIGNED                 | The order has not been signed yet.                                                                                                        |
+| PENDING_BANK_RESPONSE      | The order has been signed by the customer and is waiting for the bank to approve the signatures.                                          |
+| BAX_ACTIVE                 | The order has been activated but the bank has not given final approval.                                                                   |
+| REJECTED_RECREATE_SIGNING  | The order has been rejected by the bank. This is not a terminal state and can be moved by calling the `/recreate-signing-order` endpoint. |
+| ACCEPTED                   | The order has received final approval from the bank. This is a terminal state.                                                            |
+| REJECTED_CREATE_NEW_ORDER  | The order has received final rejection This is a terminal state. A new order needs to be created.                                         |
 
 ### Order Statuses Flowchart
 
 ```mermaid
 graph TD
-    A[Register new agreement] --> B((BAX_NOT_CREATED))
+    A[Register new order] --> B((BAX_NOT_CREATED))
     B -->|Bax created| C((NOT_SIGNED))
     C --> H[Signed]
     H -->|Signatures not automatically validated| D((PENDING_BANK_RESPONSE))
@@ -64,7 +64,7 @@ graph TD
 
 ## Integration Guidelines
 
-We validate the following information when registering an agreement: <br/>
+We validate the following information when registering an order: <br/>
 **Account Ownership**: We validate that the account number belongs to the customer. <br/>
 **Account Number**: We validate that the account number is valid and belongs to the customer. <br/>
 **MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
