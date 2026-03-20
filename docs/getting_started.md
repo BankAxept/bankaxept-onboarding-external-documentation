@@ -60,7 +60,7 @@ graph TD
     D -->|Automatic timeout| E((BAX_ACTIVE))
     E -->|Bank approves| G((ACCEPTED))
     F -->|Resend signing request| C((NOT_SIGNED))
-    F -->|Automatic timeout| H((REJECTED_CREATE_NEW_ORDER))
+    F -->|Automatic timeout| I((REJECTED_CREATE_NEW_ORDER))
 ```
 
 ## Integration Guidelines
