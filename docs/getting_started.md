@@ -54,12 +54,13 @@ graph TD
     C --> H[Signed]
     H -->|Signatures not automatically validated| D((PENDING_BANK_RESPONSE))
     H -->|Signatures automatically validated| E((BAX_ACTIVE))
-    E -->|Bank rejects| F((REJECTED))
-    D -->|Bank rejects| F((REJECTED))
+    E -->|Bank rejects| F((REJECTED_RECREATE_SIGNING))
+    D -->|Bank rejects| F((REJECTED_RECREATE_SIGNING))
     D -->|Bank approves| G((ACCEPTED))
     D -->|Automatic timeout| E((BAX_ACTIVE))
     E -->|Bank approves| G((ACCEPTED))
     F -->|Resend signing request| C((NOT_SIGNED))
+    F -->|Automatic timeout| H((REJECTED_CREATE_NEW_ORDER))
 ```
 
 ## Integration Guidelines
