@@ -85,3 +85,16 @@ The settlement account in the order belongs to a bank which does not permit Bank
 **To be clear:** If the customer already has an acquiring agreement for BankAxept on the account number, we permit ordering even though the bank is unsupported.
 
 > **Note:** We may add support for more banks at any time.
+
+### invalid-psp-id
+
+The `pspId` field is required for partner clients.
+
+This error is returned when:
+
+- The field is not provided by a client that is required to supply it
+- The provided value does not exactly match any of the PSP IDs the client is authorized to represent
+
+An exact match including leading zeros and no unnecessary whitespace is required.
+
+A list of all valid PSP IDs the client is authorized to represent can be fetched from the `/partner/psps` endpoint.
