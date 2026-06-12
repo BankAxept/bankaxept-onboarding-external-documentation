@@ -93,8 +93,8 @@ The `pspId` field is required for partner clients.
 This error is returned when:
 
 - The field is not provided by a client that is required to supply it
-- The provided value does not exactly match any of the PSP ids the client is authorized to act on behalf of
+- The provided value does not exactly match any of the PSP IDs the client is authorized to represent
 
 An exact match including leading zeros and no unnecessary whitespace is required.
 
-A list of all valid PSP ids the client can operate on behalf of can be fetched from the /partner/psps endpoint.
+A list of all valid PSP IDs the client is authorized to represent can be fetched from the `/partner/psps` endpoint.
