@@ -101,9 +101,9 @@ A list of all valid PSP IDs the client is authorized to represent can be fetched
 
 ### unknown-partner
 
-A valid Country Code - Identifier combination will fail in the event that we have not registered them in our internal customer database.
+Requests with a valid country code–identifier combination will still fail if we have not registered the partner in our internal customer database.
 
-Contact storkunde@bankaxept.no so we can add the partner to our internal customer database. Please provide country code, company identifier(Organisation number) and address.
+Contact storkunde@bankaxept.no so we can add the partner to our internal customer database. Please provide the country code, company identifier (organization number), and address.
 
 ### forbidden-partner-modifier
 
