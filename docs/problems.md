@@ -107,4 +107,4 @@ Contact storkunde@bankaxept.no so we can add the partner to our internal custome
 
 ### forbidden-partner-modifier
 
-Partner clients are not permitted to provide a partner in the order. The API acquires the partner from the client directly in this case.
+Partner clients are not permitted to provide a partner modifier in the order. The API derives the partner from the authenticated client in this case.
