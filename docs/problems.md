@@ -98,3 +98,13 @@ This error is returned when:
 An exact match including leading zeros and no unnecessary whitespace is required.
 
 A list of all valid PSP IDs the client is authorized to represent can be fetched from the `/partner/psps` endpoint.
+
+### unknown-partner
+
+Requests with a valid country code–identifier combination will still fail if we have not registered the partner in our internal customer database.
+
+Contact storkunde@bankaxept.no so we can add the partner to our internal customer database. Please provide the country code, company identifier (organization number), and address.
+
+### forbidden-partner-modifier
+
+Partner clients are not permitted to provide a partner modifier in the order. The API derives the partner from the authenticated client in this case.
