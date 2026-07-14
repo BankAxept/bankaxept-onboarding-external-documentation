@@ -99,12 +99,12 @@ An exact match including leading zeros and no unnecessary whitespace is required
 
 A list of all valid PSP IDs the client is authorized to represent can be fetched from the `/partner/psps` endpoint.
 
-### unknown-partner
+### unknown-reseller
 
-Requests with a valid country code–identifier combination will still fail if we have not registered the partner in our internal customer database.
+Requests with a valid country code–identifier combination will still fail if we have not registered the reseller in our internal customer database.
 
-Contact storkunde@bankaxept.no so we can add the partner to our internal customer database. Please provide the country code, company identifier (organization number), and address.
+Contact storkunde@bankaxept.no so we can add the reseller to our internal customer database. Please provide the country code, company identifier (organization number), and address.
 
-### forbidden-partner-modifier
+### forbidden-reseller-modifier
 
-Partner clients are not permitted to provide a partner modifier in the order. The API derives the partner from the authenticated client in this case.
+Reseller clients are not permitted to provide a reseller modifier in the order. The API derives the reseller from the authenticated client in this case.
