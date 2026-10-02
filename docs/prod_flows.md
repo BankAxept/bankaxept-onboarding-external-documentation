@@ -76,13 +76,15 @@ O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
 I ->> O : GET /orders/{orderId}
 O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
 
-alt Bank approves within the deadline
-    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
-    O --) I: POST webhookUrl {orderStatus: ACCEPTED}
-else Bank deadline expires
-    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
-    note over O: Bank approves later
-    O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+rect rgb(225, 240, 255)
+note over I, O: Option 1: Bank approves within the deadline
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+end
+rect rgb(255, 238, 220)
+note over I, O: Option 2: Bank deadline expires <br/> The order is activated, and the bank approves it later
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+O --) I: POST webhookUrl {orderStatus: ACCEPTED}
 end
 I ->> O : GET /orders/{orderId}
 O -->> I: 200 OK with Order (ACCEPTED)
@@ -104,25 +106,27 @@ I ->> O : GET /orders/{orderId}
 O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
 
 note over O: Merchant signs
-alt Signatures not automatically validated
-    O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
-    note over O: Bank rejects (also possible after the bank deadline has expired)
-else Signatures automatically validated
-    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
-    note over O: Bank rejects
+rect rgb(225, 240, 255)
+note over I, O: Option 1: Signatures not automatically validated <br/> The bank rejects the signatures (also possible after the bank deadline has expired)
+O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+end
+rect rgb(255, 238, 220)
+note over I, O: Option 2: Signatures automatically validated <br/> The order is activated, and the bank rejects the signatures later
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
 end
 O --) I: POST webhookUrl {orderStatus: REJECTED_RECREATE_SIGNING}
 I ->> O : GET /orders/{orderId}
 O -->> I: 200 OK with Order (REJECTED_RECREATE_SIGNING and reason for rejection)
 
-alt Resend signing request
-    I ->> O: PUT /orders/{orderId}/signees
-    note right of O: Use this if signing requirements change <br/> or if the previous signature was rejected.
-    O -->> I: 202 Accepted
-    O ->> O: Send email to customer
-    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
-else Order closed by BankAxept
-    O --) I: POST webhookUrl {orderStatus: REJECTED_CREATE_NEW_ORDER}
-    note over I, O: Terminal state. A new order needs to be created.
+rect rgb(225, 240, 255)
+note over I, O: Option A: Resend signing request <br/> Use this if signing requirements change <br/> or if the previous signature was rejected.
+I ->> O: PUT /orders/{orderId}/signees
+O -->> I: 202 Accepted
+O ->> O: Send email to customer
+O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+end
+rect rgb(255, 238, 220)
+note over I, O: Option B: Order closed by BankAxept <br/> This is a terminal state. A new order needs to be created.
+O --) I: POST webhookUrl {orderStatus: REJECTED_CREATE_NEW_ORDER}
 end
 ```
