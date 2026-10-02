@@ -1,5 +1,9 @@
 # Valid flows for Production
 
+These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart).
+Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).
+If you do not use webhooks, you can poll `GET /psp/v2/orders/{orderId}` instead.
+
 ## Automatically Approved Signatures
 An order is created with and signed by the correct signee(s) and the signatures are approved
 ```mermaid
@@ -10,20 +14,80 @@ participant O as Onboarding API
 note over I, O: Register new order
 I ->> O: PUT /orders/new
 O -->> I: 202 Accepted with orderId
+note right of O: Status is BAX_NOT_CREATED until the BAX Number is created
 
-note over I, O: Check status of an order
+O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
 I ->> O : GET /orders/{orderId}
-note right of O: This will return the order details. <br/> After a few seconds it should result in NOT_SIGNED status <br/> with a BAX Number
-O -->> I: 200 OK with Order
+O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
 
 note over I, O: Verify signing of an order
 I ->> O: GET /orders?status=awaiting_signatures
 O -->> I: 200 OK with all Orders awaiting signature
 
-note over I, O: Check status of an order
+note over O: Merchant signs, signatures automatically validated
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
 I ->> O : GET /orders/{orderId}
-note right of O: This will return the order details <br/> after signing has been completed by the merchants it should result in <br/> BAX_ACTIVE status with a BAX Number assuming <br/> the order was signed with valid signees
-O -->> I: 200 OK with Order
+O -->> I: 200 OK with Order (BAX_ACTIVE)
+
+note over O: Bank gives final approval
+O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+I ->> O : GET /orders/{orderId}
+O -->> I: 200 OK with Order (ACCEPTED)
+```
+
+## No Signing Required
+An order is created for a customer where no signing is required, and the order is completed without a signing step
+```mermaid
+sequenceDiagram
+participant I as Integrator
+participant O as Onboarding API
+
+note over I, O: Register new order
+I ->> O: PUT /orders/new
+O -->> I: 202 Accepted with orderId
+note right of O: Status is BAX_NOT_CREATED until the BAX Number is created
+
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+I ->> O : GET /orders/{orderId}
+O -->> I: 200 OK with Order (BAX_ACTIVE, BAX Number)
+
+O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+I ->> O : GET /orders/{orderId}
+O -->> I: 200 OK with Order (ACCEPTED)
+```
+
+## Signatures Approved by Bank
+An order is created and signed by signee(s) that cannot be automatically validated, and the bank approves the signatures
+```mermaid
+sequenceDiagram
+participant I as Integrator
+participant O as Onboarding API
+
+note over I, O: Register new order
+I ->> O: PUT /orders/new
+O -->> I: 202 Accepted with orderId
+
+O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+I ->> O : GET /orders/{orderId}
+O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+
+note over O: Merchant signs, signatures not automatically validated
+O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+I ->> O : GET /orders/{orderId}
+O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
+
+rect rgb(225, 240, 255)
+note over I, O: Option 1: Bank approves within the deadline <br/> BAX_ACTIVE is a short intermediate status before the order moves on to ACCEPTED
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+end
+rect rgb(255, 238, 220)
+note over I, O: Option 2: Bank deadline expires <br/> The order is activated, and the bank approves it later
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+end
+I ->> O : GET /orders/{orderId}
+O -->> I: 200 OK with Order (ACCEPTED)
 ```
 
 ## Signatures Rejected by Bank
@@ -37,24 +101,32 @@ note over I, O: Register new order
 I ->> O: PUT /orders/new
 O -->> I: 202 Accepted with orderId
 
-note over I, O: Check status of an order
+O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
 I ->> O : GET /orders/{orderId}
-note right of O: This will return the order details. <br/> After a few seconds it should result in NOT_SIGNED status <br/> with a BAX Number
-O -->> I: 200 OK with Order
+O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
 
-note over I, O: Verify signing of an order
-I ->> O: GET /orders?status=awaiting_signatures
-O -->> I: 200 OK with all Orders awaiting signature
-
-note over I, O: Check status of an order
+note over O: Merchant signs
+rect rgb(225, 240, 255)
+note over I, O: Option 1: Signatures not automatically validated <br/> The bank rejects the signatures (also possible after the bank deadline has expired)
+O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+end
+rect rgb(255, 238, 220)
+note over I, O: Option 2: Signatures automatically validated <br/> The order is activated, and the bank rejects the signatures later
+O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+end
+O --) I: POST webhookUrl {orderStatus: REJECTED_RECREATE_SIGNING}
 I ->> O : GET /orders/{orderId}
-note right of O: This will return the order details. <br/> After a few seconds it should result in <br/> REJECTED_RECREATE_SIGNING status with a reason for rejection and <br/> a BAX Number assuming the order was rejected by the bank
-O -->> I: 200 OK with Order
+O -->> I: 200 OK with Order (REJECTED_RECREATE_SIGNING and reason for rejection)
 
-note over I, O: Resend signing request on an order
+rect rgb(225, 240, 255)
+note over I, O: Option A: Resend signing request <br/> Use this if signing requirements change <br/> or if the previous signature was rejected.
 I ->> O: PUT /orders/{orderId}/signees
-note right of O: This is intended to be utilized if signing <br/> requirements change and need to be updated <br/> or if previous signature was rejected.
-
 O -->> I: 202 Accepted
 O ->> O: Send email to customer
+O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+end
+rect rgb(255, 238, 220)
+note over I, O: Option B: Order closed by BankAxept <br/> This is a terminal state. A new order needs to be created.
+O --) I: POST webhookUrl {orderStatus: REJECTED_CREATE_NEW_ORDER}
+end
 ```
