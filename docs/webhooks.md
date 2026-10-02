@@ -24,12 +24,13 @@ where the `orderStatus` refers to the statuses defined in the [Possible Order St
 No webhook is sent when the order is registered (`BAX_NOT_CREATED`). The first webhook is sent once the BAX Number has been created. This is usually `NOT_SIGNED`, but if no signing is required the first webhook will be `BAX_ACTIVE`.
 
 ## Delivery and ordering
-Webhooks are sent when an order changes status, but they are sent asynchronously and are not guaranteed to arrive immediately or in the order the status changes happened. This means:
+Webhooks are delivered **at least once**. A webhook is sent every time an order changes status, and failed calls are retried for a couple of minutes. Webhooks are sent asynchronously and are not guaranteed to arrive immediately or in the order the status changes happened. This means:
 
+- You may receive the same webhook more than once, with the same `orderStatus` (for example `BAX_ACTIVE`).
 - The `orderStatus` in a webhook may already be outdated when you receive it.
-- You may receive the same `orderStatus` more than once (for example `BAX_ACTIVE`).
+- If your endpoint is unavailable for more than a couple of minutes (for example during a deployment), a webhook can be lost.
 
-Treat a webhook as a signal to call `GET /psp/v2/orders/{orderId}`, and use that response as the current status of the order.
+Your endpoint should respond with a `2xx` status code to confirm that it received the webhook. Treat a webhook as a signal to call `GET /psp/v2/orders/{orderId}`, and use that response as the current status of the order. If you depend on status updates, also poll for the status of orders that have not reached a terminal state, in case a webhook was lost.
 
 You can see where webhooks are triggered in each flow in the flow diagrams for [Production](./prod_flows.md) and [Test](./test_flows.md).
 
