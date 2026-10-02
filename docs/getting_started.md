@@ -59,12 +59,14 @@ graph TD
     H -->|Signatures automatically validated| E((BAX_ACTIVE))
     E -->|Bank rejects| F((REJECTED_RECREATE_SIGNING))
     D -->|Bank rejects| F((REJECTED_RECREATE_SIGNING))
-    D -->|Bank approves| G((ACCEPTED))
+    D -->|Bank approves| E((BAX_ACTIVE))
     D -->|Automatic timeout| E((BAX_ACTIVE))
-    E -->|Bank approves| G((ACCEPTED))
+    E -->|Final approval| G((ACCEPTED))
     F -->|Resend signing request| C((NOT_SIGNED))
     F -->|Order closed by BankAxept| I((REJECTED_CREATE_NEW_ORDER))
 ```
+
+When the bank approves an order in `PENDING_BANK_RESPONSE`, the order passes briefly through `BAX_ACTIVE` before it moves on to `ACCEPTED`. You may see `BAX_ACTIVE` for a short time, including in [webhooks](./webhooks.md), even though the bank has already approved the order.
 
 ## Integration Guidelines
 

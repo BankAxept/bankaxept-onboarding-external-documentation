@@ -2,7 +2,7 @@
 
 These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart).
 Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).
-If you do not use webhooks, you can poll `GET /orders/{orderId}` instead.
+If you do not use webhooks, you can poll `GET /psp/v2/orders/{orderId}` instead.
 
 ## Automatically Approved Signatures
 An order is created with and signed by the correct signee(s) and the signatures are automatically approved
@@ -31,7 +31,7 @@ O -->> I: 200 OK with Order (BAX_ACTIVE)
 ```
 
 ## Signatures Approved by Bank
-An order is created with and signed by signee(s) that can not be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank
+An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -60,13 +60,14 @@ I ->> O: POST /simulation/orders/{orderId}/bank-decision
 O -->> I: 202 Accepted
 
 O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+note right of O: BAX_ACTIVE is a short intermediate status <br/> before the order moves on to ACCEPTED
 O --) I: POST webhookUrl {orderStatus: ACCEPTED}
 I ->> O : GET /orders/{orderId}
 O -->> I: 200 OK with Order (ACCEPTED)
 ```
 
 ## Signatures Rejected by Bank
-An order is created with and signed by signee(s) that can not be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank
+An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank
 ```mermaid
 sequenceDiagram
 participant I as Integrator

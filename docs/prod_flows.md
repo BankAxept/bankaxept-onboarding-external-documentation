@@ -2,7 +2,7 @@
 
 These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart).
 Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).
-If you do not use webhooks, you can poll `GET /orders/{orderId}` instead.
+If you do not use webhooks, you can poll `GET /psp/v2/orders/{orderId}` instead.
 
 ## Automatically Approved Signatures
 An order is created with and signed by the correct signee(s) and the signatures are approved
@@ -57,7 +57,7 @@ O -->> I: 200 OK with Order (ACCEPTED)
 ```
 
 ## Signatures Approved by Bank
-An order is created and signed by signee(s) that can not be automatically validated, and the bank approves the signatures
+An order is created and signed by signee(s) that cannot be automatically validated, and the bank approves the signatures
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -77,7 +77,7 @@ I ->> O : GET /orders/{orderId}
 O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
 
 rect rgb(225, 240, 255)
-note over I, O: Option 1: Bank approves within the deadline
+note over I, O: Option 1: Bank approves within the deadline <br/> BAX_ACTIVE is a short intermediate status before the order moves on to ACCEPTED
 O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
 O --) I: POST webhookUrl {orderStatus: ACCEPTED}
 end

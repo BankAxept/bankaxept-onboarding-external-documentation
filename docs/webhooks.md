@@ -24,7 +24,7 @@ where the `orderStatus` refers to the statuses defined in the [Possible Order St
 No webhook is sent when the order is registered (`BAX_NOT_CREATED`). The first webhook is sent once the BAX Number has been created. This is usually `NOT_SIGNED`, but if no signing is required the first webhook will be `BAX_ACTIVE`.
 
 ## Delivery and ordering
-Webhooks are delivered **at least once**. A webhook is sent every time an order changes status, and failed calls are retried for a couple of minutes. Webhooks are sent asynchronously and are not guaranteed to arrive immediately or in the order the status changes happened. This means:
+Webhooks are sent asynchronously every time an order changes status, and failed calls are retried for a couple of minutes. They are not guaranteed to arrive immediately, in the order the status changes happened, or at all. This means:
 
 - You may receive the same webhook more than once, with the same `orderStatus` (for example `BAX_ACTIVE`).
 - The `orderStatus` in a webhook may already be outdated when you receive it.
