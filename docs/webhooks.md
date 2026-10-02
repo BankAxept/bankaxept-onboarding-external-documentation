@@ -21,6 +21,17 @@ where the `orderStatus` refers to the statuses defined in the [Possible Order St
 3. The PSP should then call our existing endpoint to fetch the updated status ( `GET /psp/v2/orders/{orderId}` )
     - The `orderStatus` field in this response should give you the necessary information about the agreement registration order.
 
+No webhook is sent when the order is registered (`BAX_NOT_CREATED`). The first webhook is sent once the BAX Number has been created. This is usually `NOT_SIGNED`, but if no signing is required the first webhook will be `BAX_ACTIVE`.
+
+## Delivery and ordering
+Webhooks are sent when an order changes status, but they are sent asynchronously and are not guaranteed to arrive immediately or in the order the status changes happened. This means:
+
+- The `orderStatus` in a webhook may already be outdated when you receive it.
+- You may receive the same `orderStatus` more than once (for example `BAX_ACTIVE`).
+
+Treat a webhook as a signal to call `GET /psp/v2/orders/{orderId}`, and use that response as the current status of the order.
+
+You can see where webhooks are triggered in each flow in the flow diagrams for [Production](./prod_flows.md) and [Test](./test_flows.md).
 
 ## Webhook example sequence diagram
 
@@ -31,7 +42,7 @@ sequenceDiagram
     participant Signees
     participant Bank
     Integrator->>Onboarding API: registerOrder (with webhook url)
-    Onboarding API->>Integrator: POST webhook call (status change)
+    Onboarding API->>Integrator: POST webhook call (NOT_SIGNED)
     Integrator->>Onboarding API: call order endpoint to get details
     Onboarding API->>Signees: email with signing link
     Signees->>Onboarding API: sign order

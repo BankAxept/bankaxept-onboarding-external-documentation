@@ -43,14 +43,17 @@ There are multiple points of configuration that need to be aligned before you ca
 | BAX_ACTIVE                 | The order has been activated but the bank has not given final approval.                                                                      |
 | REJECTED_RECREATE_SIGNING  | The order has been rejected by the bank. This is not a terminal state and can be moved by calling the ` /orders/{orderId}/signees` endpoint. |
 | ACCEPTED                   | The order has received final approval from the bank. This is a terminal state.                                                               |
-| REJECTED_CREATE_NEW_ORDER  | The order has received final rejection. This is a terminal state. A new order needs to be created.                                           |
+| REJECTED_CREATE_NEW_ORDER  | The order has been closed by BankAxept. This is a terminal state. A new order needs to be created.                                           |
 
 ### Order Statuses Flowchart
+
+For a step-by-step view of the API calls and [webhooks](./webhooks.md) behind each path in this chart, see the flow diagrams for [Production](./prod_flows.md) and [Test](./test_flows.md).
 
 ```mermaid
 graph TD
     A[Register new order] --> B((BAX_NOT_CREATED))
     B -->|Bax created| C((NOT_SIGNED))
+    B -->|Bax created, no signing required| E((BAX_ACTIVE))
     C --> H[Signed]
     H -->|Signatures not automatically validated| D((PENDING_BANK_RESPONSE))
     H -->|Signatures automatically validated| E((BAX_ACTIVE))
@@ -60,7 +63,7 @@ graph TD
     D -->|Automatic timeout| E((BAX_ACTIVE))
     E -->|Bank approves| G((ACCEPTED))
     F -->|Resend signing request| C((NOT_SIGNED))
-    F -->|Automatic timeout| I((REJECTED_CREATE_NEW_ORDER))
+    F -->|Order closed by BankAxept| I((REJECTED_CREATE_NEW_ORDER))
 ```
 
 ## Integration Guidelines
