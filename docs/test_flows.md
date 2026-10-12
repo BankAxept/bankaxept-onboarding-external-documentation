@@ -1,6 +1,7 @@
 # Valid flows for Test
 
-These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart).
+These diagrams show the API calls and [webhooks](./webhooks.md) for the main paths through the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart), using the simulation endpoints available in the test environment.
+The remaining paths (for example bank deadline expiry or an order closed by BankAxept) behave as described in the [Production flows](./prod_flows.md).
 Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).
 If you do not use webhooks, you can poll `GET /psp/v2/orders/{orderId}` instead.
 

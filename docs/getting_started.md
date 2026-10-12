@@ -40,7 +40,7 @@ There are multiple points of configuration that need to be aligned before you ca
 | BAX_NOT_CREATED            | The order has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                    |
 | NOT_SIGNED                 | The order has not been signed yet.                                                                                                           |
 | PENDING_BANK_RESPONSE      | The order has been signed by the customer and is waiting for the bank to approve the signatures.                                             |
-| BAX_ACTIVE                 | The order has been activated but the bank has not given final approval.                                                                      |
+| BAX_ACTIVE                 | The order has been activated and is waiting to become ACCEPTED. The bank may still review the signatures, or may already have approved them, in which case this status is only short-lived. |
 | REJECTED_RECREATE_SIGNING  | The order has been rejected by the bank. This is not a terminal state and can be moved by calling the ` /orders/{orderId}/signees` endpoint. |
 | ACCEPTED                   | The order has received final approval from the bank. This is a terminal state.                                                               |
 | REJECTED_CREATE_NEW_ORDER  | The order has been closed by BankAxept. This is a terminal state. A new order needs to be created.                                           |
