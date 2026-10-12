@@ -47,7 +47,7 @@ For a full list of valid Norwegian bank identifiers, refer to the [BITS document
 
 ## Bypassing Account Ownership Validation
 
-Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this ownership check so you can register orders for any customer using any account number for a valid, recognized bank identifier (see [Valid Account Numbers](./valid_account_numbers.md)), without needing a combination that KAR actually recognizes as belonging to each other. Bypassing ownership does not relax any other validation, the account number and bank identifier must still be valid on their own terms.
+Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this ownership check so you can register orders for any customer using any valid account number (see [Valid Account Numbers](./valid_account_numbers.md)), without needing a combination that KAR actually recognizes as belonging to each other. Bypassing ownership does not relax any other validation, the account number must still be valid on its own terms.
 
 ```http
 PUT /psp/v2/simulation/configuration
