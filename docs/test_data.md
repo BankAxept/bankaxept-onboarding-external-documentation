@@ -47,7 +47,7 @@ For a full list of valid Norwegian bank identifiers, refer to the [BITS document
 
 ## Bypassing Account Ownership Validation
 
-Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this ownership check so you can register orders for any customer using any valid account number (see [Valid Account Numbers](./valid_account_numbers.md)), without needing a combination that KAR actually recognizes as belonging to each other. Bypassing ownership does not relax any other validation, the account number must still be valid on its own terms.
+Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this ownership check so you can register orders for any customer using any valid account number (see [Valid Account Numbers](./valid_account_numbers.md)), without needing an account the customer actually, legally owns. Bypassing ownership does not relax any other validation, the account number must still be valid on its own terms.
 
 ```http
 PUT /psp/v2/simulation/configuration
@@ -58,7 +58,7 @@ Content-Type: application/json
 }
 ```
 
-This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using a real organisation and a matching account number, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct one.
+This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using an organisation and account number pair with genuine, legal ownership between them, see [Customers](#customers) for how to obtain one.
 
 This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
 
@@ -68,12 +68,12 @@ Test, like production, validates customers against [BRREG](dictionary.md), so an
 
 ### Combining BRREG customers with generated account numbers
 
-A real organisation from BRREG has no actual relationship with an account number you generate using [Valid Account Numbers](./valid_account_numbers.md), the two aren't a real [KAR](dictionary.md)-recognized pair. Registering an order with this combination fails account ownership validation unless you also enable [Bypassing Account Ownership Validation](#bypassing-account-ownership-validation).
+A real organisation from BRREG has no actual, legal ownership relationship with an account number you generate using [Valid Account Numbers](./valid_account_numbers.md), [KAR](dictionary.md) will not show them as belonging to each other. Registering an order with this combination fails account ownership validation unless you also enable [Bypassing Account Ownership Validation](#bypassing-account-ownership-validation).
 
 To construct a complete, valid test order from scratch, you need:
 
 1. A real organisation number from BRREG.
 2. A generated account number for a known bank identifier, see [Banks](#banks) and [Valid Account Numbers](./valid_account_numbers.md).
-3. `bypassAccountOwnershipCheck: true`, since the organisation and the account number aren't actually linked in KAR.
+3. `bypassAccountOwnershipCheck: true`, since the organisation doesn't actually, legally own the account.
 
-If you instead want to test the [KAR](dictionary.md) implementation itself rather than bypass it, you need an organisation number that is genuinely linked in KAR to a valid account, this isn't something you can construct arbitrarily, since it depends on which real accounts KAR has data for. Contact BankAxept if you need such a pairing for testing.
+If you instead want to test the [KAR](dictionary.md) implementation itself rather than bypass it, you need an organisation and account number with genuine, legal ownership between them, and which KAR has data for, this isn't something you can construct arbitrarily. Contact BankAxept if you need such a pairing for testing.
