@@ -1,0 +1,46 @@
+# Test Data
+
+This page collects practical guidance for constructing test data (banks, accounts, customers and signees) when integrating against the test environment. For the full picture of how a request moves through the API, see the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart) and the [Test flow diagrams](./test_flows.md).
+
+## Banks
+
+All BankAxept bank identifiers are valid. Use `GET /v2/banks` to list them, and `GET /v2/banks/{bankIdentifier}` to look up a single one by its 4 digit [bank identifier](dictionary.md).
+
+```http
+GET /psp/v2/banks
+```
+
+```json
+[
+  {
+    "name": "DNB Bank ASA",
+    "orgNumber": "984851006",
+    "supported": true,
+    "branchIdentifier": "7001"
+  },
+  {
+    "name": "Nordea Bank Abp, filial i Norge",
+    "orgNumber": "920058817",
+    "supported": false,
+    "branchIdentifier": "6001"
+  }
+]
+```
+
+A new BankAxept merchant agreement needs an existing account to pay settlements to. BankAxept requires an agreement between the customer and the bank to use the given account as a settlement account. For supported banks, we can enter into this agreement with the customer on behalf of the bank; `supported` reflects whether we're able to do this for a given bank.
+
+If the customer already has an active acquiring agreement for the settlement account (check with `GET /v2/merchants/{orgNumber}/acquiring-agreements/{accountNumber}`), they don't need a new agreement with the bank, so `supported` doesn't matter in that case.
+
+**Example: customer switching PSP, keeping their settlement account**
+A customer already has a BankAxept merchant agreement through PSP A, settling into an account at a bank with `supported: false`. They want to move to PSP B, using the same settlement account. Since `GET /v2/merchants/{orgNumber}/acquiring-agreements/{accountNumber}` shows they already have an active acquiring agreement for that account, no new agreement with the bank is needed, PSP B can register the order regardless of whether that bank is `supported`.
+
+**Example: brand new customer**
+A brand new customer wants to register with a settlement account at a bank with `supported: false`. They have no existing acquiring agreement for that account, so a new financial agreement with the bank would be required, which isn't possible for a bank we don't have this arrangement with. The order can only be registered if `GET /v2/banks` reports `supported: true` for that bank; otherwise it's rejected with the [`unsupported-acquiring-bank`](./problems.md#unsupported-acquiring-bank) problem type.
+
+### Banks in the test environment
+
+In test, all BankAxept bank identifiers work for completing an order end-to-end, including [KAR](dictionary.md) account ownership validation. This is independent of `supported`: that field only reflects whether BankAxept has an agreement in place to create new financial agreements on a bank's behalf, not whether a test order using that bank can be completed. DNB (for example `7001`) is confirmed to have `supported: true`, and other banks may as well, see `GET /v2/banks` for the current list.
+
+If you need to test how your integration behaves with an invalid or unrecognized bank identifier, you can use any 4 digit number that isn't in the `GET /v2/banks` list for that purpose, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct a matching account number.
+
+For a full list of valid Norwegian bank identifiers, refer to the [BITS documentation](https://www.bits.no/document/iban/).
