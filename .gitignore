@@ -5,3 +5,4 @@ target/
 .java-version
 .flattened-pom.xml
 _site/
+.venv/
