@@ -33,11 +33,12 @@
 
 .account-number-error {
     margin: 0 0 0 8.6rem;
-    color: #c0392b;
+    font-weight: bold;
 }
 
-body[data-md-color-scheme="slate"] .account-number-error {
-    color: #ff6b6b;
+.account-number-error:not(:empty) {
+    border-left: 0.2rem solid #ff1744;
+    padding-left: 0.5rem;
 }
 
 .account-number-generator__sr-only {
