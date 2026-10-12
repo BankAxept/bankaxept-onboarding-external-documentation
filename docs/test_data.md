@@ -58,7 +58,7 @@ Content-Type: application/json
 }
 ```
 
-This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using an organisation and account number pair with genuine, legal ownership between them, see [Customers](#customers) for how to obtain one.
+This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the real [KAR](dictionary.md) path instead, see [Customers](#customers) for more on when that's actually necessary.
 
 This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
 
@@ -76,4 +76,4 @@ To construct a complete, valid test order from scratch, you need:
 2. A generated account number for a known bank identifier. See [Banks](#banks) and [Valid Account Numbers](./valid_account_numbers.md).
 3. `bypassAccountOwnershipCheck: true`, since the organisation doesn't actually, legally own the account.
 
-If you instead want to test the [KAR](dictionary.md) implementation itself rather than bypass it, you need an organisation and account number with genuine, legal ownership between them, which KAR has data for. This isn't something you can construct arbitrarily. Contact BankAxept if you need such a pairing for testing.
+If you want to exercise the real [KAR](dictionary.md) path instead of bypassing it, you'll need an organisation and account number with genuine, legal ownership between them. This usually isn't necessary: whether our integration correctly calls KAR and interprets its response is something we verify ourselves, not something your integration needs to independently confirm. If you do want to test it anyway, you can use any customer relationship you already have with real, known ownership, there's no need to request test data from us for this.
