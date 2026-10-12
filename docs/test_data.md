@@ -44,3 +44,20 @@ In test, all BankAxept bank identifiers work for completing an order end-to-end,
 If you need to test how your integration behaves with an invalid or unrecognized bank identifier, you can use any 4 digit number that isn't in the `GET /v2/banks` list for that purpose, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct a matching account number.
 
 For a full list of valid Norwegian bank identifiers, refer to the [BITS documentation](https://www.bits.no/document/iban/).
+
+## Bypassing Account Ownership Validation
+
+Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this ownership check so you can register orders for any customer using any valid account number (see [Valid Account Numbers](./valid_account_numbers.md)), without needing a combination that KAR actually recognizes as belonging to each other. Bypassing ownership does not relax any other validation, the account number must still be valid on its own terms.
+
+```http
+PUT /psp/v2/simulation/configuration
+Content-Type: application/json
+
+{
+  "bypassAccountOwnershipCheck": true
+}
+```
+
+This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using a real organisation and a matching account number, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct one.
+
+This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
