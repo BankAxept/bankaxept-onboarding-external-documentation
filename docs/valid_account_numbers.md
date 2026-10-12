@@ -4,7 +4,7 @@ The modulus 11 algorithm for Norwegian bank account numbers is used to validate 
 
 ## Generate a Test Account Number
 
-Use the generator below to create a valid account number for testing. It defaults to [DNB's](dictionary.md) bank identifier `7001`, which is fully enabled in our test environment, but you can enter any 4 digit bank identifier returned by `GET /v2/banks`.
+Use the generator below to create a valid account number for testing. It defaults to [DNB's](dictionary.md) bank identifier `7001`, which is fully enabled in our test environment. The check digit is computed purely from the identifier you enter, so any 4 digits work, including ones for banks that are disabled or unsupported in test, if you want to exercise those rejection paths. Use `GET /v2/banks` to see which bank identifiers are currently enabled.
 
 <div class="admonition example">
 <p class="admonition-title">Try it</p>
