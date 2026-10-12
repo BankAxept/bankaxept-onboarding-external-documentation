@@ -43,8 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const resultValue = document.getElementById('account-number-result-value');
     const copyButton = document.getElementById('account-number-copy');
     const errorOutput = document.getElementById('account-number-error');
+    const statusOutput = document.getElementById('account-number-status');
 
-    if (!bankRegNumberInput || !generateButton || !resultValue || !copyButton) {
+    if (!bankRegNumberInput || !generateButton || !resultValue || !copyButton || !statusOutput) {
         return;
     }
 
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     generateButton.addEventListener('click', function () {
         const bankRegNumber = bankRegNumberInput.value.trim();
         errorOutput.textContent = '';
+        statusOutput.textContent = '';
         resultValue.value = '';
         resetCopyButton();
 
@@ -67,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             resultValue.value = generateAccountNumber(bankRegNumber);
             resetCopyButton();
+            statusOutput.textContent = 'Generated account number ' + resultValue.value;
         } catch (error) {
             errorOutput.textContent = error.message;
         }
@@ -85,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navigator.clipboard.writeText(resultValue.value).then(function () {
             errorOutput.textContent = '';
             copyButton.innerHTML = '<span style="color: #1e8e3e;">\u2713</span> Copied!';
+            statusOutput.textContent = 'Account number copied to clipboard.';
             setTimeout(resetCopyButton, 1500);
         }, function () {
             errorOutput.textContent = 'Could not copy automatically, please copy the account number manually.';
