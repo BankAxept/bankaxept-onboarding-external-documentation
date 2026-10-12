@@ -19,11 +19,11 @@ Use the generator below to create a valid account number for testing. It default
     <input class="md-input account-number-generator__input" type="text" id="account-number-result-value" readonly placeholder="—">
     <button class="md-button account-number-generator__button" id="account-number-copy" type="button" disabled>Copy</button>
   </div>
-  <p id="account-number-error" class="account-number-error"></p>
+  <p id="account-number-error" class="account-number-error" role="alert"></p>
 </div>
 </div>
 
-This runs entirely in your browser using the algorithm described below, it does not call any API or send data anywhere.
+This runs entirely in your browser using the algorithm described below; it does not call any API or send data anywhere.
 
 ## Structure 
 A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the [bank reg number](dictionary.md) and the last digit is a check digit. 

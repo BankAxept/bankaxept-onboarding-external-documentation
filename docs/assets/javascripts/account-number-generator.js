@@ -77,9 +77,17 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        if (!navigator.clipboard) {
+            errorOutput.textContent = 'Clipboard access is unavailable, please copy the account number manually.';
+            return;
+        }
+
         navigator.clipboard.writeText(resultValue.value).then(function () {
+            errorOutput.textContent = '';
             copyButton.innerHTML = '<span style="color: #1e8e3e;">\u2713</span> Copied!';
             setTimeout(resetCopyButton, 1500);
+        }, function () {
+            errorOutput.textContent = 'Could not copy automatically, please copy the account number manually.';
         });
     });
 });
