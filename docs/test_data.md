@@ -128,6 +128,6 @@ Submit the exact set of people from one combination, no more, no fewer. Matching
 }
 ```
 
-Use a normal ISO 8601 `dateOfBirth`, no need to convert to BRREG's `DD.MM.YYYY` format yourself. `email` isn't checked against BRREG, it only identifies the signee within your order.
+`email` isn't checked against BRREG, it only identifies the signee within your order.
 
 A subset, an extra person, or anyone not in a combination won't match, sending the order to `PENDING_BANK_RESPONSE`, see [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank) and [Signatures Rejected by Bank](./test_flows.md#signatures-rejected-by-bank) for simulating what happens next.
