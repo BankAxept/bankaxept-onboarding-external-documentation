@@ -1,0 +1,36 @@
+.account-number-generator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.account-number-generator__row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.account-number-generator__label {
+    flex: 0 0 auto;
+    width: 8rem;
+    font-weight: bold;
+}
+
+.account-number-generator__input {
+    flex: 0 0 auto;
+    width: 10rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: var(--md-code-font);
+}
+
+.account-number-generator__button {
+    flex: 0 0 auto;
+    width: 6rem;
+    text-align: center;
+}
+
+.account-number-error {
+    margin: 0 0 0 8.6rem;
+    color: #c0392b;
+}
