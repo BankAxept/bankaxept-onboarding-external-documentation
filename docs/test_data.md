@@ -47,7 +47,7 @@ For a full list of valid Norwegian bank identifiers, refer to the [BITS document
 
 ## Bypassing Account Ownership Validation
 
-Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this check so you can register orders with any account number for any customer, without needing a combination that KAR actually recognizes as belonging to each other.
+Normally, we verify that the settlement account on an order belongs to the customer using [KAR](dictionary.md). In the test environment, you can bypass this ownership check so you can register orders for any customer using any account number for a valid, recognized bank identifier (see [Valid Account Numbers](./valid_account_numbers.md)), without needing a combination that KAR actually recognizes as belonging to each other. Bypassing ownership does not relax any other validation, the account number and bank identifier must still be valid on their own terms.
 
 ```http
 PUT /psp/v2/simulation/configuration
@@ -58,6 +58,6 @@ Content-Type: application/json
 }
 ```
 
-This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected until someone explicitly changes it again, there is no automatic expiry or reset, and no way to scope it to a single order. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using a real organisation and a matching account number, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct one.
+This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using a real organisation and a matching account number, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct one.
 
-This endpoint, like the rest of `/v2/simulation/*`, only exists in the test environment.
+This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
