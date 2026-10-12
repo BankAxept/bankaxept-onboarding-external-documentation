@@ -1,0 +1,51 @@
+.account-number-generator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.account-number-generator__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.account-number-generator__label {
+    flex: 0 0 auto;
+    width: 8rem;
+    font-weight: bold;
+}
+
+.account-number-generator__input {
+    flex: 0 0 auto;
+    width: 10rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: var(--md-code-font);
+}
+
+.account-number-generator__button {
+    flex: 0 0 auto;
+    width: 6rem;
+    text-align: center;
+}
+
+.account-number-error {
+    margin: 0 0 0 8.6rem;
+    font-weight: bold;
+}
+
+.account-number-error:not(:empty) {
+    border-left: 0.2rem solid #ff1744;
+    padding-left: 0.5rem;
+}
+
+.account-number-generator__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
