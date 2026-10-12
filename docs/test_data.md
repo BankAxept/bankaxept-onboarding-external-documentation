@@ -64,16 +64,16 @@ This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test 
 
 ## Customers
 
-Test, like production, validates customers against [BRREG](dictionary.md), so any active Norwegian organisation can be used as test data. Use BRREG's public lookup (https://virksomhet.brreg.no) to search for one by name and use its organisation number. Any active result works, there's no fixed or recommended set, searching for your own company name or any term relevant to your testing works just as well as anything else.
+Test, like production, validates customers against [BRREG](dictionary.md), so any active Norwegian organisation can be used as test data. Use [BRREG's public lookup](https://virksomhet.brreg.no) to search for one by name and use its organisation number. Any active result works. There's no fixed or recommended set; searching for your own company name or any term relevant to your testing works just as well as anything else.
 
 ### Combining BRREG customers with generated account numbers
 
-A real organisation from BRREG has no actual, legal ownership relationship with an account number you generate using [Valid Account Numbers](./valid_account_numbers.md), [KAR](dictionary.md) will not show them as belonging to each other. Registering an order with this combination fails account ownership validation unless you also enable [Bypassing Account Ownership Validation](#bypassing-account-ownership-validation).
+A real organisation from BRREG has no actual, legal ownership relationship with an account number you generate using [Valid Account Numbers](./valid_account_numbers.md). [KAR](dictionary.md) will not show them as belonging to each other. Registering an order with this combination fails account ownership validation unless you also enable [Bypassing Account Ownership Validation](#bypassing-account-ownership-validation).
 
 To construct a complete, valid test order from scratch, you need:
 
 1. A real organisation number from BRREG.
-2. A generated account number for a known bank identifier, see [Banks](#banks) and [Valid Account Numbers](./valid_account_numbers.md).
+2. A generated account number for a known bank identifier. See [Banks](#banks) and [Valid Account Numbers](./valid_account_numbers.md).
 3. `bypassAccountOwnershipCheck: true`, since the organisation doesn't actually, legally own the account.
 
-If you instead want to test the [KAR](dictionary.md) implementation itself rather than bypass it, you need an organisation and account number with genuine, legal ownership between them, and which KAR has data for, this isn't something you can construct arbitrarily. Contact BankAxept if you need such a pairing for testing.
+If you instead want to test the [KAR](dictionary.md) implementation itself rather than bypass it, you need an organisation and account number with genuine, legal ownership between them, which KAR has data for. This isn't something you can construct arbitrarily. Contact BankAxept if you need such a pairing for testing.
