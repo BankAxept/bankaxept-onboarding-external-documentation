@@ -58,22 +58,10 @@ Content-Type: application/json
 }
 ```
 
-This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the real [KAR](dictionary.md) path instead, see [Customers](#customers) for more on when that's actually necessary.
+This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the real [KAR](dictionary.md) path instead, using an organisation and account number with genuine, legal ownership between them. This usually isn't necessary: whether our integration correctly calls KAR and interprets its response is something we verify ourselves, not something your integration needs to independently confirm.
 
 This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
 
 ## Customers
 
 Test, like production, validates customers against [BRREG](dictionary.md), so any active Norwegian organisation can be used as test data. Use [BRREG's public lookup](https://virksomhet.brreg.no) to search for one by name and use its organisation number. Any active result works. There's no fixed or recommended set; searching for your own company name or any term relevant to your testing works just as well as anything else.
-
-### Combining BRREG customers with generated account numbers
-
-A real organisation from BRREG has no actual, legal ownership relationship with an account number you generate using [Valid Account Numbers](./valid_account_numbers.md). [KAR](dictionary.md) will not show them as belonging to each other. Registering an order with this combination fails account ownership validation unless you also enable [Bypassing Account Ownership Validation](#bypassing-account-ownership-validation).
-
-To construct a complete, valid test order from scratch, you need:
-
-1. A real organisation number from BRREG.
-2. A generated account number for a known bank identifier. See [Banks](#banks) and [Valid Account Numbers](./valid_account_numbers.md).
-3. `bypassAccountOwnershipCheck: true`, since the organisation doesn't actually, legally own the account.
-
-If you want to exercise the real [KAR](dictionary.md) path instead of bypassing it, you'll need an organisation and account number with genuine, legal ownership between them. This usually isn't necessary: whether our integration correctly calls KAR and interprets its response is something we verify ourselves, not something your integration needs to independently confirm. If you do want to test it anyway, you can use any customer relationship you already have with real, known ownership, there's no need to request test data from us for this.
