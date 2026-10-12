@@ -61,3 +61,19 @@ Content-Type: application/json
 This call is idempotent: it sets the bypass to the value you provide, regardless of its previous state. The setting applies to the authenticated API client as a whole, not to an individual order or request. There is no automatic expiry or reset, and no way to scope it to a single order; it stays in effect until someone explicitly changes it again. If you share test credentials with other people or systems, for example other developers on your team, changing this setting changes behavior for all of them too, every order anyone registers using that client is affected. Set it back to `false` if you want to test the [KAR](dictionary.md) implementation itself using a real organisation and a matching account number, see [Valid Account Numbers](./valid_account_numbers.md) for how to construct one.
 
 This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
+
+## Customers
+
+Test, like production, validates customers against [BRREG](dictionary.md), so any active Norwegian organisation can be used as test data. Use BRREG's public lookup (https://virksomhet.brreg.no) to search for one by name and use its organisation number. Any active result works, there's no fixed or recommended set, searching for your own company name or any term relevant to your testing works just as well as anything else.
+
+### Combining BRREG customers with generated account numbers
+
+A real organisation from BRREG has no actual relationship with an account number you generate using [Valid Account Numbers](./valid_account_numbers.md), the two aren't a real [KAR](dictionary.md)-recognized pair. Registering an order with this combination fails account ownership validation unless you also enable [Bypassing Account Ownership Validation](#bypassing-account-ownership-validation).
+
+To construct a complete, valid test order from scratch, you need:
+
+1. A real organisation number from BRREG.
+2. A generated account number for a known bank identifier, see [Banks](#banks) and [Valid Account Numbers](./valid_account_numbers.md).
+3. `bypassAccountOwnershipCheck: true`, since the organisation and the account number aren't actually linked in KAR.
+
+If you instead want to test the [KAR](dictionary.md) implementation itself rather than bypass it, you need an organisation number that is genuinely linked in KAR to a valid account, this isn't something you can construct arbitrarily, since it depends on which real accounts KAR has data for. Contact BankAxept if you need such a pairing for testing.
