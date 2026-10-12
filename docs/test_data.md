@@ -70,7 +70,7 @@ GET https://data.brreg.no/fullmakt/enheter/{organisasjonsnummer}/signatur
 GET https://data.brreg.no/fullmakt/enheter/{organisasjonsnummer}/prokura
 ```
 
-`signatur` covers role-based signing rights (board, managing director). `prokura` covers a separately registered power of attorney; most organisations don't have one, which looks like `{"signeringsGrunnlag": {"kode": "SI", "tekstforklaring": "Signeringsgrunnlag finnes ikke"}}`, a normal response, not an error.
+`signatur` covers role-based signing rights (board, managing director). `prokura` covers a separately registered power of attorney; many organisations don't have one, which looks like `{"signeringsGrunnlag": {"kode": "SI", "tekstforklaring": "Signeringsgrunnlag finnes ikke"}}`, a normal response, not an error.
 
 ### Reading a `signatur` response
 
