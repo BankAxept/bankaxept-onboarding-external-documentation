@@ -57,76 +57,184 @@ O -->> I: 200 OK with Order (ACCEPTED)
 ```
 
 ## Signatures Approved by Bank
-An order is created and signed by signee(s) that cannot be automatically validated, and the bank approves the signatures
-```mermaid
-sequenceDiagram
-participant I as Integrator
-participant O as Onboarding API
+An order is created and signed by signee(s) that cannot be automatically validated, and the bank approves the signatures.
+When the bank approves, the order passes briefly through `BAX_ACTIVE` before it moves on to `ACCEPTED`.
 
-note over I, O: Register new order
-I ->> O: PUT /orders/new
-O -->> I: 202 Accepted with orderId
+=== "Approved within the deadline"
 
-O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
-I ->> O : GET /orders/{orderId}
-O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
 
-note over O: Merchant signs, signatures not automatically validated
-O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
-I ->> O : GET /orders/{orderId}
-O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
+    note over I, O: Register new order
+    I ->> O: PUT /orders/new
+    O -->> I: 202 Accepted with orderId
 
-rect rgb(225, 240, 255)
-note over I, O: Option 1: Bank approves within the deadline <br/> BAX_ACTIVE is a short intermediate status before the order moves on to ACCEPTED
-O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
-O --) I: POST webhookUrl {orderStatus: ACCEPTED}
-end
-rect rgb(255, 238, 220)
-note over I, O: Option 2: Bank deadline expires <br/> The order is activated, and the bank approves it later
-O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
-O --) I: POST webhookUrl {orderStatus: ACCEPTED}
-end
-I ->> O : GET /orders/{orderId}
-O -->> I: 200 OK with Order (ACCEPTED)
-```
+    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+
+    note over O: Merchant signs, signatures not automatically validated
+    O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
+
+    note over O: Bank approves
+    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+    note right of O: Short intermediate status
+    O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (ACCEPTED)
+    ```
+
+=== "Approved after the deadline expires"
+
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
+
+    note over I, O: Register new order
+    I ->> O: PUT /orders/new
+    O -->> I: 202 Accepted with orderId
+
+    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+
+    note over O: Merchant signs, signatures not automatically validated
+    O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
+
+    note over O: Bank deadline expires, the order is activated
+    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (BAX_ACTIVE)
+
+    note over O: Bank approves later
+    O --) I: POST webhookUrl {orderStatus: ACCEPTED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (ACCEPTED)
+    ```
 
 ## Signatures Rejected by Bank
-An order is created with and signed by the incorrect signee(s) and the signatures are rejected by the bank.
-```mermaid
-sequenceDiagram
-participant I as Integrator
-participant O as Onboarding API
+An order is created and signed by the incorrect signee(s), and the signatures are rejected by the bank.
 
-note over I, O: Register new order
-I ->> O: PUT /orders/new
-O -->> I: 202 Accepted with orderId
+=== "Rejected within the deadline"
 
-O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
-I ->> O : GET /orders/{orderId}
-O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
 
-note over O: Merchant signs
-rect rgb(225, 240, 255)
-note over I, O: Option 1: Signatures not automatically validated <br/> The bank rejects the signatures (also possible after the bank deadline has expired)
-O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
-end
-rect rgb(255, 238, 220)
-note over I, O: Option 2: Signatures automatically validated <br/> The order is activated, and the bank rejects the signatures later
-O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
-end
-O --) I: POST webhookUrl {orderStatus: REJECTED_RECREATE_SIGNING}
-I ->> O : GET /orders/{orderId}
-O -->> I: 200 OK with Order (REJECTED_RECREATE_SIGNING and reason for rejection)
+    note over I, O: Register new order
+    I ->> O: PUT /orders/new
+    O -->> I: 202 Accepted with orderId
 
-rect rgb(225, 240, 255)
-note over I, O: Option A: Resend signing request <br/> Use this if signing requirements change <br/> or if the previous signature was rejected.
-I ->> O: PUT /orders/{orderId}/signees
-O -->> I: 202 Accepted
-O ->> O: Send email to customer
-O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
-end
-rect rgb(255, 238, 220)
-note over I, O: Option B: Order closed by BankAxept <br/> This is a terminal state. A new order needs to be created.
-O --) I: POST webhookUrl {orderStatus: REJECTED_CREATE_NEW_ORDER}
-end
-```
+    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+
+    note over O: Merchant signs, signatures not automatically validated
+    O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
+
+    note over O: Bank rejects
+    O --) I: POST webhookUrl {orderStatus: REJECTED_RECREATE_SIGNING}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (REJECTED_RECREATE_SIGNING and reason for rejection)
+    ```
+
+=== "Rejected after the deadline expires"
+
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
+
+    note over I, O: Register new order
+    I ->> O: PUT /orders/new
+    O -->> I: 202 Accepted with orderId
+
+    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+
+    note over O: Merchant signs, signatures not automatically validated
+    O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (PENDING_BANK_RESPONSE)
+
+    note over O: Bank deadline expires, the order is activated
+    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (BAX_ACTIVE)
+
+    note over O: Bank rejects later
+    O --) I: POST webhookUrl {orderStatus: REJECTED_RECREATE_SIGNING}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (REJECTED_RECREATE_SIGNING and reason for rejection)
+    ```
+
+=== "Rejected after automatic validation"
+
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
+
+    note over I, O: Register new order
+    I ->> O: PUT /orders/new
+    O -->> I: 202 Accepted with orderId
+
+    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
+
+    note over O: Merchant signs, signatures automatically validated
+    O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (BAX_ACTIVE)
+
+    note over O: Bank rejects later
+    O --) I: POST webhookUrl {orderStatus: REJECTED_RECREATE_SIGNING}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (REJECTED_RECREATE_SIGNING and reason for rejection)
+    ```
+
+### After a rejection
+An order in `REJECTED_RECREATE_SIGNING` is not final. It continues in one of two ways:
+
+- **Resend signing request:** use this if signing requirements change or if the previous signature was rejected. The order goes back to `NOT_SIGNED` and continues as in the flows above.
+- **Order closed by BankAxept:** the order moves to `REJECTED_CREATE_NEW_ORDER`. This is a terminal state, and a new order needs to be created.
+
+=== "Resend signing request"
+
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
+
+    I ->> O: PUT /orders/{orderId}/signees
+    O -->> I: 202 Accepted
+    O ->> O: Send email to customer
+    O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (NOT_SIGNED)
+    ```
+
+=== "Order closed by BankAxept"
+
+    ```mermaid
+    sequenceDiagram
+    participant I as Integrator
+    participant O as Onboarding API
+
+    note over O: Order closed by BankAxept
+    O --) I: POST webhookUrl {orderStatus: REJECTED_CREATE_NEW_ORDER}
+    I ->> O : GET /orders/{orderId}
+    O -->> I: 200 OK with Order (REJECTED_CREATE_NEW_ORDER)
+    ```

@@ -95,3 +95,11 @@ theme:
         custom_checkbox: true
     - pymdownx.tilde
   copyright: Copyright &copy; 2023 ePayment team
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
