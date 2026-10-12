@@ -61,7 +61,7 @@ Test, like production, validates customers against [BRREG](dictionary.md), so an
 
 ## Signees
 
-`POST /v2/simulation/signatures` validates the signees you submit against BRREG's signing authority data for the organisation. A match sends the order straight to `BAX_ACTIVE`; no match sends it to `PENDING_BANK_RESPONSE`. See [Automatically Approved Signatures](./test_flows.md#automatically-approved-signatures) and [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank).
+`POST /psp/v2/simulation/signatures` validates the signees you submit against BRREG's signing authority data for the organisation. A match sends the order straight to `BAX_ACTIVE`; no match sends it to `PENDING_BANK_RESPONSE`. See [Automatically Approved Signatures](./test_flows.md#automatically-approved-signatures) and [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank).
 
 Two BRREG endpoints are checked, a match on either is enough:
 
@@ -117,7 +117,10 @@ Two things matter here:
 
 Submit the exact set of people from one combination, no more, no fewer. Matching is on full name (exact string) and date of birth:
 
-```json
+```http
+POST /psp/v2/simulation/signatures
+Content-Type: application/json
+
 {
   "orderId": "{orderId}",
   "signees": [
