@@ -1,8 +1,11 @@
+---
+hide:
+  - navigation
+---
+
 <p align="center">
 <img alt="BankAxept_Logo.svg" src="../assets/images/bankaxept_logo.svg" width="200"/>
 </p>
-
-# What is the Onboarding API?
 
 This is an API for Norwegian [PSPs](dictionary.md) to register new [Bax numbers](dictionary.md) which are automatically assigned BankAxept products.
 Following a merchant agreement registration request BankAxept will:
