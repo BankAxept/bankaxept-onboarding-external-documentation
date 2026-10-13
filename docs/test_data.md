@@ -47,7 +47,7 @@ For a full list of valid Norwegian bank identifiers, refer to the [BITS document
 
 ## Account Numbers
 
-Account numbers aren't arbitrary digits; the first 4 digits are the bank identifier, and the last digit is a check digit, so only specific combinations are valid.
+Account numbers aren't arbitrary digits: the first 4 digits are the bank identifier, and the last digit is a check digit. Only specific combinations are valid.
 
 ### Generate a Test Account Number
 
