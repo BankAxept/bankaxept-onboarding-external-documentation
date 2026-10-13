@@ -47,7 +47,7 @@ For a full list of valid Norwegian bank identifiers, refer to the [BITS document
 
 ## Account Numbers
 
-The modulus 11 algorithm for Norwegian bank account numbers is used to validate the check digit at the end of the account number.
+Account numbers aren't arbitrary digits; the first 4 digits are the bank identifier, and the last digit is a check digit, so only specific combinations are valid.
 
 ### Generate a Test Account Number
 
@@ -78,7 +78,7 @@ This runs entirely in your browser using the algorithm described below; it does 
 
 **Structure.** A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the [bank identifier](dictionary.md) and the last digit is a check digit.
 
-**Calculation.** To display the calculation of the check digit, we will use the following example account number:
+**Calculation.** The check digit is validated using the modulus 11 algorithm. To display the calculation, we will use the following example account number:
 ```
 15067328555
 ```
