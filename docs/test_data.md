@@ -76,18 +76,15 @@ This runs entirely in your browser using the algorithm described below; it does 
 <details markdown="1">
 <summary>How the check digit is calculated</summary>
 
-### Structure
-A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the [bank identifier](dictionary.md) and the last digit is a check digit.
+**Structure.** A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the [bank identifier](dictionary.md) and the last digit is a check digit.
 
-### Calculation
-To display the calculation of the check digit, we will use the following example account number:
+**Calculation.** To display the calculation of the check digit, we will use the following example account number:
 ```
 15067328555
 ```
 
 
-#### Weights
-Assign weights to the first 10 digits of the account number. The weights are: 2, 3, 4, 5, 6, 7, 2, 3, 4, 5 (repeating after 7), starting from the digit immediately before the check digit and moving left.
+**Weights.** Assign weights to the first 10 digits of the account number. The weights are: 2, 3, 4, 5, 6, 7, 2, 3, 4, 5 (repeating after 7), starting from the digit immediately before the check digit and moving left.
 ```
 5 (weight 2)
 5 (weight 3)
@@ -101,8 +98,7 @@ Assign weights to the first 10 digits of the account number. The weights are: 2,
 1 (weight 5)
 ```
 
-#### Multiply and Sum
-Multiply each digit by its corresponding weight and sum the results:
+**Multiply and sum.** Multiply each digit by its corresponding weight and sum the results:
 ```
 5 * 2 = 10
 5 * 3 = 15
@@ -121,14 +117,12 @@ The sum is
 10 + 15 + 32 + 10 + 18 + 49 + 12 + 0 + 20 + 5 = 171
 ```
 
-#### Modulo Operation
-Now, take the sum and divide it by 11 and find the remainder:
+**Modulo operation.** Now, take the sum and divide it by 11 and find the remainder:
 ```
 171 % 11 = 6
 ```
 
-#### Check Digit
-Subtract the remainder from 11 to get the check digit:
+**Check digit.** Subtract the remainder from 11 to get the check digit:
 ```
 11 - 6 = 5
 ```
