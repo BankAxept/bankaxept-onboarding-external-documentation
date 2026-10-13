@@ -4,9 +4,10 @@ These diagrams show the API calls and [webhooks](./webhooks.md) for the main pat
 The remaining paths (for example bank deadline expiry or an order closed by BankAxept) behave as described in the [Production flows](./prod_flows.md).
 Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).
 If you do not use webhooks, you can poll `GET /psp/v2/orders/{orderId}` instead.
+For how to construct valid bank identifiers, account numbers, BRREG organisations, and signees, see [Test Data](./test_data.md).
 
 ## Automatically Approved Signatures
-An order is created with and signed by the correct signee(s) and the signatures are automatically approved
+An order is created with and signed by the correct signee(s) and the signatures are automatically approved. See [Signees](./test_data.md#signees) for how to construct a matching combination.
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -14,7 +15,7 @@ participant O as Onboarding API
 
 note over I, O: Register new order
 I ->> O: PUT /orders/new
-note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
+note right of O: We validate Account Ownership and Account Number
 O -->> I: 202 Accepted with orderId
 
 O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
@@ -23,7 +24,7 @@ O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
 
 note over I, O: Simulate signing of an order
 I ->> O: POST /simulation/signatures
-note right of O: Send signee(s) that have signature rights <br/> based on the information in BRREG
+note right of O: Send signee(s) that have signature rights
 O -->> I: 202 Accepted
 
 O --) I: POST webhookUrl {orderStatus: BAX_ACTIVE}
@@ -32,7 +33,7 @@ O -->> I: 200 OK with Order (BAX_ACTIVE)
 ```
 
 ## Signatures Approved by Bank
-An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank
+An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank. See [Signees](./test_data.md#signees) for how BRREG signing combinations work.
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -40,7 +41,7 @@ participant O as Onboarding API
 
 note over I, O: Register new order
 I ->> O: PUT /orders/new
-note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
+note right of O: We validate Account Ownership and Account Number
 O -->> I: 202 Accepted with orderId
 
 O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
@@ -49,7 +50,7 @@ O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
 
 note over I, O: Simulate signing of an order
 I ->> O: POST /simulation/signatures
-note right of O: Send signee(s) that do not have signature rights <br/> based on the information in BRREG
+note right of O: Send signee(s) that do not have signature rights
 O -->> I: 202 Accepted
 
 O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
@@ -68,7 +69,7 @@ O -->> I: 200 OK with Order (ACCEPTED)
 ```
 
 ## Signatures Rejected by Bank
-An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank
+An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank. See [Signees](./test_data.md#signees) for how BRREG signing combinations work.
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -76,7 +77,7 @@ participant O as Onboarding API
 
 note over I, O: Register new order
 I ->> O: PUT /orders/new
-note right of O: We validate: Account Ownership and Account Number. <br/> We provide the ability to bypass account ownership validation <br/> and more information regarding valid account numbers <br/> can be found in our documentation
+note right of O: We validate Account Ownership and Account Number
 O -->> I: 202 Accepted with orderId
 
 O --) I: POST webhookUrl {orderStatus: NOT_SIGNED}
@@ -85,7 +86,7 @@ O -->> I: 200 OK with Order (NOT_SIGNED, BAX Number)
 
 note over I, O: Simulate signing of an order
 I ->> O: POST /simulation/signatures
-note right of O: Send signee(s) that do not have signature rights <br/> based on the information in BRREG
+note right of O: Send signee(s) that do not have signature rights
 O -->> I: 202 Accepted
 
 O --) I: POST webhookUrl {orderStatus: PENDING_BANK_RESPONSE}
