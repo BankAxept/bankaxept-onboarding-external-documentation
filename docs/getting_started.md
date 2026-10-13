@@ -76,7 +76,7 @@ We validate the following information when registering an order: <br/>
 **MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
 
 ### Test
-See [Test Data](./test_data.md) for how to construct valid bank identifiers, account numbers, BRREG organisations, and signees, and when you need to bypass account ownership validation. You can view our flow diagrams for the test environment [here](./test_flows.md).
+See [Test Data](./test_data.md) for how to discover valid bank identifiers, construct account numbers, select BRREG organisations and signees, and decide whether to bypass account ownership validation. You can view our flow diagrams for the test environment [here](./test_flows.md).
 
 ### Production
 You can view our flow diagrams for the production environment [here](./prod_flows.md). <br/>
