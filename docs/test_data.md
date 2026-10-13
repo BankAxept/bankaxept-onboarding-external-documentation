@@ -71,7 +71,7 @@ Use the generator below to create a valid account number for testing. It default
 </div>
 </div>
 
-This runs entirely in your browser using the algorithm described below; it does not call any API or send data anywhere.
+This runs entirely in your browser using the algorithm described below; it does not call any API or send data anywhere. If you'd rather build your own generator, for internal testing tools for example, the full calculation is described below.
 
 <details markdown="1">
 <summary>How the check digit is calculated</summary>
