@@ -2,7 +2,7 @@
 
 To construct a complete, working test order from scratch, you need four things:
 
-1. A settlement account for a real [bank identifier](#banks), see [Account Numbers](#account-numbers) for generating one.
+1. A settlement account for a real [bank identifier](#banks); see [Account Numbers](#account-numbers) for generating one.
 2. A real organisation from [BRREG](#customers).
 3. A decision: [bypass account ownership validation](#bypassing-account-ownership-validation), since a BRREG organisation and a generated account number have no real ownership relationship, or use a real customer-account number relationship instead.
 4. [Signees](#signees) that either match BRREG's registered signing combination, for automatic approval (see [Automatically Approved Signatures](./test_flows.md#automatically-approved-signatures)), or deliberately don't, to send the order to the bank for review instead (see [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank) and [Signatures Rejected by Bank](./test_flows.md#signatures-rejected-by-bank)).
