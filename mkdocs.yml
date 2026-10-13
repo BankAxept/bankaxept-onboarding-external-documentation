@@ -10,7 +10,6 @@ plugins:
         theme: forest
   - search
 nav:
-nav:
   - Introduction: index.md
   - Resources:
       - API Policy: api_policy.md
