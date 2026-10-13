@@ -75,15 +75,8 @@ We validate the following information when registering an order: <br/>
 **Account Number**: We validate that the account number is valid and belongs to the customer. <br/>
 **MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
 
-### Test 
-Account numbers are validated during the registration process. <br/> The first four digits of the account number is always the [bank reg number.](dictionary.md) <br/>
-We validate that the bank reg number is in our list of valid settlement banks. <br/> 
-In the test environment, you **must** use a valid DNB bank registration number. For example 7001. <br/> 
-This applies whether you are bypassing validation or actively testing the [KAR](./dictionary.md) implementation. <br/> 
-If you are testing the KAR implementation without bypassing validation, you must also use an organization number that is linked to a valid DNB account. You can read more about [valid account numbers](./valid_account_numbers.md) in our documentation. <br/>
-
-For a list of valid registration numbers, refer to [BITS documentation](https://www.bits.no/document/iban/).
-You can view our flow diagrams for the test environment [here](./test_flows.md).
+### Test
+See [Test Data](./test_data.md) for how to discover valid bank identifiers, construct account numbers, select BRREG organisations and signees, and decide whether to bypass account ownership validation. You can view our flow diagrams for the test environment [here](./test_flows.md).
 
 ### Production
 You can view our flow diagrams for the production environment [here](./prod_flows.md). <br/>
