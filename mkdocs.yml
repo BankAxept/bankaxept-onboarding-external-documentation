@@ -10,19 +10,19 @@ plugins:
         theme: forest
   - search
 nav:
-  - Welcome: README.md
-  - Documentation:
-      - Introduction: getting_started.md
-      - Resources:
-          - API Policy: api_policy.md
-          - Configuration: configuration.md
-          - Dictionary: dictionary.md
-          - MCC Codes: mcc_codes.md
-          - Problems: problems.md
-          - Prod flows: prod_flows.md
-          - Test Data: test_data.md
-          - Test flows: test_flows.md
-          - Webhooks: webhooks.md
+nav:
+  - Introduction: index.md
+  - Resources:
+      - API Policy: api_policy.md
+      - Configuration: configuration.md
+      - Dictionary: dictionary.md
+      - MCC Codes: mcc_codes.md
+      - Problems: problems.md
+      - Prod flows: prod_flows.md
+      - Test Data: test_data.md
+      - Test flows: test_flows.md
+      - Webhooks: webhooks.md
+  - Swagger: https://onboarding.bankaxept.no/swagger-ui/index.html#/
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
   - assets/javascripts/mermaid-init.js

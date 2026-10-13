@@ -1,6 +1,6 @@
 # Valid flows for Production
 
-These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./getting_started.md#order-statuses-flowchart).
+These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./index.md#order-statuses-flowchart).
 Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).
 If you do not use webhooks, you can poll `GET /psp/v2/orders/{orderId}` instead.
 
