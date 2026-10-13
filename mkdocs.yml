@@ -22,7 +22,6 @@ nav:
           - Prod flows: prod_flows.md
           - Test Data: test_data.md
           - Test flows: test_flows.md
-          - Valid account numbers: valid_account_numbers.md
           - Webhooks: webhooks.md
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
@@ -58,6 +57,7 @@ theme:
       accent: purple
   copyright: Copyright &copy; 2023 ePayment team
 markdown_extensions:
+  - md_in_html
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

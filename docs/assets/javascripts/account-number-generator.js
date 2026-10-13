@@ -1,5 +1,5 @@
 // Weights applied to the first 10 digits of a Norwegian bank account number,
-// left to right, as described in valid_account_numbers.md.
+// left to right, as described in test_data.md's Account Numbers section.
 const ACCOUNT_NUMBER_WEIGHTS = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
 
 function randomDigit() {
