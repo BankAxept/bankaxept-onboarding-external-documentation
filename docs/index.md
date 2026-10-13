@@ -3,6 +3,8 @@ hide:
   - navigation
 ---
 
+<div class="md-home-content" markdown="1">
+
 <p align="center">
 <img alt="BankAxept_Logo.svg" src="../assets/images/bankaxept_logo.svg" width="200"/>
 </p>
@@ -83,3 +85,5 @@ You can view our flow diagrams for the production environment [here](./prod_flow
 
 ## Webhooks
 You can view more information about webhooks [here](./webhooks.md). <br/>
+
+</div>

@@ -30,6 +30,7 @@ extra_javascript:
   - assets/javascripts/external-nav-links.js
 extra_css:
   - assets/stylesheets/account-number-generator.css
+  - assets/stylesheets/home.css
 theme:
   name: material
   features:
