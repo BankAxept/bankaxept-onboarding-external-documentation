@@ -1,0 +1,8 @@
+/* On macOS trackpads, overscrolling past the top of the page reveals the
+   raw <html> background behind the sticky purple header for an instant.
+   The browser default is white, which flashes jarringly against the
+   colored header. Match it to the header color so the bounce blends in
+   instead of flashing white. */
+html {
+    background-color: var(--md-primary-fg-color);
+}
