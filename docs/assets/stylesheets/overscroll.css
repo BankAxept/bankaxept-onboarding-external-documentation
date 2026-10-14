@@ -2,7 +2,13 @@
    raw <html> background behind the sticky purple header for an instant.
    The browser default is white, which flashes jarringly against the
    colored header. Match it to the header color so the bounce blends in
-   instead of flashing white. */
+   instead of flashing white.
+
+   --md-primary-fg-color isn't usable here: Material sets
+   data-md-color-primary on <body>, so the override only inherits to body
+   descendants and <html> still sees the theme's root default (indigo).
+   Hardcode the deep-purple hex instead; keep this in sync with
+   mkdocs.yml's theme.palette primary (both schemes use deep-purple). */
 html {
-    background-color: var(--md-primary-fg-color);
+    background-color: #7e56c2;
 }
