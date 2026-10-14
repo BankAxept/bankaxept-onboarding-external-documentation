@@ -7,8 +7,8 @@ External-facing documentation for the BankAxept Onboarding API, built with MkDoc
 ```sh
 python3 -m venv .venv && source .venv/bin/activate
 pip install mkdocs-material mkdocs-mermaid2-plugin mkdocs-glightbox mkdocs-redirects
-mkdocs build --strict                # same check as CI; always run before committing
-mkdocs serve -a 127.0.0.1:48731      # preview at http://127.0.0.1:48731
+mkdocs build --strict                
+mkdocs serve -a 127.0.0.1:48731
 ```
 
 `mkdocs build --strict` is the authoritative check. It fails on broken internal links/anchors (verify with the grep pattern below, since strict mode does not always catch cross-page anchor targets) and is required before every commit in this repo. CI runs the identical command (`.github/workflows/pull_request.yml`, `.github/workflows/pages.yaml`); keep the `pip install` lines there, in `README.md`, and in your own setup in sync whenever a new MkDocs plugin/dependency is added.
@@ -27,7 +27,7 @@ These were hard-won over many iterations; follow them by default rather than red
 - **`docs/dictionary.md` is the single source of truth for terminology.** Use the exact terms defined there (e.g. "bank identifier," matching the OpenAPI spec's own parameter naming `GET /v2/banks/{bankIdentifier}`) rather than older or informal variants that may still linger in some prose. If you find inconsistent terminology while editing a page, fix it and/or update the dictionary rather than adding a one-off local rule here.
 - **Don't hardcode a single real example organisation, search term, or person's data into permanent docs.** Doing so pigeonholes every integrator into testing against the same narrow fixture, and embedding real people's personal data (e.g. real BRREG board member names/birthdates) in docs isn't appropriate even though the data is technically public. Use fully invented example data (e.g. "Ola Nordmann," `000000000`/`Eksempel AS`) for worked examples instead, and describe search/lookup methodology generically rather than naming one company.
 - **Cut fluff aggressively.** Prefer short, direct sentences and bullet lists over multi-clause prose; don't restate the same caveat in multiple places; don't add hedging or unnecessary context sentences. When in doubt, cut rather than add.
-- **BankAxept's own operating entity is Stø AS.** Don't use it as a generic "test customer" example (confusing — it's literally us, not an arbitrary merchant); it's fine to use its own real public BRREG signature data specifically when illustrating the *shape* of a BRREG API response, since that's our own data.
+- **BankAxept's own operating entity is Stø AS.** Don't use it as a generic "test customer" example.
 
 ## Structural gotchas
 
@@ -36,18 +36,11 @@ These were hard-won over many iterations; follow them by default rather than red
 - **Raw HTML blocks containing nested Markdown** (e.g. a `<details>` block with headings/links/code fences inside) require the `md_in_html` extension (already enabled) **and** a `markdown="1"` attribute on the containing tag, otherwise the nested content renders as literal unprocessed text instead of being parsed.
 - **One CSS/JS file per concern** under `docs/assets/{stylesheets,javascripts}/`, registered in `mkdocs.yml`'s `extra_css`/`extra_javascript`, rather than one large shared file.
 - **Material icon/emoji shortcodes (e.g. `:material-open-in-new:`) do not render in `nav:` titles** in this setup — confirmed they output as literal text. Use plain Unicode characters (e.g. `↗`) in nav labels instead.
-- External links in the top nav (tabs/sidebar) open in a new tab via `docs/assets/javascripts/external-nav-links.js`. In-text content links to external sites currently do **not** (tracked as an open decision in issue #78 — don't unilaterally change this without checking that issue first).
+- External links in the top nav (tabs/sidebar) open in a new tab via `docs/assets/javascripts/external-nav-links.js`. In-text content links to external sites currently do **not**
 
 ## Issue/PR workflow
 
 - One branch and one PR per GitHub issue; keep PRs scoped narrowly rather than bundling unrelated changes, even when related work is discussed in the same conversation.
 - Open PRs as **drafts** (`gh pr create --draft`) so reviewers aren't pinged until the content is actually ready. Let the user/human decide when to mark it ready (`gh pr ready <number>`) rather than doing so unilaterally; ask if it's unclear.
-- Use GitHub's native sub-issues for tracking: `gh issue create --parent <number>` links a new issue under a parent/epic directly. Verify sub-issue linking actually worked with the GraphQL `subIssues` query shown below — the `gh issue edit <n> --parent <p>` form can fail silently with an organization SAML SSO error that requires `gh auth refresh -h github.com -s repo,read:org` to resolve (an already-authorized OAuth app is not sufficient; the specific CLI token also needs its own SSO handshake).
-
-  ```sh
-  gh api graphql -f query='
-  query { repository(owner: "BankAxept", name: "bankaxept-onboarding-external-documentation") {
-    issue(number: <PARENT>) { subIssues(first: 20) { nodes { number title state } } }
-  } }' -q '.data.repository.issue.subIssues.nodes[] | "\(.number): \(.title) [\(.state)]"'
-  ```
+- Use GitHub's native sub-issues for tracking: `gh issue create --parent <number>` links a new issue under a parent/epic directly. If `gh issue edit <n> --parent <p>` fails with an organization SAML SSO error, run `gh auth refresh -h github.com -s repo,read:org` (an already-authorized OAuth app is not sufficient; the specific CLI token also needs its own SSO handshake).
 - When a Copilot or human review comment reveals that existing *issue text* (not just the PR) was wrong (e.g. written before a fact was corrected later in conversation), fix the issue description too, not just the code/docs — don't leave stale/incorrect issue text for future reference.
