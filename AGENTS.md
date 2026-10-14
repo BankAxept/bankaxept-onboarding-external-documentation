@@ -41,7 +41,7 @@ These were hard-won over many iterations; follow them by default rather than red
 ## Issue/PR workflow
 
 - One branch and one PR per GitHub issue; keep PRs scoped narrowly rather than bundling unrelated changes, even when related work is discussed in the same conversation.
-- Open PRs as **drafts** (`gh pr create --draft`) so reviewers aren't pinged until the content is actually ready; mark ready (`gh pr ready <number>`) only once settled.
+- Open PRs as **drafts** (`gh pr create --draft`) so reviewers aren't pinged until the content is actually ready. Let the user/human decide when to mark it ready (`gh pr ready <number>`) rather than doing so unilaterally; ask if it's unclear.
 - Use GitHub's native sub-issues for tracking: `gh issue create --parent <number>` links a new issue under a parent/epic directly. Verify sub-issue linking actually worked with the GraphQL `subIssues` query shown below — the `gh issue edit <n> --parent <p>` form can fail silently with an organization SAML SSO error that requires `gh auth refresh -h github.com -s repo,read:org` to resolve (an already-authorized OAuth app is not sufficient; the specific CLI token also needs its own SSO handshake).
 
   ```sh
