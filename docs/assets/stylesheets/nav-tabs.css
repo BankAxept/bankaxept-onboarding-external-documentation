@@ -1,0 +1,5 @@
+/* Visually separate the external OpenAPI Spec tab from the rest of the nav
+   tabs by pushing it to the right edge of the tab bar. */
+.md-tabs__item:last-child {
+    margin-left: auto;
+}
