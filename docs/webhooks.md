@@ -16,7 +16,7 @@ This is how the webhook flow works:
   "orderStatus": "PENDING_BANK_RESPONSE"
 }
 ```
-where the `orderStatus` refers to the statuses defined in the [Possible Order Statuses](getting_started.md#possible-order-statuses)
+where the `orderStatus` refers to the statuses defined in the [Possible Order Statuses](index.md#possible-order-statuses)
 
 3. The PSP should then call our existing endpoint to fetch the updated status ( `GET /psp/v2/orders/{orderId}` )
     - The `orderStatus` field in this response should give you the necessary information about the agreement registration order.

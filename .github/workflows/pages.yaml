@@ -36,6 +36,7 @@ jobs:
           pip install mkdocs-material
           pip install mkdocs-mermaid2-plugin
           pip install mkdocs-glightbox
+          pip install mkdocs-redirects
       - name: Build static site
         run: mkdocs build --strict #needs config to build to _site.
       - name: Upload artifact

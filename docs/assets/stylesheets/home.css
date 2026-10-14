@@ -1,0 +1,6 @@
+/* Without the left sidebar (hidden on the homepage), content would otherwise
+   stretch to the full grid width, which hurts readability for long paragraphs. */
+.md-home-content {
+    max-width: 50rem;
+    margin: 0 auto;
+}
