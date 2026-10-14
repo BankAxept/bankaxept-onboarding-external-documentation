@@ -8,7 +8,17 @@
    data-md-color-primary on <body>, so the override only inherits to body
    descendants and <html> still sees the theme's root default (indigo).
    Hardcode the deep-purple hex instead; keep this in sync with
-   mkdocs.yml's theme.palette primary (both schemes use deep-purple). */
+   mkdocs.yml's theme.palette primary (both schemes use deep-purple).
+
+   Bottom overscroll reveals the same <html> background, but there's no
+   purple header down there, just the dark footer, so purple would look
+   mismatched. A second background layer sized/pinned to the top keeps
+   the purple near the header while the rest of <html> (including the
+   bottom overscroll) stays near-black to blend with the footer. */
 html {
-    background-color: #7e56c2;
+    background-color: #141414;
+    background-image: linear-gradient(#7e56c2, #7e56c2);
+    background-repeat: no-repeat;
+    background-size: 100% 300px;
+    background-position: top;
 }
