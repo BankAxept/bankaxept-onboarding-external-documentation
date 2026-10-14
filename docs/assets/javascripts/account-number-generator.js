@@ -37,7 +37,9 @@ function generateAccountNumber(bankRegNumber) {
     throw new Error("Could not generate a valid account number, please try again.");
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+// document$ re-fires on every navigation.instant page swap, so listeners get
+// re-attached to each page's (new) elements; DOMContentLoaded would only fire once.
+document$.subscribe(function () {
     const bankRegNumberInput = document.getElementById('account-number-bank-reg-number');
     const generateButton = document.getElementById('account-number-generate');
     const resultValue = document.getElementById('account-number-result-value');
