@@ -1,0 +1,19 @@
+/* The default back-to-top button is a plain white pill, which flashes
+   jarringly against the colored header/tabs as it appears and disappears
+   while scrolling. Color it to match the theme and even out its
+   appear/disappear transition so it fades both ways instead of snapping
+   away instantly. */
+.md-top {
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+}
+
+.md-top:focus,
+.md-top:hover {
+    background-color: var(--md-accent-fg-color);
+    color: var(--md-accent-bg-color);
+}
+
+.md-top[hidden] {
+    transition-duration: 125ms;
+}
