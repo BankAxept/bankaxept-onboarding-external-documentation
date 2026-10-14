@@ -50,5 +50,4 @@ These were hard-won over many iterations; follow them by default rather than red
     issue(number: <PARENT>) { subIssues(first: 20) { nodes { number title state } } }
   } }' -q '.data.repository.issue.subIssues.nodes[] | "\(.number): \(.title) [\(.state)]"'
   ```
-- Avoid backticks in `gh` command bodies passed through the shell tool unless properly escaped/single-quoted — zsh will interpret them as command substitution, silently corrupting issue/PR/comment text (this has happened before).
 - When a Copilot or human review comment reveals that existing *issue text* (not just the PR) was wrong (e.g. written before a fact was corrected later in conversation), fix the issue description too, not just the code/docs — don't leave stale/incorrect issue text for future reference.
