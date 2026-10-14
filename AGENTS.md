@@ -36,7 +36,7 @@ These were hard-won over many iterations; follow them by default rather than red
 - **Raw HTML blocks containing nested Markdown** (e.g. a `<details>` block with headings/links/code fences inside) require the `md_in_html` extension (already enabled) **and** a `markdown="1"` attribute on the containing tag, otherwise the nested content renders as literal unprocessed text instead of being parsed.
 - **One CSS/JS file per concern** under `docs/assets/{stylesheets,javascripts}/`, registered in `mkdocs.yml`'s `extra_css`/`extra_javascript`, rather than one large shared file.
 - **Material icon/emoji shortcodes (e.g. `:material-open-in-new:`) do not render in `nav:` titles** in this setup — confirmed they output as literal text. Use plain Unicode characters (e.g. `↗`) in nav labels instead.
-- External links in the top nav (tabs/sidebar) open in a new tab via `docs/assets/javascripts/external-nav-links.js`. In-text content links to external sites currently do **not**
+- External links in the top nav (tabs/sidebar) open in a new tab via `docs/assets/javascripts/external-nav-links.js`. In-text content links to external sites currently do **not**.
 
 ## Issue/PR workflow
 
