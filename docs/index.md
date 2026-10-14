@@ -6,7 +6,7 @@ hide:
 <div class="md-home-content" markdown="1">
 
 <p align="center">
-<img alt="BankAxept_Logo.svg" src="../assets/images/bankaxept_logo.svg" width="200"/>
+<img alt="BankAxept_Logo.svg" src="assets/images/bankaxept_logo.svg" width="200"/>
 </p>
 
 This is an API for Norwegian [PSPs](dictionary.md) to register new [Bax numbers](dictionary.md) which are automatically assigned BankAxept products.
