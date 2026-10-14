@@ -9,6 +9,10 @@ plugins:
       arguments:
         theme: forest
   - search
+  - redirects:
+      redirect_maps:
+        getting_started.md: index.md
+        valid_account_numbers.md: test_data.md
 nav:
   - Introduction: index.md
   - Resources:
