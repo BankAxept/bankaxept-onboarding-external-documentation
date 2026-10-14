@@ -34,6 +34,7 @@ extra_css:
   - assets/stylesheets/nav-tabs.css
   - assets/stylesheets/back-to-top.css
   - assets/stylesheets/overscroll.css
+  - assets/stylesheets/mermaid-container.css
 theme:
   name: material
   features:
