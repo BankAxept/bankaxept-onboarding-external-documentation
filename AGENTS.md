@@ -29,6 +29,11 @@ These were hard-won over many iterations; follow them by default rather than red
 - **Cut fluff aggressively.** Prefer short, direct sentences and bullet lists over multi-clause prose; don't restate the same caveat in multiple places; don't add hedging or unnecessary context sentences. When in doubt, cut rather than add.
 - **BankAxept's own operating entity is Stø AS.** Don't use it as a generic "test customer" example.
 
+## Code comments
+
+- Default to no comment. Add one only when a reader cannot infer the reason from the code, names, types, or test title.
+- Explain *why*: a business constraint, a non-obvious edge case, a dependency limitation, or a workaround's removal condition. Keep it short and self-contained, usually one or two lines beside the relevant code.
+
 ## Structural gotchas
 
 - **`docs/index.md` is the homepage** and builds directly to `_site/index.html` (no subdirectory), unlike every other page which builds to `_site/<name>/index.html`. This means relative asset paths on this page must **not** have a leading `../` (e.g. `assets/images/x.svg`, not `../assets/images/x.svg`) — the `../` prefix escapes the deployed GitHub Pages subpath in production even though it appears to work when running `mkdocs serve` locally (which has no subpath to escape, so the browser silently self-corrects).
