@@ -10,15 +10,13 @@
    Hardcode the deep-purple hex instead; keep this in sync with
    mkdocs.yml's theme.palette primary (both schemes use deep-purple).
 
-   Bottom overscroll reveals the same <html> background, but there's no
-   purple header down there, just the dark footer, so purple would look
-   mismatched. A second background layer sized/pinned to the top keeps
-   the purple near the header while the rest of <html> (including the
-   bottom overscroll) stays near-black to blend with the footer. */
+   This also colors the bottom overscroll bounce purple, even though the
+   footer down there is dark, not purple. Tried pinning a sized/positioned
+   purple layer to just the top via background-size/background-position,
+   but that doesn't work: browsers only propagate a flat background-color
+   into the negative-scroll canvas revealed by the bounce, not positioned
+   background-images. Making it match top and bottom differently would
+   need a JS scroll listener, which isn't worth it for this polish fix. */
 html {
-    background-color: #141414;
-    background-image: linear-gradient(#7e56c2, #7e56c2);
-    background-repeat: no-repeat;
-    background-size: 100% 300px;
-    background-position: top;
+    background-color: #7e56c2;
 }
