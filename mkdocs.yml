@@ -15,16 +15,18 @@ plugins:
         valid_account_numbers.md: test_data.md
 nav:
   - Introduction: index.md
-  - Resources:
-      - API Policy: api_policy.md
+  - Integration:
       - Configuration: configuration.md
+      - API Policy: api_policy.md
+  - Flows:
+      - Prod flows: prod_flows.md
+      - Test flows: test_flows.md
+      - Webhooks: webhooks.md
+  - Test Data: test_data.md
+  - Reference:
       - Dictionary: dictionary.md
       - MCC Codes: mcc_codes.md
       - Problems: problems.md
-      - Prod flows: prod_flows.md
-      - Test Data: test_data.md
-      - Test flows: test_flows.md
-      - Webhooks: webhooks.md
   - "OpenAPI Spec ↗": https://onboarding.bankaxept.no/swagger-ui/index.html#/
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
