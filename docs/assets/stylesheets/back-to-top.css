@@ -1,0 +1,14 @@
+.md-top {
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+}
+
+.md-top:focus,
+.md-top:hover {
+    background-color: var(--md-accent-fg-color);
+    color: var(--md-accent-bg-color);
+}
+
+.md-top[hidden] {
+    transition-duration: 125ms;
+}
