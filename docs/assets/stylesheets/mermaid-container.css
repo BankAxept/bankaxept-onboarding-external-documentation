@@ -1,0 +1,11 @@
+.mermaid {
+    display: flow-root;
+    padding: 1rem;
+    border: 0.05rem solid var(--md-default-fg-color--lightest);
+    border-radius: 0.2rem;
+    box-shadow: var(--md-shadow-z1);
+}
+
+[data-md-color-scheme="slate"] .mermaid {
+    box-shadow: 0 0.2rem 0.5rem #ffffff0d, 0 0 0.05rem #ffffff1a;
+}
