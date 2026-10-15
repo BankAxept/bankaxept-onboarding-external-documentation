@@ -1,8 +1,8 @@
-# Introduction
-
 <p align="center">
 <img alt="BankAxept_Logo.svg" src="assets/images/bankaxept_logo.svg" width="200"/>
 </p>
+
+# Introduction
 
 This is an API for Norwegian [PSPs](dictionary.md) to register new [Bax numbers](dictionary.md) which are automatically assigned BankAxept products. See the [OpenAPI Spec](https://onboarding.bankaxept.no/swagger-ui/index.html#/) for the full interactive API reference.
 Following a merchant agreement registration request BankAxept will:
