@@ -1,5 +1,7 @@
 # bankaxept-onboarding-external-documentation
 
+Published at <https://bankaxept.github.io/bankaxept-onboarding-external-documentation/>.
+
 ## Running locally
 
 ```sh

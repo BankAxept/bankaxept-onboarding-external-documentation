@@ -1,4 +1,4 @@
-# Known Error Patterns
+# Problems
 
 The onboarding API implements [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html).
 

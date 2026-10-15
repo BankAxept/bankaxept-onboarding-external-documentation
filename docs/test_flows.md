@@ -1,4 +1,4 @@
-# Valid flows for Test
+# Test flows
 
 These diagrams show the API calls and [webhooks](./webhooks.md) for the main paths through the [Order Statuses Flowchart](./index.md#order-statuses-flowchart), using the simulation endpoints available in the test environment.
 The remaining paths (for example bank deadline expiry or an order closed by BankAxept) behave as described in the [Production flows](./prod_flows.md).
