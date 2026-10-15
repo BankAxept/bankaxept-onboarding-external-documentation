@@ -1,0 +1,6 @@
+/* Match the footer to the header's primary colour instead of Material's default near-black. */
+.md-footer-meta {
+    background-color: var(--md-primary-fg-color);
+    --md-footer-fg-color--light: var(--md-primary-bg-color);
+    --md-footer-fg-color--lighter: var(--md-primary-bg-color--light);
+}

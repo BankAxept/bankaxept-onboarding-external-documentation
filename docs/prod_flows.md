@@ -1,4 +1,4 @@
-# Valid flows for Production
+# Production flows
 
 These diagrams show the API calls and [webhooks](./webhooks.md) for each path through the [Order Statuses Flowchart](./index.md#order-statuses-flowchart).
 Webhooks are shown where they are triggered. Delivery order is not guaranteed, see [Webhooks](./webhooks.md#delivery-and-ordering).

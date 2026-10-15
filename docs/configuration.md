@@ -1,4 +1,4 @@
-# Onboarding
+# Configuration
 
 ## Getting credentials
 In order to use the Onboarding API, you will need to obtain client credentials from BankAxept.
@@ -38,6 +38,8 @@ The URL for the token endpoint is different for the test and production environm
 - **Production environment**: `https://sso.stoe.no/auth/realms/external/protocol/openid-connect/token`
 
 ## Sending requests
+The API base URLs for the test and production environments are listed under *Servers* in the [OpenAPI Spec](https://onboarding.bankaxept.no/swagger-ui/index.html#/).
+
 All requests to the Onboarding API must include the access token in the Authorization header. We recommend requesting a
 new token for each request as they have an expiry time of **five minutes**. The header should look like this:
 
