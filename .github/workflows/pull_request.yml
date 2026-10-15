@@ -7,6 +7,8 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'requirements.txt'
+      - '.github/workflows/**'
   merge_group:
     types: [ checks_requested ]
 
@@ -15,13 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@c5a3e1159e0cbdf0845eb8811bd39e39fc3099c2 # v2
       - name: Install MKDocs
-        run: |
-          pip install mkdocs-material
-          pip install mkdocs-glightbox
-          pip install mkdocs-redirects
+        run: pip install -r requirements.txt
       - name: Build static site
         run: mkdocs build --strict #needs config to build to _site.
