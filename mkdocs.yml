@@ -31,7 +31,6 @@ extra_javascript:
   - assets/javascripts/external-nav-links.js
 extra_css:
   - assets/stylesheets/account-number-generator.css
-  - assets/stylesheets/home.css
   - assets/stylesheets/nav-tabs.css
   - assets/stylesheets/back-to-top.css
   - assets/stylesheets/overscroll.css
@@ -39,6 +38,8 @@ extra_css:
   - assets/stylesheets/footer.css
 theme:
   name: material
+  logo: assets/images/bankaxept_logo_white.svg
+  favicon: assets/images/bankaxept_logo.svg
   features:
     - navigation.instant
     - navigation.tabs
