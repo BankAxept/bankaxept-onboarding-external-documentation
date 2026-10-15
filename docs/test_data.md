@@ -14,7 +14,7 @@ Each section below covers its ingredient in detail. For the full picture of how 
 All BankAxept bank identifiers are valid. Use `GET /v2/banks` to list them, and `GET /v2/banks/{bankIdentifier}` to look up a single one by its 4 digit [bank identifier](dictionary.md).
 
 ```http
-GET /psp/v2/banks
+GET /v2/banks
 ```
 
 ```json
@@ -137,7 +137,7 @@ In this case, the check digit is 5, which matches the last digit of the account 
 Normally we verify the settlement account belongs to the customer using [KAR](dictionary.md). Bypass this in test to register orders for any customer with any valid account number, without real ownership between them:
 
 ```http
-PUT /psp/v2/simulation/configuration
+PUT /v2/simulation/configuration
 Content-Type: application/json
 
 {
@@ -147,7 +147,7 @@ Content-Type: application/json
 
 This applies to the whole API client, not a single order, and persists until changed, so it affects anyone sharing your test credentials too. It doesn't relax any other validation; the account number still has to be valid on its own.
 
-Set it back to `false` to exercise the real KAR path instead. This is rarely necessary: whether our integration correctly calls KAR is something we verify, not something your integration needs to confirm. This endpoint, like the rest of `/psp/v2/simulation/*`, only exists in the test environment.
+Set it back to `false` to exercise the real KAR path instead. This is rarely necessary: whether our integration correctly calls KAR is something we verify, not something your integration needs to confirm. This endpoint, like the rest of `/v2/simulation/*`, only exists in the test environment.
 
 ## Customers
 
@@ -155,7 +155,7 @@ Test, like production, validates customers against [BRREG](dictionary.md), so an
 
 ## Signees
 
-`POST /psp/v2/simulation/signatures` validates the signees you submit against BRREG's signing authority data for the organisation. A match sends the order straight to `BAX_ACTIVE`; no match sends it to `PENDING_BANK_RESPONSE`. See [Automatically Approved Signatures](./test_flows.md#automatically-approved-signatures) and [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank).
+`POST /v2/simulation/signatures` validates the signees you submit against BRREG's signing authority data for the organisation. A match sends the order straight to `BAX_ACTIVE`; no match sends it to `PENDING_BANK_RESPONSE`. See [Automatically Approved Signatures](./test_flows.md#automatically-approved-signatures) and [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank).
 
 Two BRREG endpoints are checked, a match on either is enough:
 
@@ -212,7 +212,7 @@ Two things matter here:
 Submit the exact set of people from one combination, no more, no fewer. Matching is on full name (exact string) and date of birth:
 
 ```http
-POST /psp/v2/simulation/signatures
+POST /v2/simulation/signatures
 Content-Type: application/json
 
 {

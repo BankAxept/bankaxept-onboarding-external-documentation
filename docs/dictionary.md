@@ -8,7 +8,7 @@ This is intended to be a general lightweight reference to reduce confusion and i
 | API             | Application Programming Interface                                                                                                                                   |
 | PSP             | Payment Service Provider                                                                                                                                            |
 | Bax number      | A six or seven digit number which is a unique merchant identifier used in the BankAxept ecosystem. Similar to merchant id for Visa and Mastercard.                  |
-| Baxbis          | The system operated by Nets which issues bax numbers and maintains the network necessary for payment terminals to work                                              |
+| Baxbis          | The system operated by Nets which issues Bax numbers and maintains the network necessary for payment terminals to work                                              |
 | Bank identifier | Identifying number for a bank. A bank can have several bank identifiers, but 2 banks can never share the same number.                                               |
 | BRREG           | Brønnøysundregistrene is the national register of Norwegian businesses their site can be found here https://www.brreg.no/                                           |
 | JWT             | JSON Web Token                                                                                                                                                      |

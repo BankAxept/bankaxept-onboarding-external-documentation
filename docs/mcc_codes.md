@@ -12,7 +12,7 @@ Following you will find a list of Merchant Category Codes (MCC) used in the Bank
 | 1761  | Roofing – Contractors, Sheet Metal Work – Contractors, Siding – Contractors                                                                     |
 | 1799  | Contractors – Special Trade, Not Elsewhere Classified                                                                                           |
 | 2741  | Miscellaneous Publishing and Printing                                                                                                           |
-| 4111  | Local/Suburban Commuter Passenger Transportation – Railroads, Feries, Local Water Transportation.                                               |
+| 4111  | Local/Suburban Commuter Passenger Transportation – Railroads, Ferries, Local Water Transportation.                                               |
 | 4112  | Passenger Railways                                                                                                                              |
 | 4121  | Taxicabs and Limousines                                                                                                                         |
 | 4122  | Bus Lines, Including Charters, Tour Buses                                                                                                       |

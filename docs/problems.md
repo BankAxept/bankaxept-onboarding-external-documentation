@@ -76,7 +76,7 @@ A generic 404 not found type. This could also mean that the resource exists, but
 
 ### unprocessable-content
 
-A generic 422 HTTP response type. We are unable to process the request's content. Usually provided when the request body is valid according to the contract, but does not make sense in the real world. For example, the organization number is valid, but does not belong to a real company. There could be more information in the `detail` field.
+A generic 422 HTTP response type. We are unable to process the request's content. Usually provided when the request body is valid according to the contract, but does not make sense in the real world. For example, the organisation number is valid, but does not belong to a real company. There could be more information in the `detail` field.
 
 ### unsupported-acquiring-bank
 
@@ -97,13 +97,13 @@ This error is returned when:
 
 An exact match including leading zeros and no unnecessary whitespace is required.
 
-A list of all valid PSP IDs the client is authorized to represent can be fetched from the `/partner/psps` endpoint.
+A list of all valid PSP IDs the client is authorized to represent can be fetched from `GET /v2/reseller/psps`.
 
 ### unknown-reseller
 
 Requests with a valid country code–identifier combination will still fail if we have not registered the reseller in our internal customer database.
 
-Contact storkunde@bankaxept.no so we can add the reseller to our internal customer database. Please provide the country code, company identifier (organization number), and address.
+Contact storkunde@bankaxept.no so we can add the reseller to our internal customer database. Please provide the country code, company identifier (organisation number), and address.
 
 ### forbidden-reseller-modifier
 
