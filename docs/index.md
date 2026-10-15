@@ -1,13 +1,4 @@
----
-hide:
-  - navigation
----
-
-<div class="md-home-content" markdown="1">
-
-<p align="center">
-<img alt="BankAxept_Logo.svg" src="assets/images/bankaxept_logo.svg" width="200"/>
-</p>
+# Introduction
 
 This is an API for Norwegian [PSPs](dictionary.md) to register new [Bax numbers](dictionary.md) which are automatically assigned BankAxept products. See the [OpenAPI Spec](https://onboarding.bankaxept.no/swagger-ui/index.html#/) for the full interactive API reference.
 Following a merchant agreement registration request BankAxept will:
@@ -21,7 +12,7 @@ Bax numbers are loaded onto payment terminals in order to connect them to the pa
 Baxbis is the system operated by Nets which issues bax numbers and
 maintains the network necessary for payment terminals to work.
 
-# Limitations
+## Limitations
 This API does not support bank accounts that are not owned by the organization entering into the agreement. <br/>
 For example, Enkeltpersonforetak accounts might be registered on the owners Norwegian national identity number instead of their organization number. This will cause the [KAR](dictionary.md) check to fail since the account is not connected to the organization.  <br/>
 In these cases the order must go through Nets Ordrekontor.
@@ -85,5 +76,3 @@ You can view our flow diagrams for the production environment [here](./prod_flow
 
 ## Webhooks
 You can view more information about webhooks [here](./webhooks.md). <br/>
-
-</div>
