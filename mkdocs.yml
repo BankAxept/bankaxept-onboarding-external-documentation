@@ -30,7 +30,6 @@ extra_javascript:
   - assets/javascripts/external-nav-links.js
 extra_css:
   - assets/stylesheets/account-number-generator.css
-  - assets/stylesheets/home.css
   - assets/stylesheets/nav-tabs.css
   - assets/stylesheets/back-to-top.css
   - assets/stylesheets/overscroll.css
