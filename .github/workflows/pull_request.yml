@@ -19,9 +19,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Install MKDocs
-        run: |
-          pip install mkdocs-material
-          pip install mkdocs-glightbox
-          pip install mkdocs-redirects
+        run: pip install -r requirements.txt
       - name: Build static site
         run: mkdocs build --strict #needs config to build to _site.

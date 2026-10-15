@@ -6,7 +6,7 @@ External-facing documentation for the BankAxept Onboarding API, built with MkDoc
 
 ```sh
 python3 -m venv .venv && source .venv/bin/activate
-pip install mkdocs-material mkdocs-glightbox mkdocs-redirects
+pip install -r requirements.txt
 mkdocs build --strict                
 mkdocs serve -a 127.0.0.1:48731
 ```
