@@ -36,6 +36,8 @@ extra_css:
   - assets/stylesheets/mermaid-container.css
 theme:
   name: material
+  logo: assets/images/bankaxept_logo_white.svg
+  favicon: assets/images/bankaxept_logo.svg
   features:
     - navigation.instant
     - navigation.tabs
