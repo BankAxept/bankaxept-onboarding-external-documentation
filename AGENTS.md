@@ -11,7 +11,7 @@ mkdocs build --strict
 mkdocs serve -a 127.0.0.1:48731
 ```
 
-`mkdocs build --strict` is the authoritative check. It fails on broken internal links/anchors (verify with the grep pattern below, since strict mode does not always catch cross-page anchor targets) and is required before every commit in this repo. CI runs the identical command (`.github/workflows/pull_request.yml`, `.github/workflows/pages.yaml`); keep the `pip install` lines there, in `README.md`, and in your own setup in sync whenever a new MkDocs plugin/dependency is added.
+`mkdocs build --strict` is the authoritative check. It fails on broken internal links/anchors (verify with the grep pattern below, since strict mode does not always catch cross-page anchor targets) and is required before every commit in this repo. CI installs into a venv and runs the same `mkdocs build --strict` command (`.github/workflows/pull_request.yml`, `.github/workflows/pages.yaml`); keep the `pip install` lines there, in `README.md`, and in your own setup in sync whenever a new MkDocs plugin/dependency is added.
 
 To verify an in-page or cross-page anchor actually resolves (not just that the build didn't warn):
 
