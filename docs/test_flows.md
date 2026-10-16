@@ -33,7 +33,7 @@ O -->> I: 200 OK with Order (BAX_ACTIVE)
 ```
 
 ## Signatures Approved by Bank
-An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected but then approved by the bank. See [Signees](./test_data.md#signees) for how BRREG signing combinations work.
+An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md#brreg) and the signatures are automatically rejected but then approved by the bank. See [Signees](./test_data.md#signees) for how BRREG signing combinations work.
 ```mermaid
 sequenceDiagram
 participant I as Integrator
@@ -69,7 +69,7 @@ O -->> I: 200 OK with Order (ACCEPTED)
 ```
 
 ## Signatures Rejected by Bank
-An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md) and the signatures are automatically rejected and later rejected by the bank. See [Signees](./test_data.md#signees) for how BRREG signing combinations work.
+An order is created with and signed by signee(s) that cannot be validated based on the info in [BRREG](dictionary.md#brreg) and the signatures are automatically rejected and later rejected by the bank. See [Signees](./test_data.md#signees) for how BRREG signing combinations work.
 ```mermaid
 sequenceDiagram
 participant I as Integrator
