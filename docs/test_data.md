@@ -2,7 +2,7 @@
 
 To construct a complete, working test order from scratch, you need four things:
 
-1. A settlement account for a real [bank identifier](#banks); see [Account Numbers](#account-numbers) for generating one.
+1. A [settlement account](dictionary.md#settlement-account) for a real [bank identifier](#banks); see [Account Numbers](#account-numbers) for generating one.
 2. A real organisation from [BRREG](#customers).
 3. A decision: [bypass account ownership validation](#bypassing-account-ownership-validation), since a BRREG organisation and a generated account number have no real ownership relationship, or use a real customer-account number relationship instead.
 4. [Signees](#signees) that either match BRREG's registered signing combination, for automatic approval (see [Automatically Approved Signatures](./test_flows.md#automatically-approved-signatures)), or deliberately don't, to send the order to the bank for review instead (see [Signatures Approved by Bank](./test_flows.md#signatures-approved-by-bank) and [Signatures Rejected by Bank](./test_flows.md#signatures-rejected-by-bank)).
@@ -36,7 +36,7 @@ GET /v2/banks
 
 A new BankAxept merchant agreement needs an existing settlement account. `supported` reflects whether we have an agreement with that bank letting us set one up on their behalf:
 
-- **Customer already has an active acquiring agreement** for the account (check with `GET /v2/merchants/{orgNumber}/acquiring-agreements/{accountNumber}`): `supported` doesn't matter, no new bank agreement is needed.
+- **Customer already has an active [acquiring agreement](dictionary.md#acquiring-agreement)** for the account (check with `GET /v2/merchants/{orgNumber}/acquiring-agreements/{accountNumber}`): `supported` doesn't matter, no new bank agreement is needed.
 - **Brand new customer**, no existing agreement: the bank must be `supported`, otherwise the order is rejected with [`unsupported-acquiring-bank`](./problems.md#unsupported-acquiring-bank).
 
 ### Banks in the test environment

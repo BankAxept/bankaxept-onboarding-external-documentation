@@ -80,7 +80,7 @@ A generic 422 HTTP response type. We are unable to process the request's content
 
 ### unsupported-acquiring-bank
 
-The settlement account in the order belongs to a bank which does not permit BankAxept to enter into an acquiring agreement on their behalf, and the customer does not already have an existing BankAxept acquiring agreement for the account number. You can use this type to route orders away from the Onboarding API.
+The [settlement account](dictionary.md#settlement-account) in the order belongs to a bank which does not permit BankAxept to enter into an [acquiring agreement](dictionary.md#acquiring-agreement) on their behalf, and the customer does not already have an existing BankAxept acquiring agreement for the account number. You can use this type to route orders away from the Onboarding API.
 
 **To be clear:** If the customer already has an acquiring agreement for BankAxept on the account number, we permit ordering even though the bank is unsupported.
 
@@ -88,12 +88,12 @@ The settlement account in the order belongs to a bank which does not permit Bank
 
 ### invalid-psp-id
 
-The `pspId` field is required for reseller clients.
+The `pspId` field is required for [reseller](dictionary.md#reseller) clients.
 
 This error is returned when:
 
 - The field is not provided by a client that is required to supply it
-- The provided value does not exactly match any of the PSP IDs the client is authorized to represent
+- The provided value does not exactly match any of the [PSP IDs](dictionary.md#psp-id) the client is authorized to represent
 
 An exact match including leading zeros and no unnecessary whitespace is required.
 
