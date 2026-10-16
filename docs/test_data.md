@@ -11,7 +11,7 @@ Each section below covers its ingredient in detail. For the full picture of how 
 
 ## Banks
 
-All BankAxept bank identifiers are valid. Use `GET /v2/banks` to list them, and `GET /v2/banks/{bankIdentifier}` to look up a single one by its 4 digit [bank identifier](dictionary.md).
+All BankAxept bank identifiers are valid. Use `GET /v2/banks` to list them, and `GET /v2/banks/{bankIdentifier}` to look up a single one by its 4 digit [bank identifier](dictionary.md#bank-identifier).
 
 ```http
 GET /v2/banks
@@ -41,7 +41,7 @@ A new BankAxept merchant agreement needs an existing settlement account. `suppor
 
 ### Banks in the test environment
 
-All BankAxept bank identifiers work end-to-end in test, including [KAR](dictionary.md) account ownership validation, independent of `supported`. To test an invalid or unrecognized bank identifier, use any 4 digits not in `GET /v2/banks`, see [Account Numbers](#account-numbers) for constructing a matching account number.
+All BankAxept bank identifiers work end-to-end in test, including [KAR](dictionary.md#kar) account ownership validation, independent of `supported`. To test an invalid or unrecognized bank identifier, use any 4 digits not in `GET /v2/banks`, see [Account Numbers](#account-numbers) for constructing a matching account number.
 
 For a full list of valid Norwegian bank identifiers, refer to the [BITS documentation](https://www.bits.no/document/iban/).
 
@@ -51,7 +51,7 @@ Account numbers aren't arbitrary digits: the first 4 digits are the bank identif
 
 ### Generate a Test Account Number
 
-Use the generator below to create a valid account number for testing. It defaults to [DNB's](dictionary.md) bank identifier `7001`. The check digit is computed purely from the identifier you enter, so it works for any 4 digit bank identifier, see [Banks](#banks) for which ones are usable in our test environment.
+Use the generator below to create a valid account number for testing. It defaults to DNB's bank identifier `7001`. The check digit is computed purely from the identifier you enter, so it works for any 4 digit bank identifier, see [Banks](#banks) for which ones are usable in our test environment.
 
 <div class="admonition example">
 <p class="admonition-title">Try it</p>
@@ -76,7 +76,7 @@ This runs entirely in your browser using the algorithm described below; it does 
 <details markdown="1">
 <summary>How the check digit is calculated</summary>
 
-**Structure.** A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the [bank identifier](dictionary.md) and the last digit is a check digit.
+**Structure.** A Norwegian bank account number consists of 11 digits, where the first 4 digits represent the [bank identifier](dictionary.md#bank-identifier) and the last digit is a check digit.
 
 **Calculation.** The check digit is validated using the modulus 11 algorithm. To display the calculation, we will use the following example account number:
 ```
@@ -134,7 +134,7 @@ In this case, the check digit is 5, which matches the last digit of the account 
 
 ## Bypassing Account Ownership Validation
 
-Normally we verify the settlement account belongs to the customer using [KAR](dictionary.md). Bypass this in test to register orders for any customer with any valid account number, without real ownership between them:
+Normally we verify the settlement account belongs to the customer using [KAR](dictionary.md#kar). Bypass this in test to register orders for any customer with any valid account number, without real ownership between them:
 
 ```http
 PUT /v2/simulation/configuration
@@ -151,7 +151,7 @@ Set it back to `false` to exercise the real KAR path instead. This is rarely nec
 
 ## Customers
 
-Test, like production, validates customers against [BRREG](dictionary.md), so any active Norwegian organisation works as test data. Use [BRREG's public lookup](https://virksomhet.brreg.no) to search by name. Any active result works, there's no fixed or recommended set.
+Test, like production, validates customers against [BRREG](dictionary.md#brreg), so any active Norwegian organisation works as test data. Use [BRREG's public lookup](https://virksomhet.brreg.no) to search by name. Any active result works, there's no fixed or recommended set.
 
 ## Signees
 

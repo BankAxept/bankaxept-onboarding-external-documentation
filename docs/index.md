@@ -1,9 +1,9 @@
 # Introduction
 
-This is an API for Norwegian [PSPs](dictionary.md) to register new [Bax numbers](dictionary.md) which are automatically assigned BankAxept products. See the [OpenAPI Spec](https://onboarding.bankaxept.no/swagger-ui/index.html#/) for the full interactive API reference.
+This is an API for Norwegian [PSPs](dictionary.md#psp) to register new [Bax numbers](dictionary.md#bax-number) which are automatically assigned BankAxept products. See the [OpenAPI Spec](https://onboarding.bankaxept.no/swagger-ui/index.html#/) for the full interactive API reference.
 Following a merchant agreement registration request BankAxept will:
 
-* Create a Bax number in [Baxbis](dictionary.md)
+* Create a Bax number in [Baxbis](dictionary.md#baxbis)
 * Create a financial agreement document between the issuing bank and the customer, if needed.
 * Create an agreement between BankAxept and the customer, if needed.
 * Collect any necessary signature(s) using the signee and contact information provided in the request.
@@ -13,7 +13,7 @@ Baxbis is the system operated by Nets which issues Bax numbers and
 maintains the network necessary for payment terminals to work.
 
 ## Limitations
-This API does not support bank accounts that are not owned by the organisation entering into the agreement. For example, Enkeltpersonforetak accounts might be registered on the owners Norwegian national identity number instead of their organisation number. This will cause the [KAR](dictionary.md) check to fail since the account is not connected to the organisation. In these cases the order must go through Nets Ordrekontor.
+This API does not support bank accounts that are not owned by the organisation entering into the agreement. For example, Enkeltpersonforetak accounts might be registered on the owners Norwegian national identity number instead of their organisation number. This will cause the [KAR](dictionary.md#kar) check to fail since the account is not connected to the organisation. In these cases the order must go through Nets Ordrekontor.
 
 This API allows for ordering the BankAxept product "return of goods". The number of days in which a good can be returned after sale (the return window) will be set to the default value of 30 days.
 
@@ -28,7 +28,7 @@ There are multiple points of configuration that need to be aligned before you ca
 
 | Status                     | Description                                                                                                                                  |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BAX_NOT_CREATED            | The order has been created in our system but does not yet have an associated [Bax number.](dictionary.md)                                    |
+| BAX_NOT_CREATED            | The order has been created in our system but does not yet have an associated [Bax number](dictionary.md#bax-number).                                    |
 | NOT_SIGNED                 | The order has not been signed yet.                                                                                                           |
 | PENDING_BANK_RESPONSE      | The order has been signed by the customer and is waiting for the bank to approve the signatures.                                             |
 | BAX_ACTIVE                 | The order has been activated and is waiting to become ACCEPTED. The bank may still review the signatures, or may already have approved them, in which case this status is only short-lived. |
@@ -65,7 +65,7 @@ We validate the following information when registering an order:
 
 - **Account Ownership**: We validate that the account number belongs to the customer.
 - **Account Number**: We validate that the account number is valid and belongs to the customer.
-- **MCC**: We validate that the [MCC](dictionary.md) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
+- **MCC**: We validate that the [MCC](dictionary.md#mcc) is valid and supported. You can find a list of supported MCCs in our [MCC documentation](./mcc_codes.md).
 
 ### Test
 See [Test Data](./test_data.md) for how to discover valid bank identifiers, construct account numbers, select BRREG organisations and signees, and decide whether to bypass account ownership validation. You can view our flow diagrams for the test environment [here](./test_flows.md).

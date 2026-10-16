@@ -88,7 +88,7 @@ The settlement account in the order belongs to a bank which does not permit Bank
 
 ### invalid-psp-id
 
-The `pspId` field is required for partner clients.
+The `pspId` field is required for reseller clients.
 
 This error is returned when:
 
