@@ -86,15 +86,11 @@ The [settlement account](dictionary.md#settlement-account) in the order belongs 
 
 > **Note:** We may add support for more banks at any time.
 
-### unsupported-cash-services-in-store-bank
+### forbidden
 
-The order has `orderCashServicesInStore` set to `true`, but the [settlement account](dictionary.md#settlement-account) belongs to a bank which does not permit BankAxept to enter into an [acquiring agreement](dictionary.md#acquiring-agreement) on their behalf.
+The client is authenticated but not permitted to perform the operation. Returns HTTP 403 Forbidden.
 
-> **Note:** We may add support for more banks at any time.
-
-### cash-services-in-store-not-permitted
-
-The order has `orderCashServicesInStore` set to `true`, but the PSP is not permitted to order cash services in store.
+For example, the order has `orderCashServicesInStore` set to `true`, but the PSP is not enabled for ordering cash services in store.
 
 ### invalid-psp-id
 
