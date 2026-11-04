@@ -86,6 +86,12 @@ The [settlement account](dictionary.md#settlement-account) in the order belongs 
 
 > **Note:** We may add support for more banks at any time.
 
+### forbidden
+
+The client is authenticated but not permitted to perform the operation. Returns HTTP 403 Forbidden.
+
+For example, the order has `orderCashServicesInStore` set to `true`, but the PSP is not enabled for ordering cash services in store.
+
 ### invalid-psp-id
 
 The `pspId` field is required for [reseller](dictionary.md#reseller) clients.
